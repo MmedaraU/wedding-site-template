@@ -4,15 +4,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Idara &amp; Emeka — 16 December 2028</title>
+  <title>Mmedara &amp; Ikedinachi — 16 December 2028</title>
   <meta name="description"
-    content="The marriage of Idara Aniekan and Emeka Nwosu. Ibibio traditional at Ikot Ekpene; Ìgbá Nkwụ and white wedding at The Raffia Court, Uyo, Akwa Ibom. Mesiere. Nnọọ." />
-  <meta name="theme-color" content="#ffffff" />
+    content="Two rivers, one sea. The marriage of Mmedara Umana (Onna) and Ikedinachi Okpara (Amasiri). Ibibio traditional at the family compound, Onna; Ìgbá Nkwụ and white wedding at The Palm Court, Uyo, Akwa Ibom." />
+  <meta name="theme-color" content="#2A0E14" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&display=swap"
     rel="stylesheet">
 
   <style>
@@ -20,19 +20,29 @@
    1. TOKENS
    ============================================================ */
     :root {
-      --ink: #000;
-      --paper: #fff;
-      --hair: rgba(0, 0, 0, .16);
-      --ease: cubic-bezier(.25, 1, .5, 1);
-      --ease-out: cubic-bezier(.16, 1, .3, 1);
-      --dur: 180ms;
-      --slow: 700ms;
-      --wrap: min(1180px, 100% - 2 * clamp(20px, 5vw, 64px));
-      --gap: clamp(14px, 2vw, 32px);
-      --display: 'Instrument Serif', 'Bodoni Moda', Georgia, serif;
-      --text: 'Newsreader', Georgia, 'Times New Roman', serif;
+      --wine: #2A0E14;
+      --wine-deep: #1A1210;
+      --wine-soft: #3A1620;
+      --ivory: #F5EFE6;
+      --ivory-soft: rgba(245, 239, 230, .72);
+      --ivory-faint: rgba(245, 239, 230, .5);
+      --coral: #E24E42;
+      --coral-soft: rgba(226, 78, 66, .5);
+      --gold: #B8935A;
+      --gold-soft: rgba(184, 147, 90, .3);
+      --gold-faint: rgba(184, 147, 90, .18);
+
+      --display: 'Fraunces', 'Bodoni Moda', Georgia, serif;
+      --text: 'Newsreader', Georgia, serif;
       --sans: 'Inter', system-ui, -apple-system, sans-serif;
-      --stamp: 'Anton', 'Arial Narrow', Impact, sans-serif;
+
+      --ease: cubic-bezier(.2, 0, .1, 1);
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --slow: 900ms;
+      --dur: 220ms;
+
+      --wrap: min(1200px, 100% - 2 * clamp(24px, 5vw, 72px));
+      --gap: clamp(20px, 3vw, 40px);
     }
 
     *,
@@ -42,20 +52,21 @@
     }
 
     html {
-      -webkit-text-size-adjust: 100%
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth
     }
 
     body {
       margin: 0;
-      background: var(--paper);
-      color: var(--ink);
+      background: var(--wine);
+      color: var(--ivory);
       font-family: var(--text);
       font-size: clamp(16px, .35vw + 15px, 19px);
-      line-height: 1.6;
+      line-height: 1.65;
       font-optical-sizing: auto;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     img {
@@ -71,20 +82,19 @@
       font: inherit
     }
 
-    @media (hover:hover) and (pointer:fine) {
-
-      html.js body,
-      html.js a,
-      html.js button,
-      html.js input,
-      html.js textarea {
-        cursor: none
-      }
-    }
-
     .wrap {
       width: var(--wrap);
       margin-inline: auto
+    }
+
+    ::selection {
+      background: var(--coral);
+      color: var(--ivory)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--coral);
+      outline-offset: 4px
     }
 
     /* ============================================================
@@ -94,897 +104,898 @@
       font-family: var(--sans);
       font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: .22em;
+      letter-spacing: .28em;
       text-transform: uppercase;
-      margin: 0;
-      opacity: .72;
+      color: var(--gold);
+      margin: 0 0 clamp(14px, 2vw, 20px);
     }
 
-    .section-title {
+    .h2 {
       font-family: var(--display);
       font-weight: 400;
-      font-size: clamp(36px, 5vw, 68px);
-      line-height: .98;
-      letter-spacing: -.015em;
-      margin: 0;
+      font-variation-settings: 'opsz' 144, 'SOFT' 40, 'WONK' 1;
+      font-style: italic;
+      font-size: clamp(36px, 5.4vw, 72px);
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin: 0 0 clamp(28px, 4vw, 48px);
       text-wrap: balance;
+      color: var(--ivory);
     }
 
-    .section-head {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: baseline;
-      margin-bottom: clamp(30px, 4.5vw, 64px);
-      padding-top: clamp(12px, 1.6vw, 18px);
-      border-top: 1px solid var(--ink);
-    }
-
-    .section-head .kicker {
-      grid-column: 1
-    }
-
-    .section-head .folio {
-      grid-column: 2;
-      font-family: var(--stamp);
-      font-size: 10px;
-      letter-spacing: .18em;
-      opacity: .4;
-      white-space: nowrap;
-    }
-
-    .section-head .section-title {
-      grid-column: 1 / -1;
-      margin-top: clamp(12px, 2vw, 24px);
+    .lede {
+      font-family: var(--display);
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.5;
+      margin: 0 0 1.4em;
+      color: var(--ivory-soft);
+      text-wrap: pretty;
     }
 
     /* ============================================================
-   3. SKIP LINK
+   3. BEAD RAIL
    ============================================================ */
-    .skip-link {
+    .bead-rail {
+      position: fixed;
+      left: clamp(16px, 2.4vw, 32px);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .bead-rail::before {
+      content: '';
       position: absolute;
-      left: -9999px;
-      top: 0;
-      z-index: 999;
-      background: var(--ink);
-      color: var(--paper);
-      padding: 14px 20px;
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      left: 50%;
+      top: -14px;
+      bottom: -14px;
+      width: 1px;
+      background: var(--gold-faint);
+      transform: translateX(-.5px);
+      z-index: -1;
+    }
+
+    .bead {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(226, 78, 66, .35);
+      border: 1px solid transparent;
+      transition:
+        background var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        transform var(--dur) var(--ease);
+      position: relative;
       text-decoration: none;
     }
 
-    .skip-link:focus {
-      left: 12px;
-      top: 12px
+    .bead:hover {
+      background: var(--coral);
+      transform: scale(1.3);
     }
 
-    /* ============================================================
-   4. CURSOR
-   ============================================================ */
-    .cursor-dot,
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 200;
-      mix-blend-mode: difference;
-      opacity: 0;
-      transition: opacity 240ms var(--ease), scale var(--dur) var(--ease);
-      will-change: transform;
+    .bead.is-active {
+      background: var(--coral);
+      box-shadow:
+        0 0 0 3px var(--wine),
+        0 0 0 4px var(--gold);
+      transform: scale(1.15);
     }
 
-    .cursor-dot {
-      width: 6px;
-      height: 6px;
-      background: #fff;
-      margin: -3px 0 0 -3px
-    }
-
-    .cursor-ring {
-      width: 34px;
-      height: 34px;
-      border: 1px solid #fff;
-      margin: -17px 0 0 -17px;
-      scale: 1;
-    }
-
-    .cursor-ring.is-active {
-      scale: 1.9
-    }
-
-    .cursor-ring.is-press {
-      scale: .8
-    }
-
-    body.cursor-ready .cursor-dot,
-    body.cursor-ready .cursor-ring {
-      opacity: 1
-    }
-
-    @media (hover:none),
-    (pointer:coarse) {
-
-      .cursor-dot,
-      .cursor-ring {
-        display: none
-      }
-    }
-
-    /* ============================================================
-   5. PRINT TEXTURE + CROP MARKS
-   ============================================================ */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      opacity: .045;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    .crop-marks {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 4
-    }
-
-    .crop-marks span {
+    .bead::after {
+      content: attr(data-label);
       position: absolute;
-      width: 12px;
-      height: 12px;
-      border: 0 solid var(--ink);
-      opacity: .45;
+      left: calc(100% + 18px);
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity 200ms var(--ease);
     }
 
-    .crop-marks span:nth-child(1) {
-      top: 16px;
-      left: 16px;
-      border-top-width: 1px;
-      border-left-width: 1px
+    .bead:hover::after,
+    .bead:focus-visible::after {
+      opacity: .85
     }
 
-    .crop-marks span:nth-child(2) {
-      top: 16px;
-      right: 16px;
-      border-top-width: 1px;
-      border-right-width: 1px
-    }
-
-    .crop-marks span:nth-child(3) {
-      bottom: 16px;
-      left: 16px;
-      border-bottom-width: 1px;
-      border-left-width: 1px
-    }
-
-    .crop-marks span:nth-child(4) {
-      bottom: 16px;
-      right: 16px;
-      border-bottom-width: 1px;
-      border-right-width: 1px
-    }
-
-    @media (max-width:720px) {
-      .crop-marks {
+    @media (max-width:1024px) {
+      .bead-rail {
         display: none
       }
     }
 
     /* ============================================================
-   6. BLOBS
+   4. HERO
    ============================================================ */
-    .blob {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate
-    }
-
-    .blob--img {
-      background: var(--ink);
-      border-radius: 58% 42% 63% 37% / 45% 58% 42% 55%;
-      animation: morph-a 42s ease-in-out infinite alternate;
-      transition: scale var(--dur) var(--ease);
-    }
-
-    .blob--img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: scale 560ms var(--ease-out);
-    }
-
-    .blob--img:hover {
-      scale: 1.012
-    }
-
-    .blob--img:hover img {
-      scale: 1.035
-    }
-
-    @keyframes morph-a {
-      0% {
-        border-radius: 58% 42% 63% 37% / 45% 58% 42% 55%
-      }
-
-      50% {
-        border-radius: 42% 58% 37% 63% / 58% 42% 55% 45%
-      }
-
-      100% {
-        border-radius: 50% 50% 44% 56% / 56% 44% 58% 42%
-      }
-    }
-
-    @keyframes morph-b {
-      0% {
-        border-radius: 38% 62% 55% 45% / 52% 40% 60% 48%
-      }
-
-      50% {
-        border-radius: 62% 38% 44% 56% / 40% 62% 45% 55%
-      }
-
-      100% {
-        border-radius: 48% 52% 60% 40% / 60% 48% 40% 52%
-      }
-    }
-
-    @keyframes morph-c {
-      0% {
-        border-radius: 52% 48% 36% 64% / 44% 62% 38% 56%
-      }
-
-      50% {
-        border-radius: 36% 64% 62% 38% / 64% 38% 56% 44%
-      }
-
-      100% {
-        border-radius: 64% 36% 48% 52% / 38% 56% 44% 62%
-      }
-    }
-
-    @keyframes morph-panel {
-      0% {
-        border-radius: 14% 7% 12% 8% / 18% 12% 16% 11%
-      }
-
-      100% {
-        border-radius: 8% 12% 7% 14% / 11% 16% 12% 18%
-      }
-    }
-
-    /* ============================================================
-   7. NAMEPLATE BAND
-   ============================================================ */
-    .nameplate {
-      width: var(--wrap);
-      margin: 0 auto;
+    .hero {
+      min-height: 100dvh;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 1.2rem;
-      align-items: baseline;
-      padding-block: clamp(14px, 2vw, 20px) clamp(10px, 1.4vw, 14px);
-      border-bottom: 1px solid var(--ink);
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
+      grid-template-rows: auto 1fr auto;
+      padding-block: clamp(28px, 5vh, 56px);
+      text-align: center;
+      position: relative;
     }
 
-    .nameplate__left {
-      justify-self: start
-    }
-
-    .nameplate__center {
-      justify-self: center;
-      font-family: var(--display);
-      font-style: italic;
-      font-size: clamp(13px, 1.4vw, 16px);
-      letter-spacing: .02em;
-      text-transform: none;
-      font-variant-numeric: oldstyle-nums;
-    }
-
-    .nameplate__right {
-      justify-self: end;
-      text-align: right
-    }
-
-    .nameplate__vol {
-      opacity: .6
-    }
-
-    @media (max-width:720px) {
-      .nameplate {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: .5rem;
-      }
-
-      .nameplate__left,
-      .nameplate__center,
-      .nameplate__right {
-        justify-self: center;
-        text-align: center
-      }
-    }
-
-    /* ============================================================
-   8. HERO
-   ============================================================ */
-    .masthead {
+    .hero__top {
       width: var(--wrap);
       margin-inline: auto;
-      padding-top: clamp(20px, 3vw, 36px);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .75;
     }
 
-    .hero {
-      text-align: center;
-      padding-block: clamp(44px, 9vw, 116px) clamp(36px, 6vw, 84px);
+    .hero__center {
+      display: grid;
+      align-content: center;
+      gap: clamp(20px, 3.4vh, 40px);
+      padding-block: clamp(28px, 6vh, 72px);
+      width: var(--wrap);
+      margin-inline: auto;
     }
 
     .hero__kicker {
       font-family: var(--sans);
-      font-size: 10.5px;
+      font-size: clamp(10px, 1vw, 12px);
       font-weight: 600;
-      letter-spacing: .26em;
+      letter-spacing: .32em;
       text-transform: uppercase;
-      margin: 0 0 clamp(18px, 3vw, 32px);
-      opacity: .72;
+      color: var(--ivory-soft);
+      margin: 0;
     }
 
     .names {
       font-family: var(--display);
-      font-weight: 400;
-      font-size: clamp(56px, 14vw, 208px);
-      line-height: .84;
-      letter-spacing: -.025em;
+      font-weight: 300;
+      font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 0;
+      font-size: clamp(64px, 16vw, 220px);
+      line-height: .82;
+      letter-spacing: -.045em;
       margin: 0;
+      color: var(--ivory);
       text-wrap: balance;
       overflow-wrap: break-word;
-      text-shadow: .006em .006em 0 rgba(0, 0, 0, .18);
     }
 
     .names .amp {
       display: inline-block;
       font-style: italic;
-      font-size: .72em;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      font-weight: 400;
+      font-size: .62em;
+      color: var(--coral);
       letter-spacing: 0;
-      padding-inline: .04em;
-      transform: translateY(-.04em);
+      transform: rotate(-8deg) translateY(.04em);
+      padding-inline: .05em;
     }
 
-    .hero__rule {
-      width: 56px;
-      height: 3px;
-      background: var(--ink);
-      margin: clamp(22px, 4vw, 44px) auto;
-    }
-
-    .hero__request {
+    .hero__venue {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: clamp(11px, 1.1vw, 13px);
       letter-spacing: .24em;
       text-transform: uppercase;
-      margin: 0 0 clamp(16px, 2.6vw, 26px);
-      opacity: .75;
+      color: var(--ivory-soft);
+      margin: 0;
+      font-variant-caps: all-small-caps;
     }
 
     .hero__date {
       font-family: var(--display);
       font-style: italic;
-      font-size: clamp(18px, 2vw, 26px);
-      line-height: 1.45;
-      margin: 0 0 clamp(12px, 2vw, 18px);
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(22px, 2.6vw, 32px);
+      color: var(--gold);
+      margin: 0;
+      letter-spacing: .04em;
       font-variant-numeric: oldstyle-nums;
     }
 
-    .hero__venue {
+    .hero__countdown {
+      margin-top: clamp(12px, 2vh, 20px);
       font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: .2em;
-      font-variant-caps: all-small-caps;
-      margin: 0;
-      opacity: .8;
+      font-size: clamp(10px, 1vw, 12px);
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--ivory-faint);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: .8em;
     }
 
-    .hero-figure {
-      margin: clamp(36px, 6vw, 76px) auto 0;
-      max-width: min(640px, 100%);
-    }
-
-    .hero-figure .blob--img {
-      aspect-ratio: 4 / 5;
-      width: 100%;
-      animation-duration: 46s;
-    }
-
-    /* ============================================================
-   9. CAPTIONS
-   ============================================================ */
-    figcaption {
+    .hero__countdown .num {
       font-family: var(--display);
       font-style: italic;
-      font-size: clamp(14px, 1.3vw, 17px);
-      line-height: 1.45;
-      opacity: .7;
-      margin-top: 16px;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: 1.7em;
+      letter-spacing: -.02em;
+      text-transform: none;
+      color: var(--ivory);
+      padding-inline: .05em;
     }
 
-    figcaption .num {
-      font-family: var(--sans);
-      font-style: normal;
-      font-size: 9.5px;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      margin-right: .9em;
+    .hero__countdown .unit {
+      font-size: .9em;
       opacity: .75;
     }
 
-    .hero-figure figcaption {
-      text-align: center
+    .hero__bottom {
+      width: var(--wrap);
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .55;
+    }
+
+    .hero__scroll {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity var(--dur) var(--ease);
+    }
+
+    .hero__scroll:hover {
+      opacity: 1
     }
 
     /* ============================================================
-   10. STOP PRESS TICKER
+   5. HERO PHOTO
    ============================================================ */
-    .ticker {
+    .hero-photo {
+      width: var(--wrap);
+      max-width: 820px;
+      margin: clamp(48px, 8vw, 120px) auto 0;
+      padding: 0;
+    }
+
+    .hero-photo__img {
+      display: block;
       width: 100%;
-      margin-block: clamp(48px, 8vw, 108px);
-      border-block: 1px solid var(--ink);
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: saturate(1.06) contrast(1.02);
+    }
+
+    .hero-photo__caption {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.5;
+      color: var(--ivory-soft);
+      text-align: center;
+      margin: clamp(20px, 2.6vw, 28px) auto 0;
+      max-width: 40ch;
+      opacity: .8;
+    }
+
+    /* ============================================================
+   6. TWO RIVERS
+   ============================================================ */
+    .rivers {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      min-height: clamp(480px, 68vh, 680px);
+      margin-block: clamp(48px, 8vw, 120px);
+      position: relative;
+    }
+
+    .river {
+      position: relative;
+      padding: clamp(40px, 6vw, 88px) clamp(24px, 4vw, 64px);
       display: flex;
-      align-items: stretch;
+      flex-direction: column;
+      justify-content: center;
       overflow: hidden;
-      background: var(--paper);
+      background: var(--wine-soft);
     }
 
-    .ticker__label {
-      flex: none;
-      background: var(--ink);
-      color: var(--paper);
-      padding: 12px clamp(14px, 2vw, 20px);
-      font-family: var(--stamp);
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
+    .river--hers {
+      text-align: right
     }
 
-    .ticker__viewport {
-      flex: 1;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
+    .river--his {
+      text-align: left
     }
 
-    .ticker__track {
-      display: flex;
-      gap: 2.2rem;
-      width: max-content;
-      white-space: nowrap;
-      padding-left: 1.6rem;
+    .river__pattern {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: .35;
+    }
+
+    .river--hers .river__pattern {
+      color: var(--coral)
+    }
+
+    .river--his .river__pattern {
+      color: var(--gold)
+    }
+
+    .river__text {
+      position: relative;
+      z-index: 1;
+      max-width: 360px;
+    }
+
+    .river--hers .river__text {
+      margin-left: auto
+    }
+
+    .river__kicker {
       font-family: var(--sans);
-      font-size: 10.5px;
-      font-weight: 500;
-      letter-spacing: .22em;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .32em;
       text-transform: uppercase;
-      animation: marquee 42s linear infinite;
+      color: var(--gold);
+      margin: 0 0 clamp(14px, 2vw, 22px);
     }
 
-    .ticker__track span {
-      flex: none
+    .river__place {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1;
+      font-size: clamp(48px, 6.5vw, 100px);
+      line-height: .9;
+      letter-spacing: -.03em;
+      color: var(--ivory);
+      margin: 0 0 clamp(16px, 2.4vw, 26px);
     }
 
-    .ticker__track span::before {
-      content: '—';
-      margin-right: .5rem;
-      opacity: .5
+    .river__voice {
+      font-family: var(--display);
+      font-size: clamp(15px, 1.4vw, 19px);
+      line-height: 1.55;
+      color: var(--ivory-soft);
+      margin: 0;
+      font-style: italic;
     }
 
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%)
+    .seam {
+      width: 3px;
+      background: repeating-linear-gradient(180deg,
+          var(--coral) 0 8px,
+          var(--gold) 8px 16px);
+      box-shadow: 0 0 28px rgba(226, 78, 66, .45);
+      position: relative;
+    }
+
+    .rivers__coda {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(20px, 2.4vw, 30px);
+      color: var(--gold);
+      margin: clamp(28px, 4vw, 44px) 0 0;
+    }
+
+    @media (max-width:860px) {
+      .rivers {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto 1fr;
+        min-height: 0;
+      }
+
+      .seam {
+        width: 100%;
+        height: 3px;
+        background: repeating-linear-gradient(90deg,
+            var(--coral) 0 8px,
+            var(--gold) 8px 16px);
+      }
+
+      .river--hers,
+      .river--his {
+        text-align: center
+      }
+
+      .river--hers .river__text,
+      .river--his .river__text {
+        margin: 0 auto
       }
     }
 
     /* ============================================================
-   11. SECTION RHYTHM
+   7. STORY (FIXED)
    ============================================================ */
-    main>section+section {
-      margin-top: clamp(72px, 12vw, 180px)
+    .story {
+      padding-block: clamp(64px, 10vw, 140px)
     }
 
-    /* ============================================================
-   12. DATE + COUNTDOWN BULLETIN
-   ============================================================ */
-    .date-statement {
-      text-align: center;
-      padding-block: clamp(48px, 8vw, 104px);
+    .story__layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: start;
     }
 
-    .date-statement__eyebrow {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      margin: 0 0 clamp(18px, 3vw, 30px);
-      opacity: .6;
+    .story__text {
+      color: var(--ivory-soft);
+      font-size: clamp(16px, .4vw + 15px, 19px);
+      min-width: 0;
+      /* Fixes overlap */
     }
 
-    .date-statement__date {
-      font-family: var(--display);
-      font-size: clamp(46px, 10vw, 132px);
-      line-height: .9;
-      letter-spacing: .02em;
-      margin: 0;
-      font-variant-numeric: oldstyle-nums;
-      text-wrap: balance;
+    .story__text p {
+      margin: 0 0 1.2em;
     }
 
-    .date-statement__sub {
+    .story__text>p:first-of-type::first-letter {
+      initial-letter: 3;
+      -webkit-initial-letter: 3;
+      margin-right: .12em;
+      color: var(--coral);
       font-family: var(--display);
       font-style: italic;
-      font-size: clamp(16px, 1.6vw, 22px);
-      margin: clamp(16px, 2.4vw, 26px) 0 0;
+      font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1;
+    }
+
+    .story__figure {
+      margin: 0;
+      min-width: 0;
+      /* Fixes overlap */
+    }
+
+    .story__figure img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: saturate(1.06) contrast(1.02);
+    }
+
+    .story__figure figcaption {
+      font-family: var(--sans);
+      font-size: 9.5px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 14px;
       opacity: .75;
     }
 
-    .countdown {
-      margin-top: clamp(30px, 4.5vw, 52px);
-      padding-block: clamp(22px, 3.4vw, 36px);
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-      display: grid;
-      justify-items: center;
-      gap: clamp(14px, 2vw, 20px);
+    @media (max-width:860px) {
+      .story__layout {
+        grid-template-columns: 1fr
+      }
     }
 
-    .countdown__caption {
+    /* ============================================================
+   8. PROGRAMME
+   ============================================================ */
+    .programme-section {
+      padding-block: clamp(64px, 10vw, 140px)
+    }
+
+    .programme {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 clamp(28px, 3.4vw, 44px);
+      position: relative;
+    }
+
+    .programme::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 20px;
+      bottom: 20px;
+      width: 1px;
+      background: linear-gradient(180deg,
+          transparent,
+          var(--gold) 15%,
+          var(--gold) 85%,
+          transparent);
+    }
+
+    .programme__item {
+      position: relative;
+      padding: clamp(20px, 2.6vw, 32px) 0;
+      border-bottom: 1px solid rgba(184, 147, 90, .18);
+      display: grid;
+      grid-template-columns: minmax(140px, auto) 1fr auto;
+      gap: clamp(14px, 2.4vw, 40px);
+      align-items: baseline;
+    }
+
+    .programme__item:last-child {
+      border-bottom: 0
+    }
+
+    .programme__item::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * clamp(28px, 3.4vw, 44px) + .5px);
+      top: calc(clamp(20px, 2.6vw, 32px) + .65em);
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow:
+        0 0 0 3px var(--wine),
+        0 0 0 4px var(--gold);
+    }
+
+    .programme__day {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .programme__title {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(22px, 2.4vw, 32px);
+      line-height: 1.1;
+      color: var(--ivory);
+    }
+
+    .programme__place {
+      font-family: var(--display);
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: var(--ivory-soft);
+      text-align: right;
+    }
+
+    @media (max-width:720px) {
+      .programme__item {
+        grid-template-columns: 1fr;
+        gap: .4em;
+      }
+
+      .programme__place {
+        text-align: left
+      }
+    }
+
+    /* ============================================================
+   9. ASO EBI
+   ============================================================ */
+    .aso-section {
+      padding-block: clamp(64px, 10vw, 140px)
+    }
+
+    .aso-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(20px, 3.4vw, 48px);
+    }
+
+    .aso {
+      display: grid;
+      gap: clamp(16px, 2vw, 22px)
+    }
+
+    .aso__swatch {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gold-soft);
+    }
+
+    .aso__swatch::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(45deg,
+          rgba(255, 255, 255, .03) 0 2px,
+          transparent 2px 4px),
+        repeating-linear-gradient(-45deg,
+          rgba(0, 0, 0, .06) 0 2px,
+          transparent 2px 4px);
+    }
+
+    .aso__swatch--wine {
+      background: linear-gradient(135deg, #5C1A22 0%, #3D0E16 100%);
+    }
+
+    .aso__swatch--coral {
+      background: linear-gradient(135deg, #E24E42 0%, #B8352C 100%);
+    }
+
+    .aso__swatch--gold {
+      background: linear-gradient(135deg, #D4A868 0%, #B8935A 60%, #8F6E3F 100%);
+    }
+
+    .aso__day {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 1;
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: rgba(26, 18, 16, .72);
+      padding: 5px 9px;
+      backdrop-filter: blur(6px);
+    }
+
+    .aso__name {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(22px, 2vw, 28px);
+      line-height: 1;
+      margin: 0 0 .4em;
+      color: var(--ivory);
+    }
+
+    .aso__desc {
+      font-family: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ivory-soft);
+      margin: 0;
+    }
+
+    .aso__note {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7;
+      margin: clamp(28px, 4vw, 48px) 0 0;
+    }
+
+    @media (max-width:860px) {
+      .aso-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(32px, 6vw, 48px)
+      }
+
+      .aso {
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        gap: 20px
+      }
+
+      .aso__swatch {
+        aspect-ratio: 1;
+        max-width: 160px
+      }
+    }
+
+    @media (max-width:540px) {
+      .aso {
+        grid-template-columns: 1fr
+      }
+
+      .aso__swatch {
+        aspect-ratio: 2/1;
+        max-width: none
+      }
+    }
+
+    /* ============================================================
+   10. FEAST
+   ============================================================ */
+    .feast-section {
+      padding-block: clamp(64px, 10vw, 140px)
+    }
+
+    .feast {
+      border-top: 1px solid var(--gold-faint);
+    }
+
+    .feast__dish {
+      padding: clamp(24px, 3.2vw, 40px) 0;
+      border-bottom: 1px solid var(--gold-faint);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(16px, 3vw, 48px);
+      align-items: baseline;
+    }
+
+    .feast__name {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 40, 'WONK' 1;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: .95;
+      letter-spacing: -.02em;
+      margin: 0;
+      color: var(--ivory);
+    }
+
+    .feast__meta {
+      text-align: right
+    }
+
+    .feast__origin {
       font-family: var(--sans);
       font-size: 10px;
       font-weight: 600;
       letter-spacing: .26em;
       text-transform: uppercase;
-      opacity: .55;
+      color: var(--gold);
+      margin: 0 0 .6em;
+    }
+
+    .feast__desc {
+      font-family: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ivory-soft);
       margin: 0;
     }
 
-    .countdown__grid {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .countdown__block {
-      display: grid;
-      justify-items: center;
-      gap: .4em;
-      padding-inline: clamp(12px, 2.4vw, 32px);
-    }
-
-    .countdown__block+.countdown__block {
-      border-left: 1px solid var(--hair);
-    }
-
-    .countdown__num {
-      font-family: var(--display);
-      font-size: clamp(26px, 3.4vw, 40px);
-      line-height: 1;
-      font-variant-numeric: oldstyle-nums;
-      min-width: 2.1ch;
-      text-align: center;
-    }
-
-    .countdown__label {
-      font-family: var(--sans);
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      opacity: .5;
-    }
-
-    .countdown__after {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: clamp(17px, 1.8vw, 22px);
-      line-height: 1.5;
-      margin: 0;
-      opacity: .8;
-      max-width: 36ch;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .countdown__block[data-unit="seconds"] {
-        display: none
-      }
-    }
-
-    /* ============================================================
-   13. STORY
-   ============================================================ */
-    .story {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-      align-items: start;
-    }
-
-    .story__text {
-      grid-column: 1 / 9
-    }
-
-    .story__figure {
-      grid-column: 9 / 13;
-      margin: 0
-    }
-
-    .story__text {
-      columns: 2;
-      column-gap: clamp(28px, 3.6vw, 48px);
-      column-rule: 1px solid var(--hair);
-    }
-
-    .story__text p {
-      margin: 0 0 1.2em;
-      text-wrap: pretty;
-    }
-
-    .story__text p:last-child {
-      margin-bottom: 0
-    }
-
-    .story__text>p:first-of-type::first-letter {
-      float: left;
-      font-family: var(--display);
-      font-size: 4.4em;
-      line-height: .7;
-      padding: .05em .09em 0 0;
-    }
-
-    .story__figure .blob--img {
-      aspect-ratio: 3 / 4;
-      animation-name: morph-b;
-      animation-duration: 38s;
-    }
-
-    /* ============================================================
-   14. PROGRAMME
-   ============================================================ */
-    .programme {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      content-visibility: auto;
-      contain-intrinsic-size: auto 760px;
-    }
-
-    .programme li {
-      display: grid;
-      grid-template-columns: minmax(140px, 1fr) minmax(0, 1.6fr) minmax(0, 1.4fr) auto;
-      gap: clamp(12px, 2vw, 36px);
-      align-items: baseline;
-      padding: clamp(20px, 2.6vw, 30px) 0;
-      border-bottom: 1px solid var(--hair);
-    }
-
-    .programme li:first-child {
-      border-top: 1px solid var(--hair)
-    }
-
-    .programme__day {
+    .feast__note {
       font-family: var(--sans);
       font-size: 10.5px;
       letter-spacing: .18em;
       text-transform: uppercase;
-      opacity: .62;
+      color: var(--gold);
+      opacity: .7;
+      margin: clamp(24px, 3vw, 36px) 0 0;
     }
 
-    .programme__title {
-      font-family: var(--display);
-      font-size: clamp(21px, 2.2vw, 30px);
-      line-height: 1.1;
-    }
+    @media (max-width:720px) {
+      .feast__dish {
+        grid-template-columns: 1fr;
+        gap: .5em
+      }
 
-    .programme__place {
-      font-family: var(--display);
-      font-style: italic;
-      font-size: clamp(15px, 1.4vw, 19px);
-      opacity: .78;
-    }
-
-    .programme__time {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      opacity: .62;
-      text-align: right;
-      white-space: nowrap;
+      .feast__meta {
+        text-align: left
+      }
     }
 
     /* ============================================================
-   15. MENU
+   11. TRAVEL (FIXED)
    ============================================================ */
-    .menu-grid {
+    .travel-section {
+      padding-block: clamp(64px, 10vw, 140px)
+    }
+
+    .travel {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: clamp(32px, 5vw, 88px);
-      content-visibility: auto;
-      contain-intrinsic-size: auto 520px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(28px, 4vw, 56px) clamp(32px, 5vw, 72px);
     }
 
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1.5rem;
-      padding: 1.05em 0;
-      border-bottom: 1px solid var(--hair);
+    .travel__item {
+      padding-top: clamp(18px, 2.4vw, 24px);
+      border-top: 1px solid var(--gold-faint);
+      min-width: 0;
+      /* Fixes clipped text */
     }
 
-    .menu-item__name {
-      font-family: var(--text);
+    .travel__label {
+      font-family: var(--sans);
+      font-size: 10px;
       font-weight: 600;
-      font-size: clamp(16px, .9vw + 12px, 19px);
-      line-height: 1.25;
-    }
-
-    .menu-item__desc {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      line-height: 1.45;
-      letter-spacing: .05em;
-      opacity: .62;
-      text-align: right;
-      flex: 1;
-    }
-
-    .menu-note {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      letter-spacing: .14em;
+      letter-spacing: .28em;
       text-transform: uppercase;
-      opacity: .55;
-      margin: clamp(20px, 3vw, 30px) 0 0;
+      color: var(--gold);
+      margin: 0 0 .8em;
+    }
+
+    .travel__body {
+      font-family: var(--display);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.55;
+      color: var(--ivory-soft);
+      margin: 0;
+    }
+
+    @media (max-width:720px) {
+      .travel {
+        grid-template-columns: 1fr
+      }
     }
 
     /* ============================================================
-   16. TRAVEL
+   12. GALLERY (SIDE-BY-SIDE)
    ============================================================ */
-    .travel dl {
-      margin: 0;
-      max-width: 70ch
+    .gallery-section {
+      padding-block: clamp(64px, 10vw, 140px)
     }
 
-    .travel dl>div {
-      display: grid;
-      grid-template-columns: 5.5em 1fr;
-      gap: 1.4em;
-      padding: 1em 0;
-      border-bottom: 1px solid var(--hair);
-    }
-
-    .travel dl>div:first-child {
-      border-top: 1px solid var(--hair)
-    }
-
-    .travel dt {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      opacity: .6;
-      padding-top: .3em;
-    }
-
-    .travel dd {
-      margin: 0;
-      text-wrap: pretty
-    }
-
-    /* ============================================================
-   17. GALLERY
-   ============================================================ */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: calc(var(--gap) * 1.6);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(20px, 3vw, 32px);
       align-items: start;
-      content-visibility: auto;
-      contain-intrinsic-size: auto 1200px;
     }
 
-    .gal {
-      margin: 0
+    .gallery__item {
+      margin: 0;
+      position: relative;
     }
 
-    .gal:nth-child(1) {
-      grid-column: 1 / 7
+    .gallery__item img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      /* Uniform aspect ratio so they align side-by-side */
+      object-fit: cover;
+      filter: saturate(1.06) contrast(1.02);
+      display: block;
     }
 
-    .gal:nth-child(2) {
-      grid-column: 8 / 13;
-      margin-top: clamp(40px, 8vw, 120px)
-    }
-
-    .gal:nth-child(3) {
-      grid-column: 3 / 12;
-      margin-top: clamp(24px, 4vw, 64px)
-    }
-
-    .gal .blob--img {
-      width: 100%
-    }
-
-    .gal:nth-child(1) .blob--img {
-      aspect-ratio: 5 / 4;
-      animation-name: morph-c;
-      animation-duration: 44s
-    }
-
-    .gal:nth-child(2) .blob--img {
-      aspect-ratio: 3 / 4;
-      animation-duration: 40s
-    }
-
-    .gal:nth-child(3) .blob--img {
-      aspect-ratio: 16 / 9;
-      animation-name: morph-b;
-      animation-duration: 48s
+    .gallery__caption {
+      position: absolute;
+      left: clamp(16px, 2vw, 24px);
+      bottom: clamp(16px, 2vw, 24px);
+      font-family: var(--sans);
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: rgba(26, 18, 16, .78);
+      padding: 7px 12px;
+      backdrop-filter: blur(8px);
     }
 
     /* ============================================================
-   18. HAIRLINE THAT DRAWS
+   13. LETTERS
    ============================================================ */
-    .hairline-draw {
-      height: 1px;
-      background: var(--ink);
-      transform-origin: left center;
-      scale: 0 1;
-      transition: scale 1.6s var(--ease-out);
-      margin-bottom: clamp(40px, 6vw, 84px);
+    .letters-section {
+      padding-block: clamp(64px, 10vw, 140px)
     }
 
-    .hairline-draw.in {
-      scale: 1 1
-    }
-
-    /* ============================================================
-   19. LETTERS
-   ============================================================ */
     .letters__list {
       list-style: none;
       margin: 0;
       padding: 0;
-      max-width: 68ch;
+      max-width: 70ch;
     }
 
     .letter {
-      margin: 0;
       padding: clamp(24px, 3vw, 36px) 0;
-      border-bottom: 1px solid var(--hair);
+      border-bottom: 1px solid var(--gold-faint);
     }
 
     .letters__list>.letter:first-child {
-      border-top: 1px solid var(--hair)
+      border-top: 1px solid var(--gold-faint)
     }
 
     .letter p {
       font-family: var(--display);
       font-style: italic;
-      font-size: clamp(18px, 1.8vw, 24px);
-      line-height: 1.4;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(19px, 1.9vw, 26px);
+      line-height: 1.42;
+      color: var(--ivory);
       margin: 0 0 .7em;
       text-wrap: pretty;
     }
@@ -992,14 +1003,16 @@
     .letter cite {
       font-family: var(--sans);
       font-style: normal;
-      font-size: 10.5px;
-      letter-spacing: .16em;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      opacity: .6;
+      color: var(--gold);
+      opacity: .85;
     }
 
     /* ============================================================
-   20. FORMS
+   14. FORMS
    ============================================================ */
     .field {
       display: block;
@@ -1009,12 +1022,12 @@
     .field>span {
       display: block;
       font-family: var(--sans);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: .18em;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      opacity: .7;
-      margin-bottom: .6em;
+      color: var(--gold);
+      margin-bottom: .65em;
     }
 
     .field input,
@@ -1022,20 +1035,34 @@
       width: 100%;
       font: inherit;
       font-family: var(--display);
-      font-size: clamp(17px, 1.6vw, 21px);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(17px, 1.5vw, 21px);
       line-height: 1.5;
-      color: var(--ink);
+      color: var(--ivory);
       background: transparent;
       border: 0;
-      border-bottom: 1px solid rgba(0, 0, 0, .35);
+      border-bottom: 1px solid rgba(184, 147, 90, .4);
       border-radius: 0;
-      padding: .45em 0;
+      padding: .5em 0;
       appearance: none;
+      transition: border-color var(--dur) var(--ease);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-color: var(--coral);
     }
 
     .field textarea {
       resize: vertical;
-      min-height: 2.8em
+      min-height: 2.6em
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(245, 239, 230, .35)
     }
 
     .btn {
@@ -1045,26 +1072,28 @@
       font-family: var(--sans);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: .2em;
+      letter-spacing: .24em;
       text-transform: uppercase;
-      background: var(--ink);
-      color: var(--paper);
-      border: 1px solid var(--ink);
+      color: var(--wine);
+      background: var(--gold);
+      border: 1px solid var(--gold);
       border-radius: 0;
       padding: 1.1em 2em;
-      transition: scale var(--dur) var(--ease),
+      transition:
         background var(--dur) var(--ease),
-        color var(--dur) var(--ease);
+        color var(--dur) var(--ease),
+        transform var(--dur) var(--ease);
       -webkit-tap-highlight-color: transparent;
     }
 
     .btn:hover {
-      background: var(--paper);
-      color: var(--ink)
+      background: var(--coral);
+      border-color: var(--coral);
+      color: var(--ivory)
     }
 
     .btn:active {
-      scale: .97
+      transform: scale(.97)
     }
 
     .btn--wide {
@@ -1072,339 +1101,181 @@
     }
 
     .letter-form {
-      max-width: 68ch;
+      max-width: 70ch;
       margin-top: clamp(32px, 5vw, 56px)
     }
 
-    :focus-visible {
-      outline: 2px solid var(--ink);
-      outline-offset: 4px
-    }
-
     /* ============================================================
-   21. RSVP
+   15. RSVP
    ============================================================ */
     .rsvp-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(20px, 3vw, 32px);
-      padding-block: clamp(24px, 4vw, 48px);
-    }
-
-    .rsvp-blob {
-      width: min(720px, 100%);
-      padding: clamp(40px, 7vw, 88px);
-      background:
-        repeating-linear-gradient(45deg,
-          transparent 0 7px,
-          rgba(255, 255, 255, .03) 7px 8px),
-        var(--ink);
-      color: var(--paper);
-      border-radius: 14% 7% 12% 8% / 18% 12% 16% 11%;
-      animation: morph-panel 44s ease-in-out infinite alternate;
+      padding-block: clamp(72px, 12vw, 160px)
     }
 
     .rsvp-card {
-      background: var(--paper);
-      color: var(--ink);
-      border: 1px solid var(--ink);
-      padding: clamp(28px, 4vw, 56px);
+      background: var(--ivory);
+      color: var(--wine);
+      padding: clamp(36px, 6vw, 72px);
+      max-width: 640px;
+      margin-inline: auto;
+      position: relative;
     }
 
-    .rsvp-card__kicker {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      opacity: .65;
-      margin: 0 0 clamp(14px, 2vw, 20px);
+    .rsvp-card::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid var(--gold-soft);
+      pointer-events: none;
     }
 
-    .rsvp-card__title {
-      font-family: var(--display);
-      font-size: clamp(26px, 3.4vw, 40px);
-      line-height: 1.05;
-      margin: 0 0 clamp(24px, 3.4vw, 36px);
+    .rsvp-card .kicker {
+      color: var(--wine);
+      opacity: .6
+    }
+
+    .rsvp-card .h2 {
+      color: var(--wine);
+      margin-bottom: clamp(24px, 3.4vw, 36px)
+    }
+
+    .rsvp-card .field>span {
+      color: rgba(42, 14, 20, .7)
+    }
+
+    .rsvp-card .field input,
+    .rsvp-card .field textarea {
+      color: var(--wine);
+      border-bottom-color: rgba(42, 14, 20, .3);
+    }
+
+    .rsvp-card .field input:focus,
+    .rsvp-card .field textarea:focus {
+      border-bottom-color: var(--coral)
+    }
+
+    .rsvp-card .field input::placeholder,
+    .rsvp-card .field textarea::placeholder {
+      color: rgba(42, 14, 20, .35)
+    }
+
+    .rsvp-card .btn {
+      background: var(--wine);
+      border-color: var(--wine);
+      color: var(--ivory);
+    }
+
+    .rsvp-card .btn:hover {
+      background: var(--coral);
+      border-color: var(--coral)
     }
 
     .rsvp-done__title {
       font-family: var(--display);
-      font-size: clamp(26px, 3.4vw, 40px);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(28px, 3.6vw, 44px);
       line-height: 1.05;
       margin: 0 0 .5em;
     }
 
     .rsvp-done__text {
       margin: 0 0 clamp(22px, 3vw, 32px);
-      text-wrap: pretty
-    }
-
-    .print-link {
-      background: none;
-      border: 0;
-      border-bottom: 1px solid rgba(0, 0, 0, .4);
-      padding: 0 0 .25em;
-      font-family: var(--sans);
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--ink);
-      transition: border-color var(--dur) var(--ease);
-    }
-
-    .print-link:hover {
-      border-bottom-color: var(--ink)
+      color: rgba(42, 14, 20, .72);
+      text-wrap: pretty;
     }
 
     /* ============================================================
-   22. COLOPHON
+   16. FOOTER
    ============================================================ */
-    .colophon {
-      width: var(--wrap);
-      margin-inline: auto;
+    .footer {
+      background: var(--wine-deep);
+      padding-block: clamp(64px, 10vw, 120px) clamp(40px, 6vw, 64px);
       text-align: center;
-      padding-block: clamp(48px, 7vw, 100px) clamp(56px, 8vw, 120px);
     }
 
-    .monogram {
-      width: 64px;
-      height: 64px;
-      border: 1px solid var(--ink);
+    .footer__monogram {
+      width: 76px;
+      height: 76px;
+      border: 1px solid var(--gold);
       border-radius: 50%;
       display: grid;
       place-items: center;
       margin: 0 auto clamp(28px, 4vw, 44px);
       font-family: var(--display);
-      font-size: 22px;
-      line-height: 1;
-      letter-spacing: .01em;
-    }
-
-    .monogram em {
       font-style: italic;
-      font-size: .85em;
-      padding-inline: .06em
+      font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1;
+      font-size: 26px;
+      color: var(--coral);
+      letter-spacing: -.02em;
     }
 
-    .colophon__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(16px, 3vw, 40px);
-      font-family: var(--sans);
-      font-size: 10.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      line-height: 1.85;
-      opacity: .68;
+    .footer__line {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(18px, 1.8vw, 22px);
+      color: var(--ivory-soft);
+      margin: 0 0 clamp(24px, 3vw, 32px);
     }
 
-    .edition {
+    .footer__nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .4em 1.6em;
+      margin: 0 0 clamp(32px, 4vw, 48px);
       font-family: var(--sans);
       font-size: 10px;
+      font-weight: 600;
       letter-spacing: .24em;
       text-transform: uppercase;
-      opacity: .5;
-      margin: clamp(28px, 4vw, 44px) 0 0;
+    }
+
+    .footer__nav a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color var(--dur) var(--ease);
+    }
+
+    .footer__nav a:hover {
+      color: var(--coral)
+    }
+
+    .footer__colophon {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ivory-faint);
+      margin: 0;
+      opacity: .6;
     }
 
     /* ============================================================
-   23. REVEALS
+   17. REVEALS
    ============================================================ */
     .js [data-reveal] {
       opacity: 0;
-      translate: 0 24px;
-      filter: blur(6px);
+      transform: scale(1.04) translateY(12px);
       transition:
-        opacity var(--slow) var(--ease-out),
-        translate var(--slow) var(--ease-out),
-        filter var(--slow) var(--ease-out);
+        opacity var(--slow) var(--ease),
+        transform var(--slow) var(--ease);
       transition-delay: var(--d, 0ms);
     }
 
     .js [data-reveal].in {
       opacity: 1;
-      translate: 0 0;
-      filter: blur(0);
+      transform: scale(1) translateY(0);
     }
 
     /* ============================================================
-   24. RESPONSIVE
-   ============================================================ */
-    @media (max-width:900px) {
-      .story__text {
-        grid-column: 1 / 13;
-        columns: 1;
-        column-rule: 0
-      }
-
-      .story__figure {
-        grid-column: 1 / 8;
-        margin-top: var(--gap)
-      }
-
-      .programme li {
-        grid-template-columns: minmax(120px, 1fr) minmax(0, 1.8fr) auto;
-      }
-
-      .programme__place {
-        grid-column: 1 / -1;
-        order: 4
-      }
-    }
-
-    @media (max-width:720px) {
-      .story__figure {
-        grid-column: 1 / 13
-      }
-
-      .programme li {
-        grid-template-columns: 1fr;
-        gap: .35em;
-        padding-block: clamp(18px, 4vw, 24px);
-      }
-
-      .programme__place {
-        order: 0
-      }
-
-      .programme__time {
-        text-align: left;
-        margin-top: .4em
-      }
-
-      .menu-grid {
-        grid-template-columns: 1fr
-      }
-
-      .travel dl>div {
-        grid-template-columns: 1fr;
-        gap: .4em
-      }
-
-      .travel dt {
-        padding-top: 0
-      }
-
-      .gal:nth-child(1),
-      .gal:nth-child(2),
-      .gal:nth-child(3) {
-        grid-column: 1 / 13;
-        margin-top: var(--gap)
-      }
-
-      .colophon__grid {
-        grid-template-columns: 1fr
-      }
-
-      .rsvp-blob {
-        padding: clamp(24px, 6vw, 40px)
-      }
-
-      .countdown__block {
-        padding-inline: clamp(10px, 3vw, 18px)
-      }
-    }
-
-    /* ============================================================
-   25. PRINT INVITATION
-   ============================================================ */
-    .invitation {
-      display: none
-    }
-
-    @media print {
-      @page {
-        size: A6 portrait;
-        margin: 14mm
-      }
-
-      html,
-      body {
-        background: #fff;
-        color: #000
-      }
-
-      body::after,
-      .crop-marks,
-      .cursor-dot,
-      .cursor-ring,
-      .skip-link {
-        display: none !important
-      }
-
-      body>*:not(.invitation) {
-        display: none !important
-      }
-
-      .invitation {
-        display: block !important;
-        font-family: var(--display);
-        text-align: center;
-        color: #000;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
-      .invitation__eyebrow {
-        font-family: var(--sans);
-        font-size: 7pt;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-        margin: 0 0 10mm;
-      }
-
-      .invitation__names {
-        font-size: 30pt;
-        line-height: 1;
-        letter-spacing: -.01em;
-        margin: 0 0 3mm;
-      }
-
-      .invitation__names em {
-        font-style: italic
-      }
-
-      .invitation__request {
-        font-family: var(--sans);
-        font-size: 7pt;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-        margin: 0 0 12mm;
-      }
-
-      .invitation__date {
-        font-size: 13pt;
-        line-height: 1.5;
-        margin: 0 0 6mm
-      }
-
-      .invitation__venue {
-        font-size: 12pt;
-        margin: 0 0 12mm
-      }
-
-      .invitation__rsvp {
-        font-family: var(--sans);
-        font-size: 7pt;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        margin: 0;
-      }
-
-      .invitation__welcome {
-        font-style: italic;
-        font-size: 10pt;
-        margin: 10mm 0 0;
-      }
-    }
-
-    /* ============================================================
-   26. PREFERENCES
+   18. PREFERENCES
    ============================================================ */
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto
+      }
 
       *,
       *::before,
@@ -1414,72 +1285,9 @@
         transition-duration: .001ms !important;
       }
 
-      .cursor-dot,
-      .cursor-ring {
-        display: none !important
-      }
-
-      html.js body,
-      html.js a,
-      html.js button,
-      html.js input,
-      html.js textarea {
-        cursor: auto
-      }
-
       .js [data-reveal] {
         opacity: 1;
-        translate: 0 0;
-        filter: none
-      }
-
-      .hairline-draw {
-        scale: 1 1
-      }
-
-      .ticker__track {
-        animation: none
-      }
-    }
-
-    @media (prefers-reduced-transparency: reduce) {
-      body::after {
-        display: none
-      }
-
-      .cursor-ring {
-        opacity: 1 !important;
-        mix-blend-mode: normal;
-        border-color: var(--ink)
-      }
-
-      .cursor-dot {
-        background: var(--ink);
-        mix-blend-mode: normal
-      }
-    }
-
-    @media (prefers-contrast: more) {
-      body::after {
-        display: none
-      }
-
-      .kicker,
-      .folio,
-      .menu-item__desc,
-      .programme__day,
-      .programme__time,
-      .letter cite,
-      .edition,
-      .countdown__caption,
-      .countdown__label {
-        opacity: 1
-      }
-
-      .field input,
-      .field textarea {
-        border-bottom-width: 2px;
-        border-bottom-color: var(--ink)
+        transform: none;
       }
     }
   </style>
@@ -1489,511 +1297,473 @@
 
   <script>document.documentElement.classList.add('js');</script>
 
-  <a class="skip-link" href="#story">Skip to the story</a>
-
-  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-
-  <div class="crop-marks" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-  </div>
-
-  <!-- ==================== NAMEPLATE ==================== -->
-  <div class="nameplate">
-    <span class="nameplate__left">The Uyo Wedding Gazette</span>
-    <span class="nameplate__center">Saturday, the sixteenth of December, two thousand and twenty-eight</span>
-    <span class="nameplate__right">
-      <span class="nameplate__vol">Vol. I &middot; No. 1</span>
-    </span>
-  </div>
+  <!-- ==================== BEAD RAIL ==================== -->
+  <nav class="bead-rail" aria-label="Sections">
+    <a href="#hero" class="bead is-active" data-bead="hero" data-label="Announcement" aria-label="Announcement"></a>
+    <a href="#rivers" class="bead" data-bead="rivers" data-label="Two rivers" aria-label="Two rivers"></a>
+    <a href="#story" class="bead" data-bead="story" data-label="Our story" aria-label="Our story"></a>
+    <a href="#programme" class="bead" data-bead="programme" data-label="Programme" aria-label="Programme"></a>
+    <a href="#aso" class="bead" data-bead="aso" data-label="Aso ebi" aria-label="Aso ebi"></a>
+    <a href="#feast" class="bead" data-bead="feast" data-label="The feast" aria-label="The feast"></a>
+    <a href="#travel" class="bead" data-bead="travel" data-label="Travel" aria-label="Travel"></a>
+    <a href="#gallery" class="bead" data-bead="gallery" data-label="Photographs" aria-label="Photographs"></a>
+    <a href="#letters" class="bead" data-bead="letters" data-label="Letters" aria-label="Letters"></a>
+    <a href="#rsvp" class="bead" data-bead="rsvp" data-label="RSVP" aria-label="RSVP"></a>
+  </nav>
 
   <!-- ==================== HERO ==================== -->
-  <header class="masthead">
-    <div class="hero">
+  <header class="hero" id="hero">
+    <div class="hero__top">
+      <span>Uyo &middot; Akwa Ibom</span>
+      <span>MMXXVIII</span>
+    </div>
+
+    <div class="hero__center">
       <p class="hero__kicker">Together with their families</p>
 
-      <h1 class="names">Idara <span class="amp">&amp;</span> Emeka</h1>
+      <h1 class="names">Mmedara <span class="amp">&amp;</span> Ikedinachi</h1>
 
-      <div class="hero__rule" aria-hidden="true"></div>
+      <p class="hero__venue">The Palm Court &middot; Uyo &middot; Akwa Ibom</p>
 
-      <p class="hero__request">request the pleasure of your company</p>
+      <p class="hero__date">16 &middot; XII &middot; 28</p>
 
-      <p class="hero__date">
-        Saturday, the sixteenth of December<br />
-        two thousand and twenty-eight
-      </p>
-
-      <p class="hero__venue">The Raffia Court, Uyo, Akwa Ibom</p>
+      <div class="hero__countdown" id="countdown" aria-live="polite">
+        <span><span class="num" data-countdown="days">&mdash;</span> <span class="unit">days</span></span>
+        <span aria-hidden="true">&middot;</span>
+        <span><span class="num" data-countdown="hours">&mdash;</span> <span class="unit">hours</span></span>
+        <span aria-hidden="true">&middot;</span>
+        <span><span class="num" data-countdown="minutes">&mdash;</span> <span class="unit">minutes</span></span>
+      </div>
     </div>
 
-    <figure class="hero-figure" data-reveal>
-      <div class="blob blob--img">
-        <img src="https://picsum.photos/seed/idaraemeka-hero/900/1125"
-          alt="Idara and Emeka, photographed in low light, unhurried." width="900" height="1125" fetchpriority="high" />
-      </div>
-      <figcaption><span class="num">Fig. i</span>the two of them, unhurried &mdash; Lekki, 2017</figcaption>
-    </figure>
+    <div class="hero__bottom">
+      <span>Mesiere</span>
+      <a href="#rivers" class="hero__scroll">Scroll &darr;</a>
+      <span>Nn&#7885;&#7885;</span>
+    </div>
   </header>
 
-  <!-- ==================== STOP PRESS ==================== -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__label">Stop Press</div>
-    <div class="ticker__viewport">
-      <div class="ticker__track">
-        <span>Idara &amp; Emeka</span>
-        <span>16 &middot; XII &middot; 28</span>
-        <span>The Raffia Court, Uyo</span>
-        <span>&Igrave;gb&aacute; Nkw&#7909; at ten</span>
-        <span>Afang at six</span>
-        <span>Small chops from five</span>
-        <span>Aso ebi available</span>
-        <span>Mesiere. Nn&#7885;&#7885;.</span>
-        <span>Palm wine, cold</span>
-        <span>No florals</span>
-        <span>No wahala</span>
-        <span>Idara &amp; Emeka</span>
-        <span>16 &middot; XII &middot; 28</span>
-        <span>The Raffia Court, Uyo</span>
-        <span>&Igrave;gb&aacute; Nkw&#7909; at ten</span>
-        <span>Afang at six</span>
-        <span>Small chops from five</span>
-        <span>Aso ebi available</span>
-        <span>Mesiere. Nn&#7885;&#7885;.</span>
-        <span>Palm wine, cold</span>
-        <span>No florals</span>
-        <span>No wahala</span>
+  <!-- ==================== HERO PHOTO ==================== -->
+  <figure class="hero-photo" data-reveal>
+    <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-hero/1200/1500"
+      alt="Mmedara and Ikedinachi, photographed at golden hour." width="1200" height="1500" class="hero-photo__img"
+      fetchpriority="high" />
+    <figcaption class="hero-photo__caption">The two of them, unhurried.</figcaption>
+  </figure>
+
+  <!-- ==================== TWO RIVERS ==================== -->
+  <section class="rivers" id="rivers" aria-label="Two rivers, one sea">
+    <div class="river river--hers">
+      <svg class="river__pattern" viewBox="0 0 200 600" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1" opacity=".3">
+          <path d="M-10 40 Q 40 24, 100 40 T 210 40" />
+          <path d="M-10 70 Q 40 54, 100 70 T 210 70" />
+          <path d="M-10 100 Q 40 84, 100 100 T 210 100" />
+          <path d="M-10 130 Q 40 114, 100 130 T 210 130" />
+          <path d="M-10 160 Q 40 144, 100 160 T 210 160" />
+          <path d="M-10 240 Q 40 224, 100 240 T 210 240" />
+          <path d="M-10 270 Q 40 254, 100 270 T 210 270" />
+          <path d="M-10 300 Q 40 284, 100 300 T 210 300" />
+          <path d="M-10 330 Q 40 314, 100 330 T 210 330" />
+          <path d="M-10 410 Q 40 394, 100 410 T 210 410" />
+          <path d="M-10 440 Q 40 424, 100 440 T 210 440" />
+          <path d="M-10 470 Q 40 454, 100 470 T 210 470" />
+          <path d="M-10 500 Q 40 484, 100 500 T 210 500" />
+          <path d="M-10 530 Q 40 514, 100 530 T 210 530" />
+        </g>
+      </svg>
+      <div class="river__text">
+        <p class="river__kicker">Her side</p>
+        <p class="river__place">Onna</p>
+        <p class="river__voice">Where the creek runs close<br>and the palm stands tall.</p>
       </div>
     </div>
-  </div>
 
-  <main>
+    <div class="seam" aria-hidden="true"></div>
 
-    <!-- ==================== DATE + BULLETIN ==================== -->
-    <section class="date-statement wrap" aria-label="The date and countdown">
-      <p class="date-statement__eyebrow">Save the date</p>
-      <p class="date-statement__date">16 &middot; XII &middot; 28</p>
-      <p class="date-statement__sub">December in Akwa Ibom</p>
+    <div class="river river--his">
+      <svg class="river__pattern" viewBox="0 0 200 600" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1" opacity=".3">
+          <path d="M20 60 L40 40 L60 60 L80 40 L100 60 L120 40 L140 60 L160 40 L180 60" />
+          <path d="M40 110 L60 90 L80 110 L100 90 L120 110 L140 90 L160 110" />
+          <path d="M20 160 L40 140 L60 160 L80 140 L100 160 L120 140 L140 160 L160 140 L180 160" />
+          <path d="M60 220 L80 200 L100 220 L80 240 Z" />
+          <path d="M120 260 L140 240 L160 260 L140 280 Z" />
+          <path d="M40 320 L60 300 L80 320 L60 340 Z" />
+          <path d="M100 360 L120 340 L140 360 L120 380 Z" />
+          <path d="M20 420 L40 400 L60 420 L80 400 L100 420 L120 400 L140 420 L160 400 L180 420" />
+          <path d="M40 470 L60 450 L80 470 L100 450 L120 470 L140 450 L160 470" />
+          <path d="M20 520 L40 500 L60 520 L80 500 L100 520 L120 500 L140 520 L160 500 L180 520" />
+        </g>
+      </svg>
+      <div class="river__text">
+        <p class="river__kicker">His side</p>
+        <p class="river__place">Amasiri</p>
+        <p class="river__voice">Where the ekpe comes out at dusk<br>and the new yam is not eaten quietly.</p>
+      </div>
+    </div>
 
-      <div class="countdown" id="countdown" role="timer" hidden>
-        <p class="countdown__caption" id="countdownCaption">Until the day</p>
+    <p class="rivers__coda">Two rivers. One sea.</p>
+  </section>
 
-        <div class="countdown__grid" id="countdownGrid">
-          <div class="countdown__block" data-unit="days">
-            <span class="countdown__num">--</span>
-            <span class="countdown__label">days</span>
-          </div>
-          <div class="countdown__block" data-unit="hours">
-            <span class="countdown__num">--</span>
-            <span class="countdown__label">hours</span>
-          </div>
-          <div class="countdown__block" data-unit="minutes">
-            <span class="countdown__num">--</span>
-            <span class="countdown__label">minutes</span>
-          </div>
-          <div class="countdown__block" data-unit="seconds">
-            <span class="countdown__num">--</span>
-            <span class="countdown__label">seconds</span>
-          </div>
-        </div>
+  <!-- ==================== STORY ==================== -->
+  <section class="story wrap" id="story" aria-labelledby="story-title">
+    <p class="kicker">Our story</p>
+    <h2 class="h2" id="story-title">We met in Lagos traffic</h2>
 
-        <p class="countdown__after" id="countdownAfter" hidden>
-          They were married on the sixteenth of December,<br />
-          two thousand and twenty-eight.
+    <div class="story__layout">
+      <div class="story__text" data-reveal>
+        <p>We are from two places. I am Ibibio, from Onna &mdash; where the creek runs close and the palm stands tall.
+          He is Igbo, from Amasiri, in Afikpo &mdash; where the ekpe comes out at dusk and the new yam is not eaten
+          quietly. We met in Lagos, in traffic, the way these things happen here.</p>
+        <p>He had borrowed an umbrella from a stranger at the Yaba bus stop, and handed it back with the solemnity of a
+          man returning a relic. We were both twenty-six and neither of us was looking for anything in particular.</p>
+        <p>I was between flats in Lekki. He was between opinions about what to do with a degree in something
+          impractical. The umbrella lasted four more blocks before it gave up entirely, and by then we had already
+          decided to share a cab to Surulere.</p>
+        <p>Eleven years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. In
+          December, our two families will meet at my compound in Onna, where the kola will be broken and the palm wine
+          poured. The next day, in Uyo, the white wedding.</p>
+        <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be afang, and there
+          will be a point at which the band stops, and what happens after that is between our guests and the palm court.
         </p>
       </div>
-    </section>
 
-    <!-- ==================== STORY ==================== -->
-    <section class="wrap" id="story" aria-labelledby="story-title">
-      <div class="section-head">
-        <p class="kicker">Our story</p>
-        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
-        <h2 class="section-title" id="story-title">We met in Lagos traffic</h2>
-      </div>
+      <figure class="story__figure" data-reveal style="--d:120ms">
+        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-story/900/1200"
+          alt="A candid photograph from the archive — the flat in Lekki." width="900" height="1200" loading="lazy" />
+        <figcaption>Lekki, 2017</figcaption>
+      </figure>
+    </div>
+  </section>
 
-      <div class="story">
-        <div class="story__text" data-reveal>
-          <p>We are from two places. I am Ibibio, from Ikot Ekpene &mdash; raffia city, where my grandmother wove. He is
-            Igbo, from Awka &mdash; where the kola is broken before anything else is said. We met in Lagos, in traffic,
-            the way these things happen here.</p>
-          <p>He had borrowed an umbrella from a stranger at the Yaba bus stop, and handed it back with the solemnity of
-            a man returning a relic. We were both twenty-six and neither of us was looking for anything in particular.
-          </p>
-          <p>I was between flats in Lekki. He was between opinions about what to do with a degree in something
-            impractical. The umbrella lasted four more blocks before it gave up entirely, and by then we had already
-            decided to share a cab to Surulere.</p>
-          <p>Eleven years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. In
-            December, our two families will meet at my compound in Ikot Ekpene, where the kola will be broken and the
-            palm wine poured. The next day, in Uyo, the white wedding.</p>
-          <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be afang, and
-            there will be a point at which the band stops, and what happens after that is between our guests and the
-            palm court.</p>
+  <!-- ==================== PROGRAMME ==================== -->
+  <section class="programme-section wrap" id="programme" aria-labelledby="programme-title">
+    <p class="kicker">Order of the day</p>
+    <h2 class="h2" id="programme-title">Two days, two traditions</h2>
+
+    <ol class="programme">
+      <li class="programme__item">
+        <span class="programme__day">Friday, 15 December</span>
+        <span class="programme__title">Ibibio Traditional</span>
+        <span class="programme__place">Family compound &middot; Onna &middot; 4pm</span>
+      </li>
+      <li class="programme__item">
+        <span class="programme__day">Saturday, 16 December</span>
+        <span class="programme__title">&Igrave;gb&aacute; Nkw&#7909;</span>
+        <span class="programme__place">The Palm Court &middot; Uyo &middot; 10am</span>
+      </li>
+      <li class="programme__item">
+        <span class="programme__day">Saturday, 16 December</span>
+        <span class="programme__title">White Wedding</span>
+        <span class="programme__place">The Palm Court &middot; Uyo &middot; 2:30pm</span>
+      </li>
+      <li class="programme__item">
+        <span class="programme__day">Saturday, 16 December</span>
+        <span class="programme__title">Reception &amp; Dancing</span>
+        <span class="programme__place">The Palm Court &middot; by the water &middot; 6pm</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==================== ASO EBI ==================== -->
+  <section class="aso-section wrap" id="aso" aria-labelledby="aso-title">
+    <p class="kicker">Aso ebi</p>
+    <h2 class="h2" id="aso-title">What we&rsquo;ll wear</h2>
+
+    <div class="aso-grid">
+      <div class="aso" data-reveal>
+        <div class="aso__swatch aso__swatch--wine">
+          <span class="aso__day">Friday</span>
         </div>
-
-        <figure class="story__figure" data-reveal style="--d:120ms">
-          <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/idaraemeka-story/750/1000"
-              alt="A candid photograph from the archive — the flat in Lekki." width="750" height="1000"
-              loading="lazy" />
-          </div>
-          <figcaption><span class="num">Fig. ii</span>the flat, the harmattan, the radiator</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ==================== PROGRAMME ==================== -->
-    <section class="wrap" aria-labelledby="programme-title">
-      <div class="section-head">
-        <p class="kicker">Order of the day</p>
-        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
-        <h2 class="section-title" id="programme-title">Two days, two traditions</h2>
-      </div>
-
-      <ol class="programme">
-        <li>
-          <span class="programme__day">Friday, 15 December</span>
-          <span class="programme__title">Ibibio Traditional</span>
-          <span class="programme__place">Family compound, Ikot Ekpene</span>
-          <span class="programme__time">from four o&rsquo;clock</span>
-        </li>
-        <li>
-          <span class="programme__day">Saturday, 16 December</span>
-          <span class="programme__title">&Igrave;gb&aacute; Nkw&#7909;</span>
-          <span class="programme__place">The Raffia Court, Uyo</span>
-          <span class="programme__time">ten o&rsquo;clock</span>
-        </li>
-        <li>
-          <span class="programme__day">Saturday, 16 December</span>
-          <span class="programme__title">White Wedding</span>
-          <span class="programme__place">The Raffia Court, Uyo</span>
-          <span class="programme__time">half past two</span>
-        </li>
-        <li>
-          <span class="programme__day">Saturday, 16 December</span>
-          <span class="programme__title">Reception &amp; Dancing</span>
-          <span class="programme__place">The Raffia Court, by the palm court</span>
-          <span class="programme__time">six o&rsquo;clock</span>
-        </li>
-      </ol>
-    </section>
-
-    <!-- ==================== MENU ==================== -->
-    <section class="wrap" aria-labelledby="menu-title">
-      <div class="section-head">
-        <p class="kicker">The provisions</p>
-        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
-        <h2 class="section-title" id="menu-title">What we&rsquo;ll eat</h2>
-      </div>
-
-      <div class="menu-grid">
-        <div class="menu-item">
-          <span class="menu-item__name">Afang soup</span>
-          <span class="menu-item__desc">Ibibio. Afang leaves, waterleaf, pounded yam.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Ofe onugbu</span>
-          <span class="menu-item__desc">Igbo. Bitterleaf, cocoyam, fufu.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Ekpang Nkukwo</span>
-          <span class="menu-item__desc">Grated cocoyam in cocoyam leaves. Ibibio, properly.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Nkwobi</span>
-          <span class="menu-item__desc">Spiced cow foot, palm oil, utazi. Igbo.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Jollof rice</span>
-          <span class="menu-item__desc">Party style, smoky, from the family recipe.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Small chops</span>
-          <span class="menu-item__desc">Puff-puff, samosa, spring roll, peppered gizzard.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Palm wine</span>
-          <span class="menu-item__desc">Cold, from the tapper. Both cultures approve.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Chapman &amp; Zobo</span>
-          <span class="menu-item__desc">The welcome drinks. Non-negotiable.</span>
-        </div>
-      </div>
-      <p class="menu-note">A vegetarian plate is available &mdash; tell us when you reply.</p>
-    </section>
-
-    <!-- ==================== TRAVEL ==================== -->
-    <section class="wrap travel" aria-labelledby="travel-title">
-      <div class="section-head">
-        <p class="kicker">Travel &amp; stay</p>
-        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
-        <h2 class="section-title" id="travel-title">Getting there, staying over</h2>
-      </div>
-
-      <dl>
-        <div>
-          <dt>Fly</dt>
-          <dd>Victor Attah International (QUO), Uyo. Twenty minutes to the city.</dd>
-        </div>
-        <div>
-          <dt>Stay</dt>
-          <dd>Ibom Icon Hotel &amp; Golf Resort, Uyo &mdash; fifteen minutes from The Raffia Court.</dd>
-        </div>
-        <div>
-          <dt>Stay</dt>
-          <dd>Guest houses in Ewet Housing are ten minutes away; book early.</dd>
-        </div>
-        <div>
-          <dt>Move</dt>
-          <dd>Hire a driver for the weekend. Uyo is calm; Ikot Ekpene is forty-five minutes.</dd>
-        </div>
-        <div>
-          <dt>Note</dt>
-          <dd>December in Akwa Ibom is busy. Book early or regret it quietly.</dd>
-        </div>
-      </dl>
-    </section>
-
-    <!-- ==================== GALLERY ==================== -->
-    <section class="wrap" aria-labelledby="gallery-title">
-      <div class="section-head">
-        <p class="kicker">Exhibits</p>
-        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
-        <h2 class="section-title" id="gallery-title">The evidence</h2>
-      </div>
-
-      <div class="gallery">
-        <figure class="gal" data-reveal>
-          <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/idaraemeka-g1/1000/800"
-              alt="An early photograph together, the first flat in Lekki." width="1000" height="800" loading="lazy" />
-          </div>
-          <figcaption><span class="num">Fig. iii</span>the first flat, Lekki, 2017</figcaption>
-        </figure>
-
-        <figure class="gal" data-reveal style="--d:100ms">
-          <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/idaraemeka-g2/750/1000"
-              alt="A portrait at the Yaba bus stop, where it began." width="750" height="1000" loading="lazy" />
-          </div>
-          <figcaption><span class="num">Fig. iv</span>Yaba bus stop, where it began</figcaption>
-        </figure>
-
-        <figure class="gal" data-reveal style="--d:180ms">
-          <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/idaraemeka-g3/1200/675"
-              alt="Her grandmother's compound in Ikot Ekpene, late afternoon." width="1200" height="675"
-              loading="lazy" />
-          </div>
-          <figcaption><span class="num">Fig. v</span>her grandmother&rsquo;s compound, Ikot Ekpene</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ==================== LETTERS ==================== -->
-    <section class="wrap" aria-labelledby="letters-title">
-      <div class="hairline-draw" aria-hidden="true"></div>
-
-      <div class="section-head">
-        <p class="kicker">The correspondence</p>
-        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
-        <h2 class="section-title" id="letters-title">Letters to the couple</h2>
-      </div>
-
-      <ul class="letters__list" id="letterList">
-        <li class="letter">
-          <p>Never go to bed angry. Go to bed with jollof.</p>
-          <cite>&mdash; Auntie Ngozi, Awka</cite>
-        </li>
-        <li class="letter">
-          <p>Marriage is not a sprint. It is Lagos traffic. Pack snacks.</p>
-          <cite>&mdash; Uncle Femi, Ikeja</cite>
-        </li>
-        <li class="letter">
-          <p>Onye wetara &#7885;j&#7883;, wetara nd&#7909;. He who brings kola brings life. Begin everything with kola.
-          </p>
-          <cite>&mdash; Papa Chukwuka, Awka</cite>
-        </li>
-        <li class="letter">
-          <p>A woman from Ikot Ekpene does not lose her way. She is only finding a better one.</p>
-          <cite>&mdash; Mama Ekaette, Ikot Ekpene</cite>
-        </li>
-        <li class="letter">
-          <p>You two have been sharing a cab for eleven years. The rest is paperwork.</p>
-          <cite>&mdash; Damilola, Yaba</cite>
-        </li>
-      </ul>
-
-      <form class="letter-form" id="letterForm" novalidate>
-        <label class="field">
-          <span>Your name</span>
-          <input type="text" name="name" autocomplete="name" placeholder="Who is writing?" />
-        </label>
-        <label class="field">
-          <span>Your word</span>
-          <textarea name="message" rows="3" maxlength="220" required
-            placeholder="Advice, a memory, a warning — 220 characters or fewer."></textarea>
-        </label>
-        <button class="btn" type="submit">Send to the couple</button>
-      </form>
-    </section>
-
-    <!-- ==================== RSVP ==================== -->
-    <section class="wrap rsvp-section" aria-labelledby="rsvp-title">
-      <div class="rsvp-blob">
-        <div class="rsvp-card">
-          <form id="rsvpForm" novalidate>
-            <p class="rsvp-card__kicker">Kindly reply</p>
-            <h2 class="rsvp-card__title" id="rsvp-title">Will you be there?</h2>
-
-            <label class="field">
-              <span>Your name</span>
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
-            <label class="field">
-              <span>Bringing</span>
-              <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
-            </label>
-            <label class="field">
-              <span>Anything we should know</span>
-              <input type="text" name="notes" placeholder="dietary, access, etc." />
-            </label>
-            <label class="field">
-              <span>One song that will get you dancing</span>
-              <input type="text" name="song" placeholder="The band needs a setlist." />
-            </label>
-
-            <button class="btn btn--wide" type="submit">Send reply</button>
-          </form>
-
-          <div class="rsvp-done" id="rsvpDone" hidden tabindex="-1" aria-live="polite">
-            <p class="rsvp-done__title">Received.</p>
-            <p class="rsvp-done__text">We&rsquo;ll see you in Uyo. Watch out for the aso ebi.</p>
-            <button class="btn btn--wide" type="button" id="rsvpAgain">Send another reply</button>
-          </div>
+        <div class="aso__info">
+          <p class="aso__name">Wine</p>
+          <p class="aso__desc">The traditional. Deep, dyed, unhurried. For the Ìgbá Nkwụ and the visits between
+            compounds.</p>
         </div>
       </div>
 
-      <button class="print-link" type="button" data-print>Print this invitation</button>
-    </section>
+      <div class="aso" data-reveal style="--d:100ms">
+        <div class="aso__swatch aso__swatch--coral">
+          <span class="aso__day">Saturday</span>
+        </div>
+        <div class="aso__info">
+          <p class="aso__name">Coral</p>
+          <p class="aso__desc">The white wedding. The colour of ekan, worn close to the skin. Bridal party, mothers, and
+            the ones who insist.</p>
+        </div>
+      </div>
 
-  </main>
-
-  <!-- ==================== COLOPHON ==================== -->
-  <footer class="colophon">
-    <div class="monogram" aria-hidden="true">I<em>&amp;</em>E</div>
-
-    <div class="colophon__grid">
-      <div>The Uyo Wedding Gazette<br />Printed in Uyo, Akwa Ibom</div>
-      <div>Made in Akwa Ibom,<br />with love</div>
-      <div>All photographs reproduced<br />without permission of anyone</div>
+      <div class="aso" data-reveal style="--d:200ms">
+        <div class="aso__swatch aso__swatch--gold">
+          <span class="aso__day">Saturday evening</span>
+        </div>
+        <div class="aso__info">
+          <p class="aso__name">Antique Gold</p>
+          <p class="aso__desc">For the reception. Warm, worn, unhurried. The aunties will set the pace.</p>
+        </div>
+      </div>
     </div>
 
-    <p class="edition">No. 0047 of 0200 &middot; MMXXVIII</p>
-  </footer>
-
-  <!-- ==================== PRINT INVITATION ==================== -->
-  <section class="invitation" aria-hidden="true">
-    <p class="invitation__eyebrow">Together with their families</p>
-    <p class="invitation__names">Idara <em>&amp;</em> Emeka</p>
-    <p class="invitation__request">request the pleasure of your company</p>
-    <p class="invitation__date">
-      Saturday, the sixteenth of December<br />
-      two thousand and twenty-eight
-    </p>
-    <p class="invitation__venue">The Raffia Court, Uyo, Akwa Ibom</p>
-    <p class="invitation__rsvp">Kindly reply by the first of December</p>
-    <p class="invitation__welcome">Mesiere. Nn&#7885;&#7885;.</p>
+    <p class="aso__note">Fabric sourced in Uyo &middot; Order by the first of December</p>
   </section>
+
+  <!-- ==================== FEAST ==================== -->
+  <section class="feast-section wrap" id="feast" aria-labelledby="feast-title">
+    <p class="kicker">The provisions</p>
+    <h2 class="h2" id="feast-title">What we&rsquo;ll eat</h2>
+
+    <div class="feast">
+      <div class="feast__dish">
+        <p class="feast__name">Afang</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Ibibio</p>
+          <p class="feast__desc">Afang leaves, waterleaf, pounded yam.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Ekpang Nkukwo</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Ibibio</p>
+          <p class="feast__desc">Grated cocoyam in cocoyam leaves. Done properly, or not at all.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Ofe Onugbu</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Igbo</p>
+          <p class="feast__desc">Bitterleaf, cocoyam, fufu. The Afikpo version.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Nkwobi</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Igbo</p>
+          <p class="feast__desc">Spiced cow foot, palm oil, utazi leaf.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Jollof rice</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Party</p>
+          <p class="feast__desc">Smoky, from the family recipe. The one argument we allow.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Small chops</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Party</p>
+          <p class="feast__desc">Puff-puff, samosa, spring roll, peppered gizzard. From five.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Palm wine</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Both</p>
+          <p class="feast__desc">Cold, from the tapper. Both cultures approve.</p>
+        </div>
+      </div>
+      <div class="feast__dish">
+        <p class="feast__name">Chapman &amp; Zobo</p>
+        <div class="feast__meta">
+          <p class="feast__origin">Welcome</p>
+          <p class="feast__desc">Non-negotiable. The aunties will check.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="feast__note">A vegetarian plate is available &mdash; tell us when you reply.</p>
+  </section>
+
+  <!-- ==================== TRAVEL ==================== -->
+  <section class="travel-section wrap" id="travel" aria-labelledby="travel-title">
+    <p class="kicker">Travel &amp; stay</p>
+    <h2 class="h2" id="travel-title">Getting there, staying over</h2>
+
+    <div class="travel">
+      <div class="travel__item">
+        <p class="travel__label">Fly</p>
+        <p class="travel__body">Victor Attah International (QUO), Uyo. Twenty minutes to the city.</p>
+      </div>
+      <div class="travel__item">
+        <p class="travel__label">Stay</p>
+        <p class="travel__body">Ibom Icon Hotel &amp; Golf Resort, Uyo &mdash; fifteen minutes from The Palm Court.</p>
+      </div>
+      <div class="travel__item">
+        <p class="travel__label">Stay</p>
+        <p class="travel__body">Guest houses in Ewet Housing are ten minutes away. Book early.</p>
+      </div>
+      <div class="travel__item">
+        <p class="travel__label">Move</p>
+        <p class="travel__body">Hire a driver. Onna is forty minutes east of Uyo; Amasiri is three hours north, past
+          Afikpo. Plan the two separately.</p>
+      </div>
+      <div class="travel__item">
+        <p class="travel__label">Note</p>
+        <p class="travel__body">December in Akwa Ibom is busy, and the road north is long. Book early or regret it
+          quietly.</p>
+      </div>
+      <div class="travel__item">
+        <p class="travel__label">Ask</p>
+        <p class="travel__body">Write to <em>rsvp@MmedaraandIkedinachi.ng</em> with any question. Someone will answer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY ==================== -->
+  <section class="gallery-section wrap" id="gallery" aria-labelledby="gallery-title">
+    <p class="kicker">Photographs</p>
+    <h2 class="h2" id="gallery-title">The evidence</h2>
+
+    <div class="gallery">
+      <figure class="gallery__item" data-reveal>
+        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g1/900/1125"
+          alt="An early photograph together, Lekki, 2017." width="900" height="1125" loading="lazy" />
+        <figcaption class="gallery__caption">Lekki &middot; 2017</figcaption>
+      </figure>
+
+      <figure class="gallery__item" data-reveal style="--d:100ms">
+        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g2/900/1125"
+          alt="Her grandmother's compound in Onna, late afternoon." width="900" height="1125" loading="lazy" />
+        <figcaption class="gallery__caption">Onna &middot; late afternoon</figcaption>
+      </figure>
+
+      <figure class="gallery__item" data-reveal style="--d:200ms">
+        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g3/900/1125"
+          alt="A portrait at the Yaba bus stop, where it began." width="900" height="1125" loading="lazy" />
+        <figcaption class="gallery__caption">Yaba &middot; where it began</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== LETTERS ==================== -->
+  <section class="letters-section wrap" id="letters" aria-labelledby="letters-title">
+    <p class="kicker">The correspondence</p>
+    <h2 class="h2" id="letters-title">Letters to the couple</h2>
+
+    <ul class="letters__list" id="letterList">
+      <li class="letter">
+        <p>Never go to bed angry. Go to bed with jollof.</p>
+        <cite>&mdash; Auntie Ngozi, Afikpo</cite>
+      </li>
+      <li class="letter">
+        <p>Onye wetara &#7885;j&#7883;, wetara nd&#7909;. He who brings kola brings life. Begin everything with kola.
+        </p>
+        <cite>&mdash; Papa Chukwuka, Amasiri</cite>
+      </li>
+      <li class="letter">
+        <p>Two rivers meet at the sea. Nobody argues with the sea.</p>
+        <cite>&mdash; Elder Aniekan, Onna</cite>
+      </li>
+      <li class="letter">
+        <p>Marriage is not a sprint. It is Lagos traffic. Pack snacks.</p>
+        <cite>&mdash; Uncle Femi, Ikeja</cite>
+      </li>
+      <li class="letter">
+        <p>A woman from Onna does not lose her way. She is only finding a better one.</p>
+        <cite>&mdash; Mama Ekaette, Onna</cite>
+      </li>
+      <li class="letter">
+        <p>You two have been sharing a cab for eleven years. The rest is paperwork.</p>
+        <cite>&mdash; Damilola, Yaba</cite>
+      </li>
+    </ul>
+
+    <form class="letter-form" id="letterForm" novalidate>
+      <label class="field">
+        <span>Your name</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Who is writing?" />
+      </label>
+      <label class="field">
+        <span>Your word</span>
+        <textarea name="message" rows="3" maxlength="220" required
+          placeholder="Advice, a memory, a warning — 220 characters or fewer."></textarea>
+      </label>
+      <button class="btn" type="submit">Send to the couple</button>
+    </form>
+  </section>
+
+  <!-- ==================== RSVP ==================== -->
+  <section class="rsvp-section wrap" id="rsvp" aria-labelledby="rsvp-title">
+    <div class="rsvp-card">
+      <form id="rsvpForm" novalidate>
+        <p class="kicker">Kindly reply</p>
+        <h2 class="h2" id="rsvp-title">Will you be there?</h2>
+
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span>Bringing</span>
+          <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
+        </label>
+        <label class="field">
+          <span>Anything we should know</span>
+          <input type="text" name="notes" placeholder="dietary, access, etc." />
+        </label>
+        <label class="field">
+          <span>One song that will get you dancing</span>
+          <input type="text" name="song" placeholder="The band needs a setlist." />
+        </label>
+
+        <button class="btn btn--wide" type="submit">Send reply</button>
+      </form>
+
+      <div class="rsvp-done" id="rsvpDone" hidden tabindex="-1" aria-live="polite">
+        <p class="rsvp-done__title">Received.</p>
+        <p class="rsvp-done__text">We&rsquo;ll see you in Uyo. Watch out for the aso ebi.</p>
+        <button class="btn btn--wide" type="button" id="rsvpAgain">Send another reply</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer__monogram">I&amp;E</div>
+    <p class="footer__line">Mmedara &amp; Ikedinachi &middot; 16 &middot; XII &middot; 28 &middot; Uyo</p>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#story">Story</a>
+      <a href="#programme">Programme</a>
+      <a href="#aso">Aso ebi</a>
+      <a href="#feast">Feast</a>
+      <a href="#travel">Travel</a>
+      <a href="#letters">Letters</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+    <p class="footer__colophon">Made in Akwa Ibom, with love</p>
+  </footer>
 
   <script>
     (() => {
       'use strict';
 
+      /* ==========================================================
+         1. GOOGLE SHEETS CONFIGURATION
+         Paste your deployed Google Apps Script Web App URL below.
+         (It should end in /exec)
+         ========================================================== */
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxF99SNmYVjGpomFK_yHtG7hPM9CG0Vaw24K01wkf7YdyGdhhhHXOlCgWhlejSk6Sju/exec';
+
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-      function initCursor() {
-        if (reduceMotion || !finePointer) return;
-        const dot = document.getElementById('cursorDot');
-        const ring = document.getElementById('cursorRing');
-        if (!dot || !ring) return;
-
-        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-        let rx = mx, ry = my, primed = false;
-
-        window.addEventListener('pointermove', (e) => {
-          mx = e.clientX; my = e.clientY;
-          dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
-          if (!primed) { primed = true; document.body.classList.add('cursor-ready'); }
-        }, { passive: true });
-
-        (function loop() {
-          rx += (mx - rx) * 0.16;
-          ry += (my - ry) * 0.16;
-          ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
-          requestAnimationFrame(loop);
-        })();
-
-        document.addEventListener('pointerover', (e) => {
-          const t = e.target.closest('a, button, input, textarea, [role="button"]');
-          ring.classList.toggle('is-active', Boolean(t));
-        });
-        document.addEventListener('pointerdown', () => ring.classList.add('is-press'));
-        document.addEventListener('pointerup', () => ring.classList.remove('is-press'));
-        document.addEventListener('pointerleave', () => document.body.classList.remove('cursor-ready'));
-        document.addEventListener('pointerenter', () => { if (primed) document.body.classList.add('cursor-ready'); });
-      }
-
-      function initReveals() {
-        const targets = document.querySelectorAll('[data-reveal]');
-        if (!targets.length) return;
-        if (reduceMotion || !('IntersectionObserver' in window)) {
-          targets.forEach((el) => el.classList.add('in'));
-          return;
-        }
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('in');
-            io.unobserve(entry.target);
-          });
-        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-        targets.forEach((el) => io.observe(el));
-      }
-
-      function initHairline() {
-        const el = document.querySelector('.hairline-draw');
-        if (!el) return;
-        if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('in'); return; }
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            el.classList.add('in');
-            io.disconnect();
-          });
-        }, { threshold: 0.2 });
-        io.observe(el);
-      }
-
+      /* ==========================================================
+         2. COUNTDOWN
+         16 December 2028, 14:30 WAT (UTC+1, no DST) = 13:30 UTC
+         ========================================================== */
       function initCountdown() {
         const root = document.getElementById('countdown');
         if (!root) return;
 
-        const grid = document.getElementById('countdownGrid');
-        const caption = document.getElementById('countdownCaption');
-        const after = document.getElementById('countdownAfter');
-
         const cells = {
-          days: root.querySelector('[data-unit="days"] .countdown__num'),
-          hours: root.querySelector('[data-unit="hours"] .countdown__num'),
-          minutes: root.querySelector('[data-unit="minutes"] .countdown__num'),
-          seconds: root.querySelector('[data-unit="seconds"] .countdown__num')
+          days: root.querySelector('[data-countdown="days"]'),
+          hours: root.querySelector('[data-countdown="hours"]'),
+          minutes: root.querySelector('[data-countdown="minutes"]')
         };
 
-        // 16 December 2028, 14:30 WAT (UTC+1, no DST) → 13:30 UTC
         const TARGET = Date.UTC(2028, 11, 16, 13, 30, 0);
-        const STEP = reduceMotion ? 60000 : 1000;
+        const STEP = reduceMotion ? 60000 : 30000;
         const pad = (n) => (n < 10 ? '0' + n : String(n));
 
         let timeout = null;
@@ -2002,16 +1772,13 @@
         function render() {
           const diff = TARGET - Date.now();
           if (diff <= 0) {
-            grid.hidden = true;
-            caption.hidden = true;
-            after.hidden = false;
+            root.innerHTML = '<span class="unit">Married on the sixteenth of December</span>';
             return false;
           }
           const s = Math.floor(diff / 1000);
           cells.days.textContent = pad(Math.floor(s / 86400));
           cells.hours.textContent = pad(Math.floor((s % 86400) / 3600));
           cells.minutes.textContent = pad(Math.floor((s % 3600) / 60));
-          cells.seconds.textContent = pad(s % 60);
           return true;
         }
 
@@ -2024,7 +1791,6 @@
         function tick() { if (render()) schedule(); }
 
         render();
-        root.hidden = false;
         schedule();
 
         if ('IntersectionObserver' in window) {
@@ -2044,19 +1810,104 @@
         });
       }
 
+      /* ==========================================================
+         3. BEAD RAIL
+         Active state follows the section in view.
+         ========================================================== */
+      function initBeadRail() {
+        const beads = Array.from(document.querySelectorAll('.bead'));
+        if (!beads.length) return;
+
+        const sections = beads
+          .map(b => document.getElementById(b.dataset.bead))
+          .filter(Boolean);
+
+        if (!('IntersectionObserver' in window) || !sections.length) return;
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            beads.forEach((b) => {
+              b.classList.toggle('is-active', b.dataset.bead === id);
+            });
+          });
+        }, {
+          rootMargin: '-45% 0px -45% 0px',
+          threshold: 0
+        });
+
+        sections.forEach((s) => io.observe(s));
+      }
+
+      /* ==========================================================
+         4. REVEALS
+         Slow, warm fade + scale on scroll.
+         ========================================================== */
+      function initReveals() {
+        const targets = document.querySelectorAll('[data-reveal]');
+        if (!targets.length) return;
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+          targets.forEach((el) => el.classList.add('in'));
+          return;
+        }
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+
+        targets.forEach((el) => io.observe(el));
+      }
+
+      /* ==========================================================
+         5. RSVP FORM (Google Sheets)
+         ========================================================== */
       function initRsvp() {
         const form = document.getElementById('rsvpForm');
         const done = document.getElementById('rsvpDone');
         const again = document.getElementById('rsvpAgain');
         if (!form || !done) return;
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
           const nameInput = form.elements.name;
           if (!nameInput.value.trim()) { nameInput.focus(); return; }
-          form.hidden = true;
-          done.hidden = false;
-          done.focus();
+
+          const btn = form.querySelector('button[type="submit"]');
+          const originalText = btn.textContent;
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
+
+          // Map HTML names to the exact Google Sheet headers
+          const payload = new URLSearchParams();
+          payload.append('Name', nameInput.value.trim());
+          payload.append('Guests', form.elements.guests.value);
+          payload.append('Notes', form.elements.notes.value.trim());
+          payload.append('Song', form.elements.song.value.trim());
+
+          try {
+            await fetch(SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: payload
+            });
+
+            form.hidden = true;
+            done.hidden = false;
+            done.focus();
+          } catch (error) {
+            console.error('RSVP submission failed:', error);
+            alert('Something went wrong. Please try again, or email us directly.');
+          } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }
         });
 
         if (again) {
@@ -2069,54 +1920,82 @@
         }
       }
 
+      /* ==========================================================
+         6. LETTERS FORM (Google Sheets)
+         ========================================================== */
       function initLetters() {
         const form = document.getElementById('letterForm');
         const list = document.getElementById('letterList');
         if (!form || !list) return;
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
           const nameEl = form.elements.name;
           const msgEl = form.elements.message;
           const message = msgEl.value.trim();
           const name = nameEl.value.trim();
+
           if (!message) { msgEl.focus(); return; }
 
-          const li = document.createElement('li');
-          li.className = 'letter';
-          const p = document.createElement('p');
-          p.textContent = message;
-          const cite = document.createElement('cite');
-          cite.textContent = '\u2014 ' + (name || 'A guest') + ', Uyo';
-          li.append(p, cite);
+          const btn = form.querySelector('button[type="submit"]');
+          const originalText = btn.textContent;
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
 
-          if (list.firstChild) list.insertBefore(li, list.firstChild);
-          else list.appendChild(li);
+          // Map HTML names to the exact Google Sheet headers
+          const payload = new URLSearchParams();
+          payload.append('Name', name || 'A guest');
+          payload.append('Message', message);
 
-          form.reset();
+          try {
+            await fetch(SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: payload
+            });
 
-          if (!reduceMotion && li.animate) {
-            li.animate(
-              [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'translateY(0)' }],
-              { duration: 700, easing: 'cubic-bezier(.16,1,.3,1)' }
-            );
+            // Optimistically add the letter to the page
+            const li = document.createElement('li');
+            li.className = 'letter';
+            const p = document.createElement('p');
+            p.textContent = message;
+            const cite = document.createElement('cite');
+            cite.textContent = '\u2014 ' + (name || 'A guest') + ', Uyo';
+            li.append(p, cite);
+
+            if (list.firstChild) list.insertBefore(li, list.firstChild);
+            else list.appendChild(li);
+
+            form.reset();
+
+            if (!reduceMotion && li.animate) {
+              li.animate(
+                [
+                  { opacity: 0, transform: 'translateY(14px)' },
+                  { opacity: 1, transform: 'translateY(0)' }
+                ],
+                { duration: 800, easing: 'cubic-bezier(.2,0,.1,1)' }
+              );
+            }
+          } catch (error) {
+            console.error('Letter submission failed:', error);
+            alert('Could not send your letter. Please try again.');
+          } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
           }
         });
       }
 
-      function initPrint() {
-        document.querySelectorAll('[data-print]').forEach((btn) => {
-          btn.addEventListener('click', () => window.print());
-        });
-      }
-
-      initCursor();
-      initReveals();
-      initHairline();
+      /* ==========================================================
+         7. BOOT
+         ========================================================== */
       initCountdown();
+      initBeadRail();
+      initReveals();
       initRsvp();
       initLetters();
-      initPrint();
     })();
   </script>
 </body>
