@@ -4,26 +4,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adunni &amp; Tunde — The Lagos Wedding Gazette</title>
+  <title>Adunni &amp; Tunde — 19 December 2026</title>
   <meta name="description"
-    content="A full and true account of the union of two Lagos households, to be held at The Yard, Victoria Island, with jollof, small chops, and persons of good humour." />
+    content="The marriage of Adunni and Tunde. Ìgbéyàwó at the family compound, Surulere; white wedding at The Yard, Victoria Island. Ẹ káàbọ̀." />
+  <meta name="theme-color" content="#ffffff" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
     rel="stylesheet">
+
   <style>
     /* ============================================================
-   1. TOKENS + RESET
+   1. TOKENS
    ============================================================ */
     :root {
       --ink: #000;
       --paper: #fff;
+      --hair: rgba(0, 0, 0, .16);
+
       --ease: cubic-bezier(.25, 1, .5, 1);
       --ease-out: cubic-bezier(.16, 1, .3, 1);
       --dur: 180ms;
-      --wrap: min(1280px, 100% - 2 * clamp(16px, 4vw, 56px));
-      --gap: clamp(12px, 1.6vw, 26px);
+      /* UI feedback — Kowalski range */
+      --slow: 700ms;
+      /* narrative entrance */
+
+      --wrap: min(1180px, 100% - 2 * clamp(20px, 5vw, 64px));
+      --gap: clamp(14px, 2vw, 32px);
+
+      --display: 'Instrument Serif', 'Bodoni Moda', Georgia, serif;
+      --text: 'Newsreader', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --stamp: 'Anton', 'Arial Narrow', Impact, sans-serif;
     }
 
     *,
@@ -40,12 +54,13 @@
       margin: 0;
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
-      font-size: clamp(15px, .35vw + 14px, 18px);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: clamp(16px, .35vw + 15px, 19px);
+      line-height: 1.6;
       font-optical-sizing: auto;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     img {
@@ -53,74 +68,113 @@
       max-width: 100%
     }
 
-    @media (hover:hover) and (pointer:fine) {
-      body {
-        cursor: none
-      }
+    a {
+      color: inherit
+    }
 
-      a,
-      button,
-      [role="button"] {
+    button {
+      font: inherit
+    }
+
+    /* Custom cursor only when JS is running and the pointer is precise */
+    @media (hover:hover) and (pointer:fine) {
+
+      html.js body,
+      html.js a,
+      html.js button,
+      html.js input,
+      html.js textarea {
         cursor: none
       }
     }
 
     .wrap {
       width: var(--wrap);
-      margin-inline: auto;
+      margin-inline: auto
     }
 
     /* ============================================================
-   2. TYPOGRAPHY
+   2. TYPE
    ============================================================ */
     .kicker {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 11px;
+      font-family: var(--sans);
+      font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: .18em;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      margin: 0 0 .9em;
-    }
-
-    .deck {
-      font-size: clamp(17px, .7vw + 14px, 22px);
-      line-height: 1.4;
-      margin: 0 0 1.4em;
-      text-wrap: pretty;
-    }
-
-    .byline {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      opacity: .7;
       margin: 0;
+      opacity: .72;
     }
 
     .section-title {
-      font-family: 'Anton', 'Arial Narrow', Impact, sans-serif;
+      font-family: var(--display);
       font-weight: 400;
-      text-transform: uppercase;
-      line-height: .92;
-      letter-spacing: -.01em;
-      font-size: clamp(34px, 5.4vw, 76px);
+      font-size: clamp(36px, 5vw, 68px);
+      line-height: .98;
+      letter-spacing: -.015em;
       margin: 0;
       text-wrap: balance;
     }
 
-    .rule {
-      border: 0;
-      border-top: 1px solid var(--ink);
-      margin: 0;
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: baseline;
+      margin-bottom: clamp(30px, 4.5vw, 64px);
     }
 
-    .rule--thick {
-      border-top-width: 4px
+    .section-head .kicker {
+      grid-column: 1
+    }
+
+    .section-head .folio {
+      grid-column: 2;
+      font-family: var(--stamp);
+      font-size: 10px;
+      letter-spacing: .18em;
+      opacity: .4;
+      white-space: nowrap;
+    }
+
+    .section-head .section-title {
+      grid-column: 1 / -1;
+      margin-top: clamp(12px, 2vw, 24px);
+    }
+
+    .lede {
+      font-size: clamp(17px, .7vw + 14px, 21px);
+      line-height: 1.5;
+      margin: 0 0 1.4em;
+      text-wrap: pretty;
     }
 
     /* ============================================================
-   3. CURSOR
+   3. SKIP LINK
+   ============================================================ */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 999;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 14px 20px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 12px;
+      top: 12px
+    }
+
+    /* ============================================================
+   4. CURSOR
    ============================================================ */
     .cursor-dot,
     .cursor-ring {
@@ -174,7 +228,70 @@
     }
 
     /* ============================================================
-   4. BLOB PRIMITIVES
+   5. PRINT TEXTURE + CROP MARKS
+   ============================================================ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: .045;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .crop-marks {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4
+    }
+
+    .crop-marks span {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 0 solid var(--ink);
+      opacity: .45;
+    }
+
+    .crop-marks span:nth-child(1) {
+      top: 16px;
+      left: 16px;
+      border-top-width: 1px;
+      border-left-width: 1px
+    }
+
+    .crop-marks span:nth-child(2) {
+      top: 16px;
+      right: 16px;
+      border-top-width: 1px;
+      border-right-width: 1px
+    }
+
+    .crop-marks span:nth-child(3) {
+      bottom: 16px;
+      left: 16px;
+      border-bottom-width: 1px;
+      border-left-width: 1px
+    }
+
+    .crop-marks span:nth-child(4) {
+      bottom: 16px;
+      right: 16px;
+      border-bottom-width: 1px;
+      border-right-width: 1px
+    }
+
+    @media (max-width:720px) {
+      .crop-marks {
+        display: none
+      }
+    }
+
+    /* ============================================================
+   6. BLOBS
    ============================================================ */
     .blob {
       position: relative;
@@ -185,7 +302,7 @@
     .blob--img {
       background: var(--ink);
       border-radius: 58% 42% 63% 37% / 45% 58% 42% 55%;
-      animation: morph-a 22s ease-in-out infinite alternate;
+      animation: morph-a 42s ease-in-out infinite alternate;
       transition: scale var(--dur) var(--ease);
     }
 
@@ -193,15 +310,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: scale 520ms var(--ease-out);
+      transition: scale 560ms var(--ease-out);
     }
 
     .blob--img:hover {
-      scale: 1.015
+      scale: 1.012
     }
 
     .blob--img:hover img {
-      scale: 1.04
+      scale: 1.035
     }
 
     @keyframes morph-a {
@@ -246,350 +363,296 @@
       }
     }
 
-    .blob--panel {
-      background: var(--paper);
-      border: 1px solid var(--ink);
-      border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%;
-      padding: clamp(28px, 4.2vw, 64px);
-      animation: morph-d 26s ease-in-out infinite alternate;
-    }
-
-    /* Dark panels carry a very faint woven diagonal — a quiet
-   nod to aso oke, visible only where the light hits it. */
-    .blob--panel-dark {
-      background:
-        repeating-linear-gradient(45deg,
-          transparent 0,
-          transparent 7px,
-          rgba(255, 255, 255, .025) 7px,
-          rgba(255, 255, 255, .025) 8px),
-        var(--ink);
-      color: var(--paper);
-      border: 1px solid var(--ink);
-      border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%;
-      padding: clamp(28px, 4.2vw, 56px);
-      animation: morph-e 24s ease-in-out infinite alternate;
-    }
-
-    @keyframes morph-d {
+    @keyframes morph-panel {
       0% {
-        border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%
+        border-radius: 14% 7% 12% 8% / 18% 12% 16% 11%
       }
 
       100% {
-        border-radius: 10% 16% 9% 17% / 15% 21% 13% 22%
-      }
-    }
-
-    @keyframes morph-e {
-      0% {
-        border-radius: 16% 9% 18% 8% / 20% 14% 22% 16%
-      }
-
-      100% {
-        border-radius: 9% 17% 8% 18% / 14% 22% 15% 20%
+        border-radius: 8% 12% 7% 14% / 11% 16% 12% 18%
       }
     }
 
     /* ============================================================
-   5. MASTHEAD
+   7. HEADER
    ============================================================ */
     .masthead {
-      padding-top: clamp(16px, 2vw, 28px)
+      width: var(--wrap);
+      margin-inline: auto;
+      padding-top: clamp(20px, 3vw, 36px);
     }
 
-    .nameplate {
+    .masthead__stamp {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1.5rem;
-      padding-block: 10px 14px;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: .6;
+    }
+
+    .masthead__stamp .roman {
+      font-family: var(--stamp);
+      letter-spacing: .16em;
+      opacity: .95;
+    }
+
+    .hero {
+      text-align: center;
+      padding-block: clamp(44px, 9vw, 116px) clamp(36px, 6vw, 84px);
+    }
+
+    .hero__kicker {
+      font-family: var(--sans);
       font-size: 10.5px;
-      font-weight: 500;
-      letter-spacing: .18em;
+      font-weight: 600;
+      letter-spacing: .26em;
       text-transform: uppercase;
+      margin: 0 0 clamp(18px, 3vw, 32px);
+      opacity: .72;
     }
 
-    .nameplate__mid {
-      opacity: .55
-    }
-
-    .headline {
-      font-family: 'Anton', 'Arial Narrow', Impact, sans-serif;
+    .names {
+      font-family: var(--display);
       font-weight: 400;
-      text-transform: uppercase;
+      font-size: clamp(56px, 14vw, 208px);
       line-height: .84;
-      letter-spacing: -.018em;
-      margin: clamp(18px, 2.4vw, 34px) 0 clamp(20px, 2.6vw, 40px);
-      text-shadow: .012em .012em 0 rgba(0, 0, 0, .15);
+      letter-spacing: -.025em;
+      margin: 0;
+      text-wrap: balance;
       overflow-wrap: break-word;
     }
 
-    .headline__eyebrow {
-      display: block;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(10px, 1.1vw, 13px);
-      font-weight: 600;
-      letter-spacing: .34em;
-      text-shadow: none;
-      margin-bottom: clamp(10px, 1.4vw, 20px);
-    }
-
-    .headline__main {
-      display: block;
-      font-size: clamp(42px, 11vw, 164px);
-    }
-
-    .headline .amp {
+    .names .amp {
       display: inline-block;
-      font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: .66em;
+      font-size: .72em;
       letter-spacing: 0;
-      transform: translateY(-.06em);
-      margin-inline: .04em;
+      padding-inline: .04em;
+      transform: translateY(-.04em);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-      margin-top: clamp(24px, 4vw, 48px);
-      align-items: start;
+    .hero__rule {
+      width: 56px;
+      height: 3px;
+      background: var(--ink);
+      margin: clamp(22px, 4vw, 44px) auto;
     }
 
-    .hero-deck {
-      grid-column: 1 / 5
+    .hero__request {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      margin: 0 0 clamp(16px, 2.6vw, 26px);
+      opacity: .75;
+    }
+
+    .hero__date {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(18px, 2vw, 26px);
+      line-height: 1.45;
+      margin: 0 0 clamp(12px, 2vw, 18px);
+      font-variant-numeric: oldstyle-nums;
+    }
+
+    .hero__venue {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .2em;
+      font-variant-caps: all-small-caps;
+      margin: 0;
+      opacity: .8;
     }
 
     .hero-figure {
-      grid-column: 6 / 13;
-      margin: 0
+      margin: clamp(36px, 6vw, 76px) auto 0;
+      max-width: min(640px, 100%);
     }
 
     .hero-figure .blob--img {
       aspect-ratio: 4 / 5;
       width: 100%;
-      animation-duration: 26s;
+      animation-duration: 46s;
     }
 
     figcaption {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(14px, 1.3vw, 17px);
+      line-height: 1.45;
+      opacity: .7;
+      margin-top: 16px;
+    }
+
+    figcaption .num {
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 9.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-right: .9em;
+      opacity: .75;
+    }
+
+    .hero-figure figcaption {
+      text-align: center
+    }
+
+    /* ============================================================
+   8. SECTION RHYTHM
+   ============================================================ */
+    main>section+section {
+      margin-top: clamp(72px, 12vw, 180px)
+    }
+
+    /* ============================================================
+   9. DATE STATEMENT
+   ============================================================ */
+    .date-statement {
+      text-align: center;
+      padding-block: clamp(48px, 8vw, 104px);
+    }
+
+    .date-statement__eyebrow {
+      font-family: var(--sans);
       font-size: 10.5px;
-      letter-spacing: .12em;
+      font-weight: 600;
+      letter-spacing: .26em;
       text-transform: uppercase;
+      margin: 0 0 clamp(18px, 3vw, 30px);
       opacity: .6;
-      margin-top: 14px;
-      padding-left: 4px;
+    }
+
+    .date-statement__date {
+      font-family: var(--display);
+      font-size: clamp(46px, 10vw, 132px);
+      line-height: .9;
+      letter-spacing: .02em;
+      margin: 0;
+      font-variant-numeric: oldstyle-nums;
+      text-wrap: balance;
+    }
+
+    .date-statement__sub {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(16px, 1.6vw, 22px);
+      margin: clamp(16px, 2.4vw, 26px) 0 0;
+      opacity: .75;
     }
 
     /* ============================================================
-   6. TICKER
+   10. STORY
    ============================================================ */
-    .ticker {
-      overflow: hidden;
-      border-block: 1px solid var(--ink);
-      margin-block: clamp(40px, 7vw, 96px);
-      padding-block: 11px;
-    }
-
-    .ticker__track {
-      display: flex;
-      width: max-content;
-      gap: 2.2rem;
-      white-space: nowrap;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      animation: marquee 38s linear infinite;
-    }
-
-    .ticker__track span {
-      flex: none
-    }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%)
-      }
-    }
-
-    /* ============================================================
-   7. SECTION HEAD
-   ============================================================ */
-    .section-head {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-      margin-bottom: clamp(24px, 3.4vw, 48px);
-      padding-top: clamp(8px, 1.4vw, 16px);
-      border-top: 1px solid var(--ink);
-    }
-
-    .section-head .kicker {
-      grid-column: 1 / 4;
-      padding-top: 6px;
-      margin: 0
-    }
-
-    .section-head .section-title {
-      grid-column: 4 / 13
-    }
-
-    /* ============================================================
-   8. STORY
-   ============================================================ */
-    .story-grid {
+    .story {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--gap);
       align-items: start;
     }
 
-    .story-panel {
+    .story__text {
       grid-column: 1 / 8
     }
 
-    .story-figure {
+    .story__figure {
       grid-column: 9 / 13;
       margin: 0
     }
 
-    .story-panel p {
-      margin: 0 0 1.1em;
-      text-wrap: pretty
+    .story__text p {
+      max-width: 62ch;
+      margin: 0 0 1.35em;
+      text-wrap: pretty;
     }
 
-    .story-panel p:last-child {
+    .story__text p:last-child {
       margin-bottom: 0
     }
 
-    .story-cols {
-      columns: 2;
-      column-gap: clamp(20px, 2.6vw, 42px);
-      column-rule: 1px solid rgba(0, 0, 0, .14);
-    }
-
-    .story-cols>p:first-child::first-letter {
+    .story__text>p:first-of-type::first-letter {
       float: left;
-      font-family: 'Anton', Impact, sans-serif;
-      font-size: 3.4em;
-      line-height: .78;
-      padding: .06em .1em 0 0;
+      font-family: var(--display);
+      font-size: 4.2em;
+      line-height: .72;
+      padding: .04em .09em 0 0;
     }
 
-    .story-figure .blob--img {
+    .story__figure .blob--img {
       aspect-ratio: 3 / 4;
       animation-name: morph-b;
-      animation-duration: 20s;
+      animation-duration: 38s;
     }
 
     /* ============================================================
-   9. DETAILS
+   11. PROGRAMME
    ============================================================ */
-    .details-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-      align-items: start;
-    }
-
-    .detail {
-      text-align: left;
-      font: inherit;
-      color: var(--paper);
-      outline-offset: 6px;
-      transition: scale var(--dur) var(--ease), translate 320ms var(--ease);
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .detail:nth-child(1) {
-      grid-column: 1 / 5
-    }
-
-    .detail:nth-child(2) {
-      grid-column: 5 / 9;
-      margin-top: clamp(0px, 3vw, 44px)
-    }
-
-    .detail:nth-child(3) {
-      grid-column: 9 / 12;
-      margin-top: clamp(0px, 6vw, 92px)
-    }
-
-    .detail:hover {
-      translate: 0 -3px
-    }
-
-    .detail:active {
-      scale: .975
-    }
-
-    .detail.is-open {
-      scale: 1
-    }
-
-    .detail__num {
-      display: block;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 10.5px;
-      letter-spacing: .2em;
-      opacity: .55;
-      margin-bottom: clamp(28px, 4vw, 56px);
-    }
-
-    .detail__title {
-      font-family: 'Anton', Impact, sans-serif;
-      font-weight: 400;
-      text-transform: uppercase;
-      font-size: clamp(22px, 2.4vw, 34px);
-      line-height: .95;
-      letter-spacing: -.01em;
-      margin: 0 0 .55em;
-    }
-
-    .detail__lede {
-      font-size: clamp(14px, .9vw + 10px, 16px);
-      line-height: 1.45;
+    .programme {
+      list-style: none;
       margin: 0;
-      opacity: .82;
-      text-wrap: pretty;
+      padding: 0;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 620px;
     }
 
-    .detail__body {
+    .programme li {
       display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 320ms var(--ease);
+      grid-template-columns: minmax(140px, 1fr) minmax(0, 1.6fr) minmax(0, 1.4fr) auto;
+      gap: clamp(12px, 2vw, 36px);
+      align-items: baseline;
+      padding: clamp(20px, 2.6vw, 30px) 0;
+      border-bottom: 1px solid var(--hair);
     }
 
-    .detail.is-open .detail__body {
-      grid-template-rows: 1fr
+    .programme li:first-child {
+      border-top: 1px solid var(--hair)
     }
 
-    .detail__body>div {
-      overflow: hidden
+    .programme__day {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .62;
     }
 
-    .detail__body p {
-      margin: 1.1em 0 0;
-      font-size: clamp(14px, .9vw + 10px, 16px);
-      line-height: 1.5;
-      opacity: .82;
-      text-wrap: pretty;
+    .programme__title {
+      font-family: var(--display);
+      font-size: clamp(21px, 2.2vw, 30px);
+      line-height: 1.1;
+    }
+
+    .programme__place {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(15px, 1.4vw, 19px);
+      opacity: .78;
+    }
+
+    .programme__time {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      opacity: .62;
+      text-align: right;
+      white-space: nowrap;
     }
 
     /* ============================================================
-   10. MENU
+   12. MENU
    ============================================================ */
     .menu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: clamp(24px, 4vw, 64px);
-      border-top: 2px solid var(--ink);
+      column-gap: clamp(32px, 5vw, 88px);
+      content-visibility: auto;
+      contain-intrinsic-size: auto 520px;
     }
 
     .menu-item {
@@ -597,43 +660,77 @@
       justify-content: space-between;
       align-items: baseline;
       gap: 1.5rem;
-      padding: 1em 0;
-      border-bottom: 1px solid rgba(0, 0, 0, .18);
+      padding: 1.05em 0;
+      border-bottom: 1px solid var(--hair);
     }
 
     .menu-item__name {
-      font-family: 'Newsreader', Georgia, serif;
+      font-family: var(--text);
       font-weight: 600;
       font-size: clamp(16px, .9vw + 12px, 19px);
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .menu-item__desc {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: var(--sans);
       font-size: 10.5px;
-      letter-spacing: .06em;
-      opacity: .65;
+      line-height: 1.45;
+      letter-spacing: .05em;
+      opacity: .62;
       text-align: right;
       flex: 1;
-      line-height: 1.4;
     }
 
     .menu-note {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: var(--sans);
       font-size: 10.5px;
-      letter-spacing: .08em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      opacity: .6;
-      margin-top: clamp(18px, 2.4vw, 28px);
+      opacity: .55;
+      margin: clamp(20px, 3vw, 30px) 0 0;
     }
 
     /* ============================================================
-   11. GALLERY
+   13. TRAVEL
    ============================================================ */
-    .gallery-grid {
+    .travel dl {
+      margin: 0;
+      max-width: 70ch
+    }
+
+    .travel dl>div {
+      display: grid;
+      grid-template-columns: 5.5em 1fr;
+      gap: 1.4em;
+      padding: 1em 0;
+      border-bottom: 1px solid var(--hair);
+    }
+
+    .travel dl>div:first-child {
+      border-top: 1px solid var(--hair)
+    }
+
+    .travel dt {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      opacity: .6;
+      padding-top: .3em;
+    }
+
+    .travel dd {
+      margin: 0;
+      text-wrap: pretty
+    }
+
+    /* ============================================================
+   14. GALLERY
+   ============================================================ */
+    .gallery {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: calc(var(--gap) * 1.4);
+      gap: calc(var(--gap) * 1.6);
       align-items: start;
     }
 
@@ -641,303 +738,499 @@
       margin: 0
     }
 
-    .gal--1 {
-      grid-column: 1 / 6
+    .gal:nth-child(1) {
+      grid-column: 1 / 7
     }
 
-    .gal--2 {
-      grid-column: 7 / 10;
-      margin-top: clamp(24px, 6vw, 96px)
-    }
-
-    .gal--3 {
-      grid-column: 10 / 13;
-      margin-top: clamp(0px, 2vw, 24px)
-    }
-
-    .gal--4 {
-      grid-column: 2 / 7;
-      margin-top: calc(var(--gap) * -1)
-    }
-
-    .gal--5 {
+    .gal:nth-child(2) {
       grid-column: 8 / 13;
-      margin-top: clamp(-40px, -3vw, 0px)
+      margin-top: clamp(40px, 8vw, 120px)
+    }
+
+    .gal:nth-child(3) {
+      grid-column: 3 / 12;
+      margin-top: clamp(24px, 4vw, 64px)
     }
 
     .gal .blob--img {
       width: 100%
     }
 
-    .gal--1 .blob--img {
+    .gal:nth-child(1) .blob--img {
       aspect-ratio: 5 / 4;
       animation-name: morph-c;
-      animation-duration: 24s
+      animation-duration: 44s
     }
 
-    .gal--2 .blob--img {
+    .gal:nth-child(2) .blob--img {
       aspect-ratio: 3 / 4;
-      animation-duration: 19s
+      animation-duration: 40s
     }
 
-    .gal--3 .blob--img {
-      aspect-ratio: 1 / 1;
+    .gal:nth-child(3) .blob--img {
+      aspect-ratio: 16 / 9;
       animation-name: morph-b;
-      animation-duration: 27s
-    }
-
-    .gal--4 .blob--img {
-      aspect-ratio: 4 / 5;
-      animation-name: morph-a;
-      animation-duration: 21s
-    }
-
-    .gal--5 .blob--img {
-      aspect-ratio: 16 / 10;
-      animation-name: morph-c;
-      animation-duration: 25s
+      animation-duration: 48s
     }
 
     /* ============================================================
-   12. RSVP
+   15. HAIRLINE THAT DRAWS
    ============================================================ */
-    .rsvp-section {
-      display: flex;
-      justify-content: center;
-      padding-block: clamp(56px, 9vw, 140px);
+    .hairline-draw {
+      height: 1px;
+      background: var(--ink);
+      transform-origin: left center;
+      scale: 0 1;
+      transition: scale 1.6s var(--ease-out);
+      margin-bottom: clamp(40px, 6vw, 84px);
     }
 
-    .rsvp {
-      border: 0;
-      font: inherit;
-      color: var(--paper);
-      text-align: center;
-      padding: clamp(44px, 7vw, 92px) clamp(48px, 9vw, 140px);
-      transition: scale var(--dur) var(--ease);
-      -webkit-tap-highlight-color: transparent;
-      outline-offset: 8px;
+    .hairline-draw.in {
+      scale: 1 1
     }
 
-    .rsvp:hover {
-      scale: 1.012
+    /* ============================================================
+   16. LETTERS
+   ============================================================ */
+    .letters__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 68ch;
     }
 
-    .rsvp:active {
-      scale: .97
+    .letter {
+      margin: 0;
+      padding: clamp(24px, 3vw, 36px) 0;
+      border-bottom: 1px solid var(--hair);
     }
 
-    .rsvp__eyebrow {
-      display: block;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      opacity: .6;
-      margin-bottom: clamp(14px, 2vw, 22px);
+    .letters__list>.letter:first-child {
+      border-top: 1px solid var(--hair)
     }
 
-    .rsvp__label {
-      display: block;
-      font-family: 'Anton', Impact, sans-serif;
-      font-size: clamp(30px, 4.6vw, 62px);
-      line-height: .94;
-      text-transform: uppercase;
-      letter-spacing: -.012em;
-      transition: opacity 200ms var(--ease), translate 200ms var(--ease);
+    .letter p {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.4;
+      margin: 0 0 .7em;
+      text-wrap: pretty;
     }
 
-    .rsvp__hint {
-      display: block;
-      font-family: 'Inter', system-ui, sans-serif;
+    .letter cite {
+      font-family: var(--sans);
+      font-style: normal;
       font-size: 10.5px;
       letter-spacing: .16em;
       text-transform: uppercase;
-      opacity: .55;
-      margin-top: clamp(16px, 2vw, 24px);
-    }
-
-    .rsvp.is-confirmed {
-      animation: pop 420ms var(--ease-out)
-    }
-
-    @keyframes pop {
-      0% {
-        scale: 1
-      }
-
-      38% {
-        scale: .955
-      }
-
-      100% {
-        scale: 1
-      }
-    }
-
-    .rsvp.is-confirmed .rsvp__label {
-      translate: 0 -.1em;
+      opacity: .6;
     }
 
     /* ============================================================
-   13. FOOTER
+   17. FORMS
+   ============================================================ */
+    .field {
+      display: block;
+      margin-bottom: clamp(18px, 2.4vw, 26px)
+    }
+
+    .field>span {
+      display: block;
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-bottom: .6em;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      font: inherit;
+      font-family: var(--display);
+      font-size: clamp(17px, 1.6vw, 21px);
+      line-height: 1.5;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, .35);
+      border-radius: 0;
+      padding: .45em 0;
+      appearance: none;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 2.8em
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      padding: 1.1em 2em;
+      transition: scale var(--dur) var(--ease),
+        background var(--dur) var(--ease),
+        color var(--dur) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:hover {
+      background: var(--paper);
+      color: var(--ink)
+    }
+
+    .btn:active {
+      scale: .97
+    }
+
+    .btn--wide {
+      width: 100%
+    }
+
+    .letter-form {
+      max-width: 68ch;
+      margin-top: clamp(32px, 5vw, 56px)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    /* ============================================================
+   18. RSVP
+   ============================================================ */
+    .rsvp-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(20px, 3vw, 32px);
+      padding-block: clamp(24px, 4vw, 48px);
+    }
+
+    .rsvp-blob {
+      width: min(720px, 100%);
+      padding: clamp(40px, 7vw, 88px);
+      background:
+        repeating-linear-gradient(45deg,
+          transparent 0 7px,
+          rgba(255, 255, 255, .03) 7px 8px),
+        var(--ink);
+      color: var(--paper);
+      border-radius: 14% 7% 12% 8% / 18% 12% 16% 11%;
+      animation: morph-panel 44s ease-in-out infinite alternate;
+    }
+
+    .rsvp-card {
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: clamp(28px, 4vw, 56px);
+    }
+
+    .rsvp-card__kicker {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      opacity: .65;
+      margin: 0 0 clamp(14px, 2vw, 20px);
+    }
+
+    .rsvp-card__title {
+      font-family: var(--display);
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1.05;
+      margin: 0 0 clamp(24px, 3.4vw, 36px);
+    }
+
+    .rsvp-done__title {
+      font-family: var(--display);
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1.05;
+      margin: 0 0 .5em;
+    }
+
+    .rsvp-done__text {
+      margin: 0 0 clamp(22px, 3vw, 32px);
+      text-wrap: pretty;
+    }
+
+    .print-link {
+      background: none;
+      border: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, .4);
+      padding: 0 0 .25em;
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: border-color var(--dur) var(--ease);
+    }
+
+    .print-link:hover {
+      border-bottom-color: var(--ink)
+    }
+
+    /* ============================================================
+   19. COLOPHON
    ============================================================ */
     .colophon {
-      border-top: 4px solid var(--ink);
-      padding-block: clamp(24px, 3vw, 40px) clamp(48px, 7vw, 88px);
+      width: var(--wrap);
+      margin-inline: auto;
+      text-align: center;
+      padding-block: clamp(48px, 7vw, 100px) clamp(56px, 8vw, 120px);
+    }
+
+    .monogram {
+      width: 64px;
+      height: 64px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto clamp(28px, 4vw, 44px);
+      font-family: var(--display);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: .01em;
+    }
+
+    .monogram em {
+      font-style: italic;
+      font-size: .85em;
+      padding-inline: .06em
     }
 
     .colophon__grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-      font-family: 'Inter', system-ui, sans-serif;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 3vw, 40px);
+      font-family: var(--sans);
       font-size: 10.5px;
       letter-spacing: .14em;
       text-transform: uppercase;
-      line-height: 1.7;
+      line-height: 1.85;
+      opacity: .68;
     }
 
-    .colophon__grid>div:nth-child(1) {
-      grid-column: 1 / 5
-    }
-
-    .colophon__grid>div:nth-child(2) {
-      grid-column: 5 / 9;
-      opacity: .6
-    }
-
-    .colophon__grid>div:nth-child(3) {
-      grid-column: 9 / 13;
-      opacity: .6
+    .edition {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      opacity: .5;
+      margin: clamp(28px, 4vw, 44px) 0 0;
     }
 
     /* ============================================================
-   14. SCROLL REVEALS
+   20. REVEALS — slow, narrative
    ============================================================ */
     .js [data-reveal] {
       opacity: 0;
-      translate: 0 16px;
+      translate: 0 24px;
+      filter: blur(6px);
       transition:
-        opacity 380ms var(--ease-out),
-        translate 380ms var(--ease-out);
+        opacity var(--slow) var(--ease-out),
+        translate var(--slow) var(--ease-out),
+        filter var(--slow) var(--ease-out);
       transition-delay: var(--d, 0ms);
     }
 
     .js [data-reveal].in {
       opacity: 1;
       translate: 0 0;
+      filter: blur(0);
     }
 
     /* ============================================================
-   15. RESPONSIVE
+   21. RESPONSIVE
    ============================================================ */
     @media (max-width:900px) {
-      .hero-deck {
-        grid-column: 1 / 7
-      }
-
-      .hero-figure {
-        grid-column: 7 / 13
-      }
-
-      .story-panel {
+      .story__text {
         grid-column: 1 / 13
       }
 
-      .story-figure {
+      .story__figure {
         grid-column: 1 / 8;
         margin-top: var(--gap)
       }
 
-      .detail:nth-child(1) {
-        grid-column: 1 / 7
+      .programme li {
+        grid-template-columns: minmax(120px, 1fr) minmax(0, 1.8fr) auto;
       }
 
-      .detail:nth-child(2) {
-        grid-column: 7 / 13;
-        margin-top: 0
-      }
-
-      .detail:nth-child(3) {
-        grid-column: 1 / 7;
-        margin-top: var(--gap)
+      .programme__place {
+        grid-column: 1 / -1;
+        order: 4
       }
     }
 
     @media (max-width:720px) {
-      .nameplate {
+      .masthead__stamp {
         flex-wrap: wrap;
         gap: .4rem 1.2rem
       }
 
-      .nameplate__mid {
-        order: 3;
-        flex-basis: 100%
-      }
-
-      .hero-deck,
-      .hero-figure {
+      .story__figure {
         grid-column: 1 / 13
       }
 
-      .hero-figure {
-        margin-top: var(--gap)
+      .programme li {
+        grid-template-columns: 1fr;
+        gap: .35em;
+        padding-block: clamp(18px, 4vw, 24px);
       }
 
-      .section-head .kicker {
-        grid-column: 1 / 13;
-        margin-bottom: .6em
+      .programme__place {
+        order: 0
       }
 
-      .section-head .section-title {
-        grid-column: 1 / 13
-      }
-
-      .story-cols {
-        columns: 1
-      }
-
-      .story-figure {
-        grid-column: 1 / 13
-      }
-
-      .detail:nth-child(1),
-      .detail:nth-child(2),
-      .detail:nth-child(3) {
-        grid-column: 1 / 13;
-        margin-top: 0
-      }
-
-      .detail+.detail {
-        margin-top: var(--gap)
+      .programme__time {
+        text-align: left;
+        margin-top: .4em
       }
 
       .menu-grid {
         grid-template-columns: 1fr
       }
 
-      .gal--1,
-      .gal--2,
-      .gal--3,
-      .gal--4,
-      .gal--5 {
+      .travel dl>div {
+        grid-template-columns: 1fr;
+        gap: .4em
+      }
+
+      .travel dt {
+        padding-top: 0
+      }
+
+      .gal:nth-child(1),
+      .gal:nth-child(2),
+      .gal:nth-child(3) {
         grid-column: 1 / 13;
         margin-top: var(--gap)
       }
 
-      .colophon__grid>div {
-        grid-column: 1 / 13 !important;
-        margin-bottom: 1.2em
+      .colophon__grid {
+        grid-template-columns: 1fr
       }
 
-      .rsvp {
-        width: 100%
+      .rsvp-blob {
+        padding: clamp(24px, 6vw, 40px)
       }
     }
 
     /* ============================================================
-   16. REDUCED MOTION
+   22. PRINT INVITATION
+   ============================================================ */
+    .invitation {
+      display: none
+    }
+
+    @media print {
+      @page {
+        size: A6 portrait;
+        margin: 14mm
+      }
+
+      html,
+      body {
+        background: #fff;
+        color: #000
+      }
+
+      body::after,
+      .crop-marks,
+      .cursor-dot,
+      .cursor-ring,
+      .skip-link {
+        display: none !important
+      }
+
+      body>*:not(.invitation) {
+        display: none !important
+      }
+
+      .invitation {
+        display: block !important;
+        font-family: var(--display);
+        text-align: center;
+        color: #000;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .invitation__eyebrow {
+        font-family: var(--sans);
+        font-size: 7pt;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        margin: 0 0 10mm;
+      }
+
+      .invitation__names {
+        font-size: 30pt;
+        line-height: 1;
+        letter-spacing: -.01em;
+        margin: 0 0 3mm;
+      }
+
+      .invitation__names em {
+        font-style: italic
+      }
+
+      .invitation__request {
+        font-family: var(--sans);
+        font-size: 7pt;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        margin: 0 0 12mm;
+      }
+
+      .invitation__date {
+        font-size: 13pt;
+        line-height: 1.5;
+        margin: 0 0 6mm
+      }
+
+      .invitation__venue {
+        font-size: 12pt;
+        margin: 0 0 12mm
+      }
+
+      .invitation__rsvp {
+        font-family: var(--sans);
+        font-size: 7pt;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .invitation__welcome {
+        font-style: italic;
+        font-size: 10pt;
+        margin: 10mm 0 0;
+      }
+    }
+
+    /* ============================================================
+   23. PREFERENCES
    ============================================================ */
     @media (prefers-reduced-motion: reduce) {
 
@@ -954,17 +1247,61 @@
         display: none !important
       }
 
-      body {
+      html.js body,
+      html.js a,
+      html.js button,
+      html.js input,
+      html.js textarea {
         cursor: auto
       }
 
       .js [data-reveal] {
         opacity: 1;
-        translate: 0 0
+        translate: 0 0;
+        filter: none
       }
 
-      .ticker__track {
-        animation: none
+      .hairline-draw {
+        scale: 1 1
+      }
+    }
+
+    @media (prefers-reduced-transparency: reduce) {
+      body::after {
+        display: none
+      }
+
+      .cursor-ring {
+        opacity: 1 !important;
+        mix-blend-mode: normal;
+        border-color: var(--ink)
+      }
+
+      .cursor-dot {
+        background: var(--ink);
+        mix-blend-mode: normal
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      body::after {
+        display: none
+      }
+
+      .kicker,
+      .folio,
+      .menu-item__desc,
+      .programme__day,
+      .programme__time,
+      .letter cite,
+      .edition {
+        opacity: 1
+      }
+
+      .field input,
+      .field textarea {
+        border-bottom-width: 2px;
+        border-bottom-color: var(--ink)
       }
     }
   </style>
@@ -974,247 +1311,340 @@
 
   <script>document.documentElement.classList.add('js');</script>
 
+  <a class="skip-link" href="#story">Skip to the story</a>
+
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
-  <!-- ==================== MASTHEAD ==================== -->
-  <header class="masthead wrap">
-    <div class="nameplate">
-      <span>The Lagos Wedding Gazette</span>
-      <span class="nameplate__mid">Vol. I &middot; No. 1</span>
-      <span>Saturday, 19 December 2026</span>
-    </div>
-
-    <hr class="rule rule--thick" />
-
-    <h1 class="headline">
-      <span class="headline__eyebrow">The Marriage of</span>
-      <span class="headline__main">Adunni <span class="amp">&amp;</span> Tunde</span>
-    </h1>
-
-    <hr class="rule" />
-
-    <div class="hero-grid">
-      <div class="hero-deck">
-        <p class="kicker">Lagos Supplement</p>
-        <p class="deck">Being a full and true account of the union of two Lagos households, to be held at The Yard,
-          Victoria Island, and attended by persons of good humour. Ẹ&nbsp;káàbọ̀.</p>
-        <p class="byline">From the Office of the Bride &amp; Groom &middot; Lekki Phase 1</p>
-      </div>
-
-      <figure class="hero-figure" data-reveal>
-        <div class="blob blob--img">
-          <img src="https://picsum.photos/seed/adaelias-hero/1000/1250"
-            alt="Adunni and Tunde, photographed in low light." fetchpriority="high" />
-        </div>
-        <figcaption>Fig. 1 &mdash; The couple, unbothered by Lagos.</figcaption>
-      </figure>
-    </div>
-  </header>
-
-  <!-- ==================== TICKER ==================== -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>Adunni &amp; Tunde</span><span>&bull;</span>
-      <span>19 &middot; 12 &middot; 26</span><span>&bull;</span>
-      <span>The Yard, Victoria Island</span><span>&bull;</span>
-      <span>Jollof at eight</span><span>&bull;</span>
-      <span>Small chops from five</span><span>&bull;</span>
-      <span>Aso ebi available</span><span>&bull;</span>
-      <span>No florals</span><span>&bull;</span>
-      <span>Detty December</span><span>&bull;</span>
-      <span>No wahala</span><span>&bull;</span>
-      <span>Adunni &amp; Tunde</span><span>&bull;</span>
-      <span>19 &middot; 12 &middot; 26</span><span>&bull;</span>
-      <span>The Yard, Victoria Island</span><span>&bull;</span>
-      <span>Jollof at eight</span><span>&bull;</span>
-      <span>Small chops from five</span><span>&bull;</span>
-      <span>Aso ebi available</span><span>&bull;</span>
-      <span>No florals</span><span>&bull;</span>
-      <span>Detty December</span><span>&bull;</span>
-      <span>No wahala</span><span>&bull;</span>
-    </div>
+  <div class="crop-marks" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
   </div>
 
-  <!-- ==================== STORY ==================== -->
-  <section class="wrap" id="story">
-    <div class="section-head">
-      <p class="kicker">The Long Read &middot; Lagos</p>
-      <h2 class="section-title">How a borrowed umbrella<br />led to a marriage</h2>
+  <!-- ==================== HEADER ==================== -->
+  <header class="masthead">
+    <div class="masthead__stamp">
+      <span class="roman">MMXXVI</span>
+      <span>Lagos, Nigeria</span>
     </div>
 
-    <div class="story-grid">
-      <div class="blob blob--panel story-panel" data-reveal>
-        <div class="story-cols">
-          <p>It began, as these things do, in Lagos traffic — the kind that turns a short trip into a long meditation.
-            Tunde had borrowed an umbrella from a stranger at the Yaba bus stop, and Adunni had watched him hand it back
-            with the solemnity of a man returning a relic.</p>
-          <p>They were both twenty-six and neither was looking for anything in particular. She was between flats in
-            Lekki. He was between opinions about what to do with a degree in something impractical. The umbrella lasted
-            four more blocks before it gave up entirely, and by then they had already decided to share a cab to
-            Surulere.</p>
+    <div class="hero">
+      <p class="hero__kicker">Together with their families</p>
+
+      <h1 class="names">Adunni <span class="amp">&amp;</span> Tunde</h1>
+
+      <div class="hero__rule" aria-hidden="true"></div>
+
+      <p class="hero__request">request the pleasure of your company</p>
+
+      <p class="hero__date">
+        Saturday, the nineteenth of December<br />
+        two thousand and twenty-six
+      </p>
+
+      <p class="hero__venue">The Yard, Victoria Island, Lagos</p>
+    </div>
+
+    <figure class="hero-figure" data-reveal>
+      <div class="blob blob--img">
+        <img src="https://picsum.photos/seed/adaelias-hero/900/1125"
+          alt="Adunni and Tunde, photographed in low light, unhurried." width="900" height="1125"
+          fetchpriority="high" />
+      </div>
+      <figcaption><span class="num">i.</span>the two of them, unhurried — Lekki, 2017</figcaption>
+    </figure>
+  </header>
+
+  <main>
+
+    <!-- ==================== DATE STATEMENT ==================== -->
+    <section class="date-statement wrap" aria-label="The date">
+      <p class="date-statement__eyebrow">Save the date</p>
+      <p class="date-statement__date">19 &middot; XII &middot; 26</p>
+      <p class="date-statement__sub">Detty December, Lagos</p>
+    </section>
+
+    <!-- ==================== STORY ==================== -->
+    <section class="wrap" id="story" aria-labelledby="story-title">
+      <div class="section-head">
+        <p class="kicker">Our story</p>
+        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <h2 class="section-title" id="story-title">We met in Lagos traffic</h2>
+      </div>
+
+      <div class="story">
+        <div class="story__text" data-reveal>
+          <p>Tunde borrowed an umbrella from a stranger at the Yaba bus stop, and handed it back with the solemnity of a
+            man returning a relic. We were both twenty-six and neither of us was looking for anything in particular.</p>
+          <p>I was between flats in Lekki. He was between opinions about what to do with a degree in something
+            impractical. The umbrella lasted four more blocks before it gave up entirely, and by then we had already
+            decided to share a cab to Surulere.</p>
           <p>Nine years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. What
-            follows is an account of the day they intend to make it official — first at the family compound in Surulere,
-            then at The Yard in Victoria Island — set down here for the benefit of friends, family, and anyone who has
-            ever been rained on at an opportune moment.</p>
+            follows is an account of the day we intend to make it official — first at the family compound in Surulere,
+            then at The Yard in Victoria Island — set down here for the friends and family who have been rained on with
+            us.</p>
           <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be jollof, and
-            there will be a point at which the band stops, and what happens after that is between the guests and the
+            there will be a point at which the band stops, and what happens after that is between our guests and the
             lagoon.</p>
         </div>
+
+        <figure class="story__figure" data-reveal style="--d:120ms">
+          <div class="blob blob--img">
+            <img src="https://picsum.photos/seed/adaelias-story/750/1000"
+              alt="A candid photograph from the archive — the flat in Lekki." width="750" height="1000"
+              loading="lazy" />
+          </div>
+          <figcaption><span class="num">ii.</span>the flat, the harmattan, the radiator</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== PROGRAMME ==================== -->
+    <section class="wrap" aria-labelledby="programme-title">
+      <div class="section-head">
+        <p class="kicker">Order of the day</p>
+        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <h2 class="section-title" id="programme-title">Three days, one wedding</h2>
       </div>
 
-      <figure class="story-figure" data-reveal style="--d:80ms">
-        <div class="blob blob--img">
-          <img src="https://picsum.photos/seed/adaelias-story/900/1200" alt="A candid photograph from the archive."
-            loading="lazy" />
+      <ol class="programme">
+        <li>
+          <span class="programme__day">Friday, 18 December</span>
+          <span class="programme__title">Ìgbéyàwó</span>
+          <span class="programme__place">Family compound, Surulere</span>
+          <span class="programme__time">from four o&rsquo;clock</span>
+        </li>
+        <li>
+          <span class="programme__day">Saturday, 19 December</span>
+          <span class="programme__title">White Wedding</span>
+          <span class="programme__place">The Yard, Victoria Island</span>
+          <span class="programme__time">half past two</span>
+        </li>
+        <li>
+          <span class="programme__day">Saturday, 19 December</span>
+          <span class="programme__title">Supper &amp; Dancing</span>
+          <span class="programme__place">The Yard, by the water</span>
+          <span class="programme__time">eight o&rsquo;clock</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ==================== MENU ==================== -->
+    <section class="wrap" aria-labelledby="menu-title">
+      <div class="section-head">
+        <p class="kicker">The provisions</p>
+        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <h2 class="section-title" id="menu-title">What we&rsquo;ll eat</h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-item">
+          <span class="menu-item__name">Jollof rice</span>
+          <span class="menu-item__desc">Party style, smoky, from the family recipe.</span>
         </div>
-        <figcaption>Fig. 2 &mdash; The flat, the harmattan, the radiator.</figcaption>
-      </figure>
-    </div>
-  </section>
+        <div class="menu-item">
+          <span class="menu-item__name">Small chops</span>
+          <span class="menu-item__desc">Puff-puff, samosa, spring roll, peppered gizzard.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Suya</span>
+          <span class="menu-item__desc">From the spot on Awolowo Road, by the pound.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Puff-puff</span>
+          <span class="menu-item__desc">Fried to order, from five o&rsquo;clock.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Cake</span>
+          <span class="menu-item__desc">Three tiers. No florals.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Chapman</span>
+          <span class="menu-item__desc">The welcome drink. Non-negotiable.</span>
+        </div>
+      </div>
+      <p class="menu-note">A vegetarian plate is available — tell us when you reply.</p>
+    </section>
 
-  <!-- ==================== DETAILS ==================== -->
-  <section class="wrap" style="margin-top:clamp(64px,10vw,160px)">
-    <div class="section-head">
-      <p class="kicker">The Particulars</p>
-      <h2 class="section-title">Order of the day</h2>
-    </div>
+    <!-- ==================== TRAVEL ==================== -->
+    <section class="wrap travel" aria-labelledby="travel-title">
+      <div class="section-head">
+        <p class="kicker">Travel &amp; stay</p>
+        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <h2 class="section-title" id="travel-title">Getting there, staying over</h2>
+      </div>
 
-    <div class="details-grid">
-      <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
-        data-cursor="grow" data-reveal>
-        <span class="detail__num">01</span>
-        <h3 class="detail__title">The Ìgbéyàwó</h3>
-        <p class="detail__lede">Friday, at the family compound, Surulere.</p>
-        <div class="detail__body">
-          <div>
-            <p>The traditional wedding. Aso oke, family, and more food than is strictly reasonable. Arrive from four.
-              Bring your dancing shoes and your appetite. Ẹ káàbọ̀.</p>
+      <dl>
+        <div>
+          <dt>Fly</dt>
+          <dd>Murtala Muhammed (LOS). Forty minutes to Victoria Island, on a good day.</dd>
+        </div>
+        <div>
+          <dt>Stay</dt>
+          <dd>The Wheatbaker, Ikoyi — fifteen minutes from The Yard.</dd>
+        </div>
+        <div>
+          <dt>Stay</dt>
+          <dd>Eko Hotel, Victoria Island — ten minutes, walking distance to the after-party.</dd>
+        </div>
+        <div>
+          <dt>Move</dt>
+          <dd>Book a driver for the weekend. Traffic is not a rumour.</dd>
+        </div>
+        <div>
+          <dt>Note</dt>
+          <dd>December is Detty December. Book early or regret it quietly.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ==================== GALLERY ==================== -->
+    <section class="wrap" aria-labelledby="gallery-title">
+      <div class="section-head">
+        <p class="kicker">Exhibits</p>
+        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <h2 class="section-title" id="gallery-title">The evidence</h2>
+      </div>
+
+      <div class="gallery">
+        <figure class="gal" data-reveal>
+          <div class="blob blob--img">
+            <img src="https://picsum.photos/seed/adaelias-g1/1000/800"
+              alt="An early photograph together, the first flat in Lekki." width="1000" height="800" loading="lazy" />
+          </div>
+          <figcaption><span class="num">iii.</span>the first flat, Lekki, 2017</figcaption>
+        </figure>
+
+        <figure class="gal" data-reveal style="--d:100ms">
+          <div class="blob blob--img">
+            <img src="https://picsum.photos/seed/adaelias-g2/750/1000"
+              alt="A portrait at the Yaba bus stop, where it began." width="750" height="1000" loading="lazy" />
+          </div>
+          <figcaption><span class="num">iv.</span>Yaba bus stop, where it began</figcaption>
+        </figure>
+
+        <figure class="gal" data-reveal style="--d:180ms">
+          <div class="blob blob--img">
+            <img src="https://picsum.photos/seed/adaelias-g3/1200/675" alt="The beach at Ilashe, late afternoon."
+              width="1200" height="675" loading="lazy" />
+          </div>
+          <figcaption><span class="num">v.</span>the long walk back from Ilashe</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== LETTERS ==================== -->
+    <section class="wrap" aria-labelledby="letters-title">
+      <div class="hairline-draw" aria-hidden="true"></div>
+
+      <div class="section-head">
+        <p class="kicker">The correspondence</p>
+        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <h2 class="section-title" id="letters-title">Letters to the couple</h2>
+      </div>
+
+      <ul class="letters__list" id="letterList">
+        <li class="letter">
+          <p>Never go to bed angry. Go to bed with jollof.</p>
+          <cite>— Auntie Bisi, Surulere</cite>
+        </li>
+        <li class="letter">
+          <p>Marriage is not a sprint. It is Lagos traffic. Pack snacks.</p>
+          <cite>— Uncle Femi, Ikeja</cite>
+        </li>
+        <li class="letter">
+          <p>May your house be loud with laughter and your generator never fail.</p>
+          <cite>— The Okonkwos, Lekki</cite>
+        </li>
+        <li class="letter">
+          <p>You two have been sharing a cab for nine years. The rest is paperwork.</p>
+          <cite>— Damilola, Yaba</cite>
+        </li>
+      </ul>
+
+      <form class="letter-form" id="letterForm" novalidate>
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="name" autocomplete="name" placeholder="Who is writing?" />
+        </label>
+        <label class="field">
+          <span>Your word</span>
+          <textarea name="message" rows="3" maxlength="220" required
+            placeholder="Advice, a memory, a warning — 220 characters or fewer."></textarea>
+        </label>
+        <button class="btn" type="submit">Send to the couple</button>
+      </form>
+    </section>
+
+    <!-- ==================== RSVP ==================== -->
+    <section class="wrap rsvp-section" aria-labelledby="rsvp-title">
+      <div class="rsvp-blob">
+        <div class="rsvp-card">
+          <form id="rsvpForm" novalidate>
+            <p class="rsvp-card__kicker">Kindly reply</p>
+            <h2 class="rsvp-card__title" id="rsvp-title">Will you be there?</h2>
+
+            <label class="field">
+              <span>Your name</span>
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span>Bringing</span>
+              <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
+            </label>
+
+            <label class="field">
+              <span>Anything we should know</span>
+              <input type="text" name="notes" placeholder="dietary, access, etc." />
+            </label>
+
+            <label class="field">
+              <span>One song that will get you dancing</span>
+              <input type="text" name="song" placeholder="The band needs a setlist." />
+            </label>
+
+            <button class="btn btn--wide" type="submit">Send reply</button>
+          </form>
+
+          <div class="rsvp-done" id="rsvpDone" hidden tabindex="-1" aria-live="polite">
+            <p class="rsvp-done__title">Received.</p>
+            <p class="rsvp-done__text">We&rsquo;ll see you in December. Watch out for the aso ebi.</p>
+            <button class="btn btn--wide" type="button" id="rsvpAgain">Send another reply</button>
           </div>
         </div>
       </div>
 
-      <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
-        data-cursor="grow" data-reveal style="--d:60ms">
-        <span class="detail__num">02</span>
-        <h3 class="detail__title">The White Wedding</h3>
-        <p class="detail__lede">Saturday, at The Yard, Victoria Island.</p>
-        <div class="detail__body">
-          <div>
-            <p>Half past two, by the water. Seating is unassigned, the floor is uneven, and the December breeze is not
-              our friend. Wear something you can stand in for twenty minutes.</p>
-          </div>
-        </div>
-      </div>
+      <button class="print-link" type="button" data-print>Print this invitation</button>
+    </section>
 
-      <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
-        data-cursor="grow" data-reveal style="--d:120ms">
-        <span class="detail__num">03</span>
-        <h3 class="detail__title">The Dress Code</h3>
-        <p class="detail__lede">Aso ebi available. Comfort is mandatory.</p>
-        <div class="detail__body">
-          <div>
-            <p>Aso ebi is available in the family colours. Black tie is welcome. So is the agbada you have owned for a
-              decade. There are no rules beyond this one: no florals. We mean it.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== MENU ==================== -->
-  <section class="wrap" style="margin-top:clamp(64px,10vw,160px)" id="menu">
-    <div class="section-head">
-      <p class="kicker">The Menu</p>
-      <h2 class="section-title">What we&rsquo;ll eat</h2>
-    </div>
-
-    <div class="menu-grid">
-      <div class="menu-item">
-        <span class="menu-item__name">Jollof rice</span>
-        <span class="menu-item__desc">Party style, smoky, from the family recipe.</span>
-      </div>
-      <div class="menu-item">
-        <span class="menu-item__name">Small chops</span>
-        <span class="menu-item__desc">Puff-puff, samosa, spring roll, peppered gizzard.</span>
-      </div>
-      <div class="menu-item">
-        <span class="menu-item__name">Suya</span>
-        <span class="menu-item__desc">From the spot on Awolowo Road, by the pound.</span>
-      </div>
-      <div class="menu-item">
-        <span class="menu-item__name">Puff-puff</span>
-        <span class="menu-item__desc">Fried to order, from five o&rsquo;clock.</span>
-      </div>
-      <div class="menu-item">
-        <span class="menu-item__name">Cake</span>
-        <span class="menu-item__desc">Three tiers. No florals.</span>
-      </div>
-      <div class="menu-item">
-        <span class="menu-item__name">Chapman</span>
-        <span class="menu-item__desc">The welcome drink. Non-negotiable.</span>
-      </div>
-    </div>
-    <p class="menu-note">A vegetarian plate is available. Tell us when you RSVP.</p>
-  </section>
-
-  <!-- ==================== GALLERY ==================== -->
-  <section class="wrap" style="margin-top:clamp(64px,10vw,160px)">
-    <div class="section-head">
-      <p class="kicker">Exhibits</p>
-      <h2 class="section-title">The evidence</h2>
-    </div>
-
-    <div class="gallery-grid">
-      <figure class="gal gal--1" data-reveal>
-        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g1/1100/880"
-            alt="An early photograph together, Lekki 2017." loading="lazy" /></div>
-        <figcaption>Fig. 3 &mdash; The first flat, Lekki, 2017.</figcaption>
-      </figure>
-
-      <figure class="gal gal--2" data-reveal style="--d:70ms">
-        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g2/720/960"
-            alt="A portrait at the Yaba bus stop." loading="lazy" /></div>
-        <figcaption>Fig. 4 &mdash; Yaba bus stop, where it began.</figcaption>
-      </figure>
-
-      <figure class="gal gal--3" data-reveal style="--d:140ms">
-        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g3/800/800"
-            alt="A detail shot of aso oke fabric." loading="lazy" /></div>
-        <figcaption>Fig. 5 &mdash; Detail, aso oke.</figcaption>
-      </figure>
-
-      <figure class="gal gal--4" data-reveal style="--d:60ms">
-        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g4/880/1100"
-            alt="A photograph from the road to Ilashe." loading="lazy" /></div>
-        <figcaption>Fig. 6 &mdash; The road to Ilashe, 2021.</figcaption>
-      </figure>
-
-      <figure class="gal gal--5" data-reveal style="--d:120ms">
-        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g5/1200/750"
-            alt="A wide photograph of the beach at Ilashe." loading="lazy" /></div>
-        <figcaption>Fig. 7 &mdash; The long walk back from the beach.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ==================== RSVP ==================== -->
-  <section class="rsvp-section wrap">
-    <button class="rsvp blob blob--panel-dark" id="rsvp" type="button" data-cursor="grow" aria-live="polite">
-      <span class="rsvp__eyebrow">Kindly Reply</span>
-      <span class="rsvp__label" id="rsvpLabel">I&rsquo;ll be there</span>
-      <span class="rsvp__hint" id="rsvpHint">by the first of December</span>
-    </button>
-  </section>
+  </main>
 
   <!-- ==================== COLOPHON ==================== -->
-  <footer class="colophon wrap">
+  <footer class="colophon">
+    <div class="monogram" aria-hidden="true">A<em>&amp;</em>T</div>
+
     <div class="colophon__grid">
       <div>The Lagos Wedding Gazette<br />Printed in Lagos, Nigeria</div>
-      <div>Set in Anton &amp; Newsreader<br />Vol. I &middot; No. 1</div>
+      <div>Made in Lagos,<br />with love</div>
       <div>All photographs reproduced<br />without permission of anyone</div>
     </div>
+
+    <p class="edition">No. 0047 of 0200 &middot; MMXXVI</p>
   </footer>
+
+  <!-- ==================== PRINT INVITATION ==================== -->
+  <section class="invitation" aria-hidden="true">
+    <p class="invitation__eyebrow">Together with their families</p>
+    <p class="invitation__names">Adunni <em>&amp;</em> Tunde</p>
+    <p class="invitation__request">request the pleasure of your company</p>
+    <p class="invitation__date">
+      Saturday, the nineteenth of December<br />
+      two thousand and twenty-six
+    </p>
+    <p class="invitation__venue">The Yard, Victoria Island, Lagos</p>
+    <p class="invitation__rsvp">Kindly reply by the first of December</p>
+    <p class="invitation__welcome">Ẹ káàbọ̀</p>
+  </section>
 
   <script>
     (() => {
@@ -1225,6 +1655,8 @@
 
       /* ==========================================================
          LAGGING RING CURSOR
+         Dot is exact. Ring lerps behind. Scale is a separate CSS
+         property so position and hover state never fight.
          ========================================================== */
       function initCursor() {
         if (reduceMotion || !finePointer) return;
@@ -1248,21 +1680,21 @@
           }
         }, { passive: true });
 
-        function loop() {
+        (function loop() {
           rx += (mx - rx) * 0.16;
           ry += (my - ry) * 0.16;
           ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
           requestAnimationFrame(loop);
-        }
-        loop();
+        })();
 
         document.addEventListener('pointerover', (e) => {
-          const t = e.target.closest('[data-cursor], a, button, [role="button"]');
+          const t = e.target.closest('a, button, input, textarea, [role="button"]');
           ring.classList.toggle('is-active', Boolean(t));
         });
 
         document.addEventListener('pointerdown', () => ring.classList.add('is-press'));
         document.addEventListener('pointerup', () => ring.classList.remove('is-press'));
+
         document.addEventListener('pointerleave', () => {
           document.body.classList.remove('cursor-ready');
         });
@@ -1272,7 +1704,7 @@
       }
 
       /* ==========================================================
-         SCROLL REVEALS
+         NARRATIVE REVEALS — 700ms, blur to sharp
          ========================================================== */
       function initReveals() {
         const targets = document.querySelectorAll('[data-reveal]');
@@ -1295,66 +1727,128 @@
       }
 
       /* ==========================================================
-         DETAIL CARDS
+         THE HAIRLINE THAT DRAWS — once, above the letters
          ========================================================== */
-      function initDetails() {
-        document.querySelectorAll('[data-detail]').forEach((card) => {
-          function toggle() {
-            const open = card.getAttribute('aria-expanded') === 'true';
-            card.setAttribute('aria-expanded', String(!open));
-            card.classList.toggle('is-open', !open);
-          }
+      function initHairline() {
+        const el = document.querySelector('.hairline-draw');
+        if (!el) return;
 
-          card.addEventListener('click', toggle);
-          card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              toggle();
-            }
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+          el.classList.add('in');
+          return;
+        }
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            el.classList.add('in');
+            io.disconnect();
           });
-        });
+        }, { threshold: 0.2 });
+
+        io.observe(el);
       }
 
       /* ==========================================================
-         RSVP
+         RSVP FORM
          ========================================================== */
       function initRsvp() {
-        const btn = document.getElementById('rsvp');
-        const label = document.getElementById('rsvpLabel');
-        const hint = document.getElementById('rsvpHint');
-        if (!btn || !label || !hint) return;
+        const form = document.getElementById('rsvpForm');
+        const done = document.getElementById('rsvpDone');
+        const again = document.getElementById('rsvpAgain');
+        if (!form || !done) return;
 
-        const states = [
-          { label: 'I\u2019ll be there', hint: 'by the first of December' },
-          { label: 'Regretfully, no', hint: 'you will be missed' },
-          { label: 'Mo gb\u1ecd\u0301, mo n\u0301 b\u1ecd\u0300', hint: 'I heard, I\u2019m coming' }
-        ];
-        let index = 0;
-        let lock = false;
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
 
-        btn.addEventListener('click', () => {
-          if (lock) return;
-          lock = true;
-          index = (index + 1) % states.length;
+          const nameInput = form.elements.name;
+          if (!nameInput.value.trim()) {
+            nameInput.focus();
+            return;
+          }
 
-          btn.classList.remove('is-confirmed');
-          void btn.offsetWidth;
-          btn.classList.add('is-confirmed');
+          form.hidden = true;
+          done.hidden = false;
+          done.focus();
+        });
 
-          label.textContent = states[index].label;
-          hint.textContent = states[index].hint;
+        if (again) {
+          again.addEventListener('click', () => {
+            done.hidden = true;
+            form.hidden = false;
+            form.reset();
+            form.elements.name.focus();
+          });
+        }
+      }
 
-          window.setTimeout(() => { lock = false; }, 420);
+      /* ==========================================================
+         LETTERS — new notes prepend to the correspondence column
+         ========================================================== */
+      function initLetters() {
+        const form = document.getElementById('letterForm');
+        const list = document.getElementById('letterList');
+        if (!form || !list) return;
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const nameEl = form.elements.name;
+          const msgEl = form.elements.message;
+          const message = msgEl.value.trim();
+          const name = nameEl.value.trim();
+
+          if (!message) {
+            msgEl.focus();
+            return;
+          }
+
+          const li = document.createElement('li');
+          li.className = 'letter';
+
+          const p = document.createElement('p');
+          p.textContent = message;
+
+          const cite = document.createElement('cite');
+          cite.textContent = '\u2014 ' + (name || 'A guest') + ', Lagos';
+
+          li.append(p, cite);
+
+          if (list.firstChild) {
+            list.insertBefore(li, list.firstChild);
+          } else {
+            list.appendChild(li);
+          }
+
+          form.reset();
+
+          if (!reduceMotion && li.animate) {
+            li.animate(
+              [
+                { opacity: 0, transform: 'translateY(14px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+              ],
+              { duration: 700, easing: 'cubic-bezier(.16,1,.3,1)' }
+            );
+          }
         });
       }
 
       /* ==========================================================
-         BOOT
+         PRINT INVITATION
          ========================================================== */
+      function initPrint() {
+        document.querySelectorAll('[data-print]').forEach((btn) => {
+          btn.addEventListener('click', () => window.print());
+        });
+      }
+
       initCursor();
       initReveals();
-      initDetails();
+      initHairline();
       initRsvp();
+      initLetters();
+      initPrint();
     })();
   </script>
 </body>
