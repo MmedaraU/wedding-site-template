@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ada &amp; Elias — The Wedding Gazette</title>
+  <meta name="description"
+    content="A full and true account of the union of two households, to be held at the Salt Warehouse, Wapping." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ============================================================
+   1. TOKENS + RESET
+   ============================================================ */
+    :root {
+      --ink: #000;
+      --paper: #fff;
+      --ease: cubic-bezier(.25, 1, .5, 1);
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --dur: 180ms;
+      --wrap: min(1280px, 100% - 2 * clamp(16px, 4vw, 56px));
+      --gap: clamp(12px, 1.6vw, 26px);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-size: clamp(15px, .35vw + 14px, 18px);
+      line-height: 1.55;
+      font-optical-sizing: auto;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    /* Custom cursor is only armed on precise pointers */
+    @media (hover:hover) and (pointer:fine) {
+      body {
+        cursor: none
+      }
+
+      a,
+      button,
+      [role="button"] {
+        cursor: none
+      }
+    }
+
+    .wrap {
+      width: var(--wrap);
+      margin-inline: auto;
+    }
+
+    /* ============================================================
+   2. TYPOGRAPHY
+   ============================================================ */
+    .kicker {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin: 0 0 .9em;
+    }
+
+    .deck {
+      font-size: clamp(17px, .7vw + 14px, 22px);
+      line-height: 1.4;
+      margin: 0 0 1.4em;
+      text-wrap: pretty;
+    }
+
+    .byline {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin: 0;
+    }
+
+    .section-title {
+      font-family: 'Anton', 'Arial Narrow', Impact, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: .92;
+      letter-spacing: -.01em;
+      font-size: clamp(34px, 5.4vw, 76px);
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--ink);
+      margin: 0;
+    }
+
+    .rule--thick {
+      border-top-width: 4px
+    }
+
+    /* ============================================================
+   3. CURSOR
+   ============================================================ */
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 200;
+      mix-blend-mode: difference;
+      opacity: 0;
+      transition: opacity 240ms var(--ease), scale var(--dur) var(--ease);
+      will-change: transform;
+    }
+
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      margin: -3px 0 0 -3px;
+    }
+
+    .cursor-ring {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #fff;
+      margin: -17px 0 0 -17px;
+      scale: 1;
+    }
+
+    .cursor-ring.is-active {
+      scale: 1.9
+    }
+
+    .cursor-ring.is-press {
+      scale: .8
+    }
+
+    body.cursor-ready .cursor-dot,
+    body.cursor-ready .cursor-ring {
+      opacity: 1
+    }
+
+    @media (hover:none),
+    (pointer:coarse) {
+
+      .cursor-dot,
+      .cursor-ring {
+        display: none
+      }
+    }
+
+    /* ============================================================
+   4. VINE CANVAS
+   ============================================================ */
+    .vine-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 150;
+      mix-blend-mode: difference;
+    }
+
+    /* ============================================================
+   5. BLOB PRIMITIVES
+   ============================================================ */
+    .blob {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    /* Image blobs: big organic percentages + slow morph */
+    .blob--img {
+      background: var(--ink);
+      border-radius: 58% 42% 63% 37% / 45% 58% 42% 55%;
+      animation: morph-a 22s ease-in-out infinite alternate;
+      transition: scale var(--dur) var(--ease);
+    }
+
+    .blob--img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: scale 520ms var(--ease-out);
+    }
+
+    .blob--img:hover {
+      scale: 1.015
+    }
+
+    .blob--img:hover img {
+      scale: 1.04
+    }
+
+    @keyframes morph-a {
+      0% {
+        border-radius: 58% 42% 63% 37% / 45% 58% 42% 55%
+      }
+
+      50% {
+        border-radius: 42% 58% 37% 63% / 58% 42% 55% 45%
+      }
+
+      100% {
+        border-radius: 50% 50% 44% 56% / 56% 44% 58% 42%
+      }
+    }
+
+    @keyframes morph-b {
+      0% {
+        border-radius: 38% 62% 55% 45% / 52% 40% 60% 48%
+      }
+
+      50% {
+        border-radius: 62% 38% 44% 56% / 40% 62% 45% 55%
+      }
+
+      100% {
+        border-radius: 48% 52% 60% 40% / 60% 48% 40% 52%
+      }
+    }
+
+    @keyframes morph-c {
+      0% {
+        border-radius: 52% 48% 36% 64% / 44% 62% 38% 56%
+      }
+
+      50% {
+        border-radius: 36% 64% 62% 38% / 64% 38% 56% 44%
+      }
+
+      100% {
+        border-radius: 64% 36% 48% 52% / 38% 56% 44% 62%
+      }
+    }
+
+    /* Content panels: controlled radii so text never clips */
+    .blob--panel {
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%;
+      padding: clamp(28px, 4.2vw, 64px);
+      animation: morph-d 26s ease-in-out infinite alternate;
+    }
+
+    .blob--panel-dark {
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+      border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%;
+      padding: clamp(28px, 4.2vw, 56px);
+      animation: morph-e 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes morph-d {
+      0% {
+        border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%
+      }
+
+      100% {
+        border-radius: 10% 16% 9% 17% / 15% 21% 13% 22%
+      }
+    }
+
+    @keyframes morph-e {
+      0% {
+        border-radius: 16% 9% 18% 8% / 20% 14% 22% 16%
+      }
+
+      100% {
+        border-radius: 9% 17% 8% 18% / 14% 22% 15% 20%
+      }
+    }
+
+    /* ============================================================
+   6. MASTHEAD
+   ============================================================ */
+    .masthead {
+      padding-top: clamp(16px, 2vw, 28px)
+    }
+
+    .nameplate {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding-block: 10px 14px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .nameplate__mid {
+      opacity: .55
+    }
+
+    .headline {
+      font-family: 'Anton', 'Arial Narrow', Impact, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      line-height: .84;
+      letter-spacing: -.018em;
+      margin: clamp(18px, 2.4vw, 34px) 0 clamp(20px, 2.6vw, 40px);
+      text-shadow: .012em .012em 0 rgba(0, 0, 0, .15);
+    }
+
+    .headline__eyebrow {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(10px, 1.1vw, 13px);
+      font-weight: 600;
+      letter-spacing: .34em;
+      text-shadow: none;
+      margin-bottom: clamp(10px, 1.4vw, 20px);
+    }
+
+    .headline__main {
+      display: block;
+      font-size: clamp(52px, 12.5vw, 176px);
+    }
+
+    .headline .amp {
+      display: inline-block;
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: .66em;
+      letter-spacing: 0;
+      transform: translateY(-.06em);
+      margin-inline: .04em;
+    }
+
+    /* Hero grid */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      margin-top: clamp(24px, 4vw, 48px);
+      align-items: start;
+    }
+
+    .hero-deck {
+      grid-column: 1 / 5
+    }
+
+    .hero-figure {
+      grid-column: 6 / 13;
+      margin: 0
+    }
+
+    .hero-figure .blob--img {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      animation-duration: 26s;
+    }
+
+    figcaption {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .6;
+      margin-top: 14px;
+      padding-left: 4px;
+    }
+
+    /* ============================================================
+   7. TICKER
+   ============================================================ */
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--ink);
+      margin-block: clamp(40px, 7vw, 96px);
+      padding-block: 11px;
+    }
+
+    .ticker__track {
+      display: flex;
+      width: max-content;
+      gap: 2.2rem;
+      white-space: nowrap;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      animation: marquee 34s linear infinite;
+    }
+
+    .ticker__track span {
+      flex: none
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ============================================================
+   8. SECTION HEAD
+   ============================================================ */
+    .section-head {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      margin-bottom: clamp(24px, 3.4vw, 48px);
+      padding-top: clamp(8px, 1.4vw, 16px);
+      border-top: 1px solid var(--ink);
+    }
+
+    .section-head .kicker {
+      grid-column: 1 / 4;
+      padding-top: 6px;
+      margin: 0
+    }
+
+    .section-head .section-title {
+      grid-column: 4 / 13
+    }
+
+    /* ============================================================
+   9. STORY
+   ============================================================ */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    .story-panel {
+      grid-column: 1 / 8
+    }
+
+    .story-figure {
+      grid-column: 9 / 13;
+      margin: 0
+    }
+
+    .story-panel p {
+      margin: 0 0 1.1em;
+      text-wrap: pretty
+    }
+
+    .story-panel p:last-child {
+      margin-bottom: 0
+    }
+
+    .story-cols {
+      columns: 2;
+      column-gap: clamp(20px, 2.6vw, 42px);
+      column-rule: 1px solid rgba(0, 0, 0, .14);
+    }
+
+    .story-cols>p:first-child::first-letter {
+      float: left;
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: 3.4em;
+      line-height: .78;
+      padding: .06em .1em 0 0;
+    }
+
+    .story-figure .blob--img {
+      aspect-ratio: 3 / 4;
+      animation-name: morph-b;
+      animation-duration: 20s;
+    }
+
+    /* ============================================================
+   10. DETAILS
+   ============================================================ */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    .detail {
+      text-align: left;
+      font: inherit;
+      color: var(--paper);
+      outline-offset: 6px;
+      transition: scale var(--dur) var(--ease), translate 320ms var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .detail:nth-child(1) {
+      grid-column: 1 / 5
+    }
+
+    .detail:nth-child(2) {
+      grid-column: 5 / 9;
+      margin-top: clamp(0px, 3vw, 44px)
+    }
+
+    .detail:nth-child(3) {
+      grid-column: 9 / 12;
+      margin-top: clamp(0px, 6vw, 92px)
+    }
+
+    .detail:hover {
+      translate: 0 -3px
+    }
+
+    .detail:active {
+      scale: .975
+    }
+
+    .detail.is-open {
+      scale: 1
+    }
+
+    .detail__num {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      opacity: .55;
+      margin-bottom: clamp(28px, 4vw, 56px);
+    }
+
+    .detail__title {
+      font-family: 'Anton', Impact, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: .95;
+      letter-spacing: -.01em;
+      margin: 0 0 .55em;
+    }
+
+    .detail__lede {
+      font-size: clamp(14px, .9vw + 10px, 16px);
+      line-height: 1.45;
+      margin: 0;
+      opacity: .82;
+      text-wrap: pretty;
+    }
+
+    .detail__body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 320ms var(--ease);
+    }
+
+    .detail.is-open .detail__body {
+      grid-template-rows: 1fr
+    }
+
+    .detail__body>div {
+      overflow: hidden
+    }
+
+    .detail__body p {
+      margin: 1.1em 0 0;
+      font-size: clamp(14px, .9vw + 10px, 16px);
+      line-height: 1.5;
+      opacity: .82;
+      text-wrap: pretty;
+    }
+
+    /* ============================================================
+   11. GALLERY
+   ============================================================ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: calc(var(--gap) * 1.4);
+      align-items: start;
+    }
+
+    .gal {
+      margin: 0
+    }
+
+    .gal--1 {
+      grid-column: 1 / 6
+    }
+
+    .gal--2 {
+      grid-column: 7 / 10;
+      margin-top: clamp(24px, 6vw, 96px)
+    }
+
+    .gal--3 {
+      grid-column: 10 / 13;
+      margin-top: clamp(0px, 2vw, 24px)
+    }
+
+    .gal--4 {
+      grid-column: 2 / 7;
+      margin-top: calc(var(--gap) * -1)
+    }
+
+    .gal--5 {
+      grid-column: 8 / 13;
+      margin-top: clamp(-40px, -3vw, 0px)
+    }
+
+    .gal .blob--img {
+      width: 100%
+    }
+
+    .gal--1 .blob--img {
+      aspect-ratio: 5 / 4;
+      animation-name: morph-c;
+      animation-duration: 24s
+    }
+
+    .gal--2 .blob--img {
+      aspect-ratio: 3 / 4;
+      animation-duration: 19s
+    }
+
+    .gal--3 .blob--img {
+      aspect-ratio: 1 / 1;
+      animation-name: morph-b;
+      animation-duration: 27s
+    }
+
+    .gal--4 .blob--img {
+      aspect-ratio: 4 / 5;
+      animation-name: morph-a;
+      animation-duration: 21s
+    }
+
+    .gal--5 .blob--img {
+      aspect-ratio: 16 / 10;
+      animation-name: morph-c;
+      animation-duration: 25s
+    }
+
+    /* ============================================================
+   12. RSVP
+   ============================================================ */
+    .rsvp-section {
+      display: flex;
+      justify-content: center;
+      padding-block: clamp(56px, 9vw, 140px);
+    }
+
+    .rsvp {
+      border: 0;
+      font: inherit;
+      color: var(--paper);
+      text-align: center;
+      padding: clamp(44px, 7vw, 92px) clamp(48px, 9vw, 140px);
+      transition: scale var(--dur) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      outline-offset: 8px;
+    }
+
+    .rsvp:hover {
+      scale: 1.012
+    }
+
+    .rsvp:active {
+      scale: .97
+    }
+
+    .rsvp__eyebrow {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      opacity: .6;
+      margin-bottom: clamp(14px, 2vw, 22px);
+    }
+
+    .rsvp__label {
+      display: block;
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: clamp(30px, 4.6vw, 62px);
+      line-height: .94;
+      text-transform: uppercase;
+      letter-spacing: -.012em;
+      transition: opacity 200ms var(--ease), translate 200ms var(--ease);
+    }
+
+    .rsvp__hint {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      opacity: .55;
+      margin-top: clamp(16px, 2vw, 24px);
+    }
+
+    .rsvp.is-confirmed {
+      animation: pop 420ms var(--ease-out)
+    }
+
+    @keyframes pop {
+      0% {
+        scale: 1
+      }
+
+      38% {
+        scale: .955
+      }
+
+      100% {
+        scale: 1
+      }
+    }
+
+    .rsvp.is-confirmed .rsvp__label {
+      translate: 0 -.1em;
+    }
+
+    /* ============================================================
+   13. FOOTER
+   ============================================================ */
+    .colophon {
+      border-top: 4px solid var(--ink);
+      padding-block: clamp(24px, 3vw, 40px) clamp(48px, 7vw, 88px);
+    }
+
+    .colophon__grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      line-height: 1.7;
+    }
+
+    .colophon__grid>div:nth-child(1) {
+      grid-column: 1 / 5
+    }
+
+    .colophon__grid>div:nth-child(2) {
+      grid-column: 5 / 9;
+      opacity: .6
+    }
+
+    .colophon__grid>div:nth-child(3) {
+      grid-column: 9 / 13;
+      opacity: .6
+    }
+
+    /* ============================================================
+   14. SCROLL REVEALS
+   ============================================================ */
+    .js [data-reveal] {
+      opacity: 0;
+      translate: 0 16px;
+      transition:
+        opacity 380ms var(--ease-out),
+        translate 380ms var(--ease-out);
+      transition-delay: var(--d, 0ms);
+    }
+
+    .js [data-reveal].in {
+      opacity: 1;
+      translate: 0 0;
+    }
+
+    /* ============================================================
+   15. RESPONSIVE
+   ============================================================ */
+    @media (max-width:900px) {
+      .hero-deck {
+        grid-column: 1 / 7
+      }
+
+      .hero-figure {
+        grid-column: 7 / 13
+      }
+
+      .story-panel {
+        grid-column: 1 / 13
+      }
+
+      .story-figure {
+        grid-column: 1 / 8;
+        margin-top: var(--gap)
+      }
+
+      .detail:nth-child(1) {
+        grid-column: 1 / 7
+      }
+
+      .detail:nth-child(2) {
+        grid-column: 7 / 13;
+        margin-top: 0
+      }
+
+      .detail:nth-child(3) {
+        grid-column: 1 / 7;
+        margin-top: var(--gap)
+      }
+    }
+
+    @media (max-width:720px) {
+      .nameplate {
+        flex-wrap: wrap;
+        gap: .4rem 1.2rem
+      }
+
+      .nameplate__mid {
+        order: 3;
+        flex-basis: 100%
+      }
+
+      .hero-deck,
+      .hero-figure {
+        grid-column: 1 / 13
+      }
+
+      .hero-figure {
+        margin-top: var(--gap)
+      }
+
+      .section-head .kicker {
+        grid-column: 1 / 13;
+        margin-bottom: .6em
+      }
+
+      .section-head .section-title {
+        grid-column: 1 / 13
+      }
+
+      .story-cols {
+        columns: 1
+      }
+
+      .story-figure {
+        grid-column: 1 / 13
+      }
+
+      .detail:nth-child(1),
+      .detail:nth-child(2),
+      .detail:nth-child(3) {
+        grid-column: 1 / 13;
+        margin-top: 0
+      }
+
+      .detail+.detail {
+        margin-top: var(--gap)
+      }
+
+      .gal--1,
+      .gal--2,
+      .gal--3,
+      .gal--4,
+      .gal--5 {
+        grid-column: 1 / 13;
+        margin-top: var(--gap)
+      }
+
+      .colophon__grid>div {
+        grid-column: 1 / 13 !important;
+        margin-bottom: 1.2em
+      }
+
+      .rsvp {
+        width: 100%
+      }
+    }
+
+    /* ============================================================
+   16. REDUCED MOTION
+   ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+
+      .vine-canvas,
+      .cursor-dot,
+      .cursor-ring {
+        display: none !important
+      }
+
+      body {
+        cursor: auto
+      }
+
+      .js [data-reveal] {
+        opacity: 1;
+        translate: 0 0
+      }
+
+      .ticker__track {
+        animation: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <canvas class="vine-canvas" id="vineCanvas" aria-hidden="true"></canvas>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+  <!-- ==================== MASTHEAD ==================== -->
+  <header class="masthead wrap">
+    <div class="nameplate">
+      <span>The Wedding Gazette</span>
+      <span class="nameplate__mid">Vol. I &middot; No. 1</span>
+      <span>Saturday, 14 June 2026</span>
+    </div>
+
+    <hr class="rule rule--thick" />
+
+    <h1 class="headline">
+      <span class="headline__eyebrow">The Marriage of</span>
+      <span class="headline__main">Ada <span class="amp">&amp;</span> Elias</span>
+    </h1>
+
+    <hr class="rule" />
+
+    <div class="hero-grid">
+      <div class="hero-deck">
+        <p class="kicker">Wedding Supplement</p>
+        <p class="deck">Being a full and true account of the union of two households, to be held at the Salt Warehouse,
+          Wapping, and attended by persons of good humour.</p>
+        <p class="byline">From the Office of the Bride &amp; Groom</p>
+      </div>
+
+      <figure class="hero-figure" data-reveal>
+        <div class="blob blob--img">
+          <img src="https://picsum.photos/seed/adaelias-hero/1000/1250" alt="The couple, photographed in low light."
+            fetchpriority="high" />
+        </div>
+        <figcaption>Fig. 1 &mdash; The couple, unbothered.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <!-- ==================== TICKER ==================== -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Ada &amp; Elias</span><span>&bull;</span>
+      <span>14 &middot; 06 &middot; 26</span><span>&bull;</span>
+      <span>The Salt Warehouse, Wapping</span><span>&bull;</span>
+      <span>Supper at six</span><span>&bull;</span>
+      <span>No florals</span><span>&bull;</span>
+      <span>Ada &amp; Elias</span><span>&bull;</span>
+      <span>14 &middot; 06 &middot; 26</span><span>&bull;</span>
+      <span>The Salt Warehouse, Wapping</span><span>&bull;</span>
+      <span>Supper at six</span><span>&bull;</span>
+      <span>No florals</span><span>&bull;</span>
+    </div>
+  </div>
+
+  <!-- ==================== STORY ==================== -->
+  <section class="wrap" id="story">
+    <div class="section-head">
+      <p class="kicker">The Long Read</p>
+      <h2 class="section-title">How a broken umbrella<br />led to a marriage</h2>
+    </div>
+
+    <div class="story-grid">
+      <div class="blob blob--panel story-panel" data-reveal>
+        <div class="story-cols">
+          <p>It began, as these things do, with an umbrella that had no business being in working order. Elias had
+            borrowed it from a stranger in a doorway on Rivington Street, and Ada had watched him hand it back with the
+            solemnity of a man returning a relic.</p>
+          <p>They were both twenty-six and neither was looking for anything in particular. She was between flats. He was
+            between opinions about what to do with a degree in something impractical. The umbrella lasted four more
+            blocks before it gave up entirely, and by then they had already decided to split a cab.</p>
+          <p>Nine years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. What
+            follows is an account of the day they intend to make it official, set down here for the benefit of friends,
+            family, and anyone who has ever been rained on at an opportune moment.</p>
+          <p>The ceremony will be short. The supper will not be. There will be a band, and there will be a point at
+            which the band stops, and what happens after that is between the guests and the river.</p>
+        </div>
+      </div>
+
+      <figure class="story-figure" data-reveal style="--d:80ms">
+        <div class="blob blob--img">
+          <img src="https://picsum.photos/seed/adaelias-story/900/1200" alt="A candid photograph from the archive."
+            loading="lazy" />
+        </div>
+        <figcaption>Fig. 2 &mdash; The flat, the winter, the radiator.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== DETAILS ==================== -->
+  <section class="wrap" style="margin-top:clamp(64px,10vw,160px)">
+    <div class="section-head">
+      <p class="kicker">The Particulars</p>
+      <h2 class="section-title">Order of the day</h2>
+    </div>
+
+    <div class="details-grid">
+      <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
+        data-cursor="grow" data-reveal>
+        <span class="detail__num">01</span>
+        <h3 class="detail__title">The Ceremony</h3>
+        <p class="detail__lede">Half past two, by the water.</p>
+        <div class="detail__body">
+          <div>
+            <p>The Salt Warehouse, Wapping. Arrive from two. Seating is unassigned, the floor is uneven, and the wind is
+              not our friend. Wear something you can stand in for twenty minutes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
+        data-cursor="grow" data-reveal style="--d:60ms">
+        <span class="detail__num">02</span>
+        <h3 class="detail__title">The Reception</h3>
+        <p class="detail__lede">Supper at six, dancing until late.</p>
+        <div class="detail__body">
+          <div>
+            <p>Long tables, one long meal, no assigned seats and no speeches longer than four minutes. There will be a
+              band. There will be a point at which the band stops.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
+        data-cursor="grow" data-reveal style="--d:120ms">
+        <span class="detail__num">03</span>
+        <h3 class="detail__title">The Dress Code</h3>
+        <p class="detail__lede">Come as your most comfortable self.</p>
+        <div class="detail__body">
+          <div>
+            <p>Black tie is welcome. So is the coat you have owned for a decade. There are no rules beyond this one: no
+              florals. We mean it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY ==================== -->
+  <section class="wrap" style="margin-top:clamp(64px,10vw,160px)">
+    <div class="section-head">
+      <p class="kicker">Exhibits</p>
+      <h2 class="section-title">The evidence</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gal gal--1" data-reveal>
+        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g1/1100/880"
+            alt="An early photograph together." loading="lazy" /></div>
+        <figcaption>Fig. 3 &mdash; The first flat, 2017.</figcaption>
+      </figure>
+
+      <figure class="gal gal--2" data-reveal style="--d:70ms">
+        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g2/720/960"
+            alt="A portrait in a doorway." loading="lazy" /></div>
+        <figcaption>Fig. 4 &mdash; Rivington Street.</figcaption>
+      </figure>
+
+      <figure class="gal gal--3" data-reveal style="--d:140ms">
+        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g3/800/800" alt="A detail shot."
+            loading="lazy" /></div>
+        <figcaption>Fig. 5 &mdash; Detail.</figcaption>
+      </figure>
+
+      <figure class="gal gal--4" data-reveal style="--d:60ms">
+        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g4/880/1100"
+            alt="A photograph from a trip." loading="lazy" /></div>
+        <figcaption>Fig. 6 &mdash; Somewhere north, 2021.</figcaption>
+      </figure>
+
+      <figure class="gal gal--5" data-reveal style="--d:120ms">
+        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g5/1200/750"
+            alt="A wide landscape photograph." loading="lazy" /></div>
+        <figcaption>Fig. 7 &mdash; The long walk back.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== RSVP ==================== -->
+  <section class="rsvp-section wrap">
+    <button class="rsvp blob blob--panel-dark" id="rsvp" type="button" data-cursor="grow" aria-live="polite">
+      <span class="rsvp__eyebrow">Kindly Reply</span>
+      <span class="rsvp__label" id="rsvpLabel">I&rsquo;ll be there</span>
+      <span class="rsvp__hint" id="rsvpHint">by the first of May</span>
+    </button>
+  </section>
+
+  <!-- ==================== COLOPHON ==================== -->
+  <footer class="colophon wrap">
+    <div class="colophon__grid">
+      <div>The Wedding Gazette<br />Printed at Wapping</div>
+      <div>Set in Anton &amp; Newsreader<br />Vol. I &middot; No. 1</div>
+      <div>All photographs reproduced<br />without permission of anyone</div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      /* ==========================================================
+         VINE CURSOR
+         A living ink trail: a fading spine plus curling tendrils
+         that sprout perpendicular to the direction of travel.
+         Strokes are drawn white with mix-blend-mode:difference,
+         so the vine reads black on paper and white on ink.
+         ========================================================== */
+      function initVine() {
+        if (reduceMotion || !finePointer) return;
+
+        const canvas = document.getElementById('vineCanvas');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let W = 0, H = 0, DPR = 1;
+
+        function resize() {
+          DPR = Math.min(window.devicePixelRatio || 1, 2);
+          W = window.innerWidth;
+          H = window.innerHeight;
+          canvas.width = Math.floor(W * DPR);
+          canvas.height = Math.floor(H * DPR);
+          canvas.style.width = W + 'px';
+          canvas.style.height = H + 'px';
+          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        }
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        const TRAIL_LIFE = 1500;  // ms a spine segment survives
+        const BRANCH_FADE = 1000;  // ms a tendril takes to wither
+        const MAX_POINTS = 140;
+        const MIN_DIST = 5;     // px between samples
+        const MAX_BRANCH = 24;
+
+        const trail = [];  // { x, y, t }
+        const branches = [];  // { x, y, angle, len, curl, t, dur }
+
+        let last = null;
+
+        function onMove(e) {
+          const x = e.clientX;
+          const y = e.clientY;
+          const now = performance.now();
+
+          if (!last) {
+            last = { x, y };
+            return;
+          }
+          if (Math.hypot(x - last.x, y - last.y) < MIN_DIST) return;
+
+          const angle = Math.atan2(y - last.y, x - last.x);
+
+          // Occasionally sprout a tendril off the main line
+          if (Math.random() < 0.16 && branches.length < MAX_BRANCH) {
+            branches.push({
+              x, y,
+              angle: angle + (Math.random() < 0.5 ? -1 : 1) * (0.7 + Math.random() * 0.85),
+              len: 22 + Math.random() * 46,
+              curl: (Math.random() < 0.5 ? -1 : 1) * (0.55 + Math.random() * 1.1),
+              t: now,
+              dur: 850 + Math.random() * 700
+            });
+          }
+
+          trail.push({ x, y, t: now });
+          if (trail.length > MAX_POINTS) trail.shift();
+          last = { x, y };
+        }
+
+        function frame(now) {
+          ctx.clearRect(0, 0, W, H);
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+
+          // Prune dead spine points
+          while (trail.length && now - trail[0].t > TRAIL_LIFE) trail.shift();
+
+          // Draw the spine
+          for (let i = 1; i < trail.length; i++) {
+            const p0 = trail[i - 1];
+            const p1 = trail[i];
+            const age = now - p1.t;
+            if (age > TRAIL_LIFE) continue;
+
+            const life = 1 - age / TRAIL_LIFE;
+            ctx.beginPath();
+            ctx.moveTo(p0.x, p0.y);
+            ctx.lineTo(p1.x, p1.y);
+            ctx.strokeStyle = 'rgba(255,255,255,' + (life * 0.55).toFixed(3) + ')';
+            ctx.lineWidth = 0.6 + life * 0.9;
+            ctx.stroke();
+          }
+
+          // Draw tendrils
+          for (let i = branches.length - 1; i >= 0; i--) {
+            const b = branches[i];
+            const elapsed = now - b.t;
+
+            if (elapsed > b.dur + BRANCH_FADE) {
+              branches.splice(i, 1);
+              continue;
+            }
+
+            const grow = Math.min(1, elapsed / b.dur);
+            const eased = 1 - Math.pow(1 - grow, 3);   // ease-out cubic
+            const L = b.len * eased;
+
+            const tipX = b.x + Math.cos(b.angle) * L;
+            const tipY = b.y + Math.sin(b.angle) * L;
+            const ctrlX = b.x + Math.cos(b.angle + b.curl) * L * 0.55;
+            const ctrlY = b.y + Math.sin(b.angle + b.curl) * L * 0.55;
+
+            const fade = elapsed > b.dur
+              ? 1 - (elapsed - b.dur) / BRANCH_FADE
+              : 1;
+
+            ctx.beginPath();
+            ctx.moveTo(b.x, b.y);
+            ctx.quadraticCurveTo(ctrlX, ctrlY, tipX, tipY);
+            ctx.strokeStyle = 'rgba(255,255,255,' + (fade * 0.45).toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            if (fade > 0.2) {
+              ctx.beginPath();
+              ctx.arc(tipX, tipY, 1.3, 0, Math.PI * 2);
+              ctx.fillStyle = 'rgba(255,255,255,' + (fade * 0.5).toFixed(3) + ')';
+              ctx.fill();
+            }
+          }
+
+          requestAnimationFrame(frame);
+        }
+
+        window.addEventListener('pointermove', onMove, { passive: true });
+        document.addEventListener('pointerleave', () => { last = null; });
+        requestAnimationFrame(frame);
+      }
+
+      /* ==========================================================
+         LAGGING RING CURSOR
+         Dot tracks exactly; ring lerps behind. Scale is a
+         separate CSS property so transforms never fight.
+         ========================================================== */
+      function initCursor() {
+        if (reduceMotion || !finePointer) return;
+
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+        if (!dot || !ring) return;
+
+        let mx = window.innerWidth / 2;
+        let my = window.innerHeight / 2;
+        let rx = mx, ry = my;
+        let primed = false;
+
+        window.addEventListener('pointermove', (e) => {
+          mx = e.clientX;
+          my = e.clientY;
+          dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
+          if (!primed) {
+            primed = true;
+            document.body.classList.add('cursor-ready');
+          }
+        }, { passive: true });
+
+        function loop() {
+          rx += (mx - rx) * 0.16;
+          ry += (my - ry) * 0.16;
+          ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+          requestAnimationFrame(loop);
+        }
+        loop();
+
+        // Grow the ring over interactive targets
+        document.addEventListener('pointerover', (e) => {
+          const t = e.target.closest('[data-cursor], a, button, [role="button"]');
+          ring.classList.toggle('is-active', Boolean(t));
+        });
+
+        document.addEventListener('pointerdown', () => ring.classList.add('is-press'));
+        document.addEventListener('pointerup', () => ring.classList.remove('is-press'));
+        document.addEventListener('pointerleave', () => {
+          document.body.classList.remove('cursor-ready');
+        });
+        document.addEventListener('pointerenter', () => {
+          if (primed) document.body.classList.add('cursor-ready');
+        });
+      }
+
+      /* ==========================================================
+         SCROLL REVEALS
+         ========================================================== */
+      function initReveals() {
+        const targets = document.querySelectorAll('[data-reveal]');
+        if (!targets.length) return;
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+          targets.forEach((el) => el.classList.add('in'));
+          return;
+        }
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+        targets.forEach((el) => io.observe(el));
+      }
+
+      /* ==========================================================
+         DETAIL CARDS
+         Click or keyboard toggles the clip-reveal body.
+         ========================================================== */
+      function initDetails() {
+        document.querySelectorAll('[data-detail]').forEach((card) => {
+          function toggle() {
+            const open = card.getAttribute('aria-expanded') === 'true';
+            card.setAttribute('aria-expanded', String(!open));
+            card.classList.toggle('is-open', !open);
+          }
+
+          card.addEventListener('click', toggle);
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggle();
+            }
+          });
+        });
+      }
+
+      /* ==========================================================
+         RSVP
+         ========================================================== */
+      function initRsvp() {
+        const btn = document.getElementById('rsvp');
+        const label = document.getElementById('rsvpLabel');
+        const hint = document.getElementById('rsvpHint');
+        if (!btn || !label || !hint) return;
+
+        const states = [
+          { label: 'I\u2019ll be there', hint: 'by the first of May' },
+          { label: 'Regretfully, no', hint: 'you will be missed' },
+          { label: 'Tell me more', hint: 'the details, in full' }
+        ];
+        let index = 0;
+        let lock = false;
+
+        btn.addEventListener('click', () => {
+          if (lock) return;
+          lock = true;
+          index = (index + 1) % states.length;
+
+          btn.classList.remove('is-confirmed');
+          // Force reflow so the pop animation can restart
+          void btn.offsetWidth;
+          btn.classList.add('is-confirmed');
+
+          label.textContent = states[index].label;
+          hint.textContent = states[index].hint;
+
+          window.setTimeout(() => { lock = false; }, 420);
+        });
+      }
+
+      /* ==========================================================
+         BOOT
+         ========================================================== */
+      initVine();
+      initCursor();
+      initReveals();
+      initDetails();
+      initRsvp();
+    })();
+  </script>
+</body>
+
+</html>
