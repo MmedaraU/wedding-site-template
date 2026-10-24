@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ada &amp; Elias — The Wedding Gazette</title>
+  <title>Adunni &amp; Tunde — The Lagos Wedding Gazette</title>
   <meta name="description"
-    content="A full and true account of the union of two households, to be held at the Salt Warehouse, Wapping." />
+    content="A full and true account of the union of two Lagos households, to be held at The Yard, Victoria Island, with jollof, small chops, and persons of good humour." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -53,7 +53,6 @@
       max-width: 100%
     }
 
-    /* Custom cursor is only armed on precise pointers */
     @media (hover:hover) and (pointer:fine) {
       body {
         cursor: none
@@ -175,20 +174,7 @@
     }
 
     /* ============================================================
-   4. VINE CANVAS
-   ============================================================ */
-    .vine-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 150;
-      mix-blend-mode: difference;
-    }
-
-    /* ============================================================
-   5. BLOB PRIMITIVES
+   4. BLOB PRIMITIVES
    ============================================================ */
     .blob {
       position: relative;
@@ -196,7 +182,6 @@
       isolation: isolate;
     }
 
-    /* Image blobs: big organic percentages + slow morph */
     .blob--img {
       background: var(--ink);
       border-radius: 58% 42% 63% 37% / 45% 58% 42% 55%;
@@ -261,7 +246,6 @@
       }
     }
 
-    /* Content panels: controlled radii so text never clips */
     .blob--panel {
       background: var(--paper);
       border: 1px solid var(--ink);
@@ -270,8 +254,16 @@
       animation: morph-d 26s ease-in-out infinite alternate;
     }
 
+    /* Dark panels carry a very faint woven diagonal — a quiet
+   nod to aso oke, visible only where the light hits it. */
     .blob--panel-dark {
-      background: var(--ink);
+      background:
+        repeating-linear-gradient(45deg,
+          transparent 0,
+          transparent 7px,
+          rgba(255, 255, 255, .025) 7px,
+          rgba(255, 255, 255, .025) 8px),
+        var(--ink);
       color: var(--paper);
       border: 1px solid var(--ink);
       border-radius: 18% 8% 16% 10% / 22% 16% 20% 14%;
@@ -300,7 +292,7 @@
     }
 
     /* ============================================================
-   6. MASTHEAD
+   5. MASTHEAD
    ============================================================ */
     .masthead {
       padding-top: clamp(16px, 2vw, 28px)
@@ -331,6 +323,7 @@
       letter-spacing: -.018em;
       margin: clamp(18px, 2.4vw, 34px) 0 clamp(20px, 2.6vw, 40px);
       text-shadow: .012em .012em 0 rgba(0, 0, 0, .15);
+      overflow-wrap: break-word;
     }
 
     .headline__eyebrow {
@@ -345,7 +338,7 @@
 
     .headline__main {
       display: block;
-      font-size: clamp(52px, 12.5vw, 176px);
+      font-size: clamp(42px, 11vw, 164px);
     }
 
     .headline .amp {
@@ -359,7 +352,6 @@
       margin-inline: .04em;
     }
 
-    /* Hero grid */
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -394,7 +386,7 @@
     }
 
     /* ============================================================
-   7. TICKER
+   6. TICKER
    ============================================================ */
     .ticker {
       overflow: hidden;
@@ -413,7 +405,7 @@
       font-weight: 500;
       letter-spacing: .22em;
       text-transform: uppercase;
-      animation: marquee 34s linear infinite;
+      animation: marquee 38s linear infinite;
     }
 
     .ticker__track span {
@@ -427,7 +419,7 @@
     }
 
     /* ============================================================
-   8. SECTION HEAD
+   7. SECTION HEAD
    ============================================================ */
     .section-head {
       display: grid;
@@ -449,7 +441,7 @@
     }
 
     /* ============================================================
-   9. STORY
+   8. STORY
    ============================================================ */
     .story-grid {
       display: grid;
@@ -497,7 +489,7 @@
     }
 
     /* ============================================================
-   10. DETAILS
+   9. DETAILS
    ============================================================ */
     .details-grid {
       display: grid;
@@ -588,6 +580,51 @@
       line-height: 1.5;
       opacity: .82;
       text-wrap: pretty;
+    }
+
+    /* ============================================================
+   10. MENU
+   ============================================================ */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(24px, 4vw, 64px);
+      border-top: 2px solid var(--ink);
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1em 0;
+      border-bottom: 1px solid rgba(0, 0, 0, .18);
+    }
+
+    .menu-item__name {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(16px, .9vw + 12px, 19px);
+      line-height: 1.2;
+    }
+
+    .menu-item__desc {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .06em;
+      opacity: .65;
+      text-align: right;
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    .menu-note {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .6;
+      margin-top: clamp(18px, 2.4vw, 28px);
     }
 
     /* ============================================================
@@ -876,6 +913,10 @@
         margin-top: var(--gap)
       }
 
+      .menu-grid {
+        grid-template-columns: 1fr
+      }
+
       .gal--1,
       .gal--2,
       .gal--3,
@@ -908,7 +949,6 @@
         transition-duration: .001ms !important;
       }
 
-      .vine-canvas,
       .cursor-dot,
       .cursor-ring {
         display: none !important
@@ -934,41 +974,40 @@
 
   <script>document.documentElement.classList.add('js');</script>
 
-  <canvas class="vine-canvas" id="vineCanvas" aria-hidden="true"></canvas>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
   <!-- ==================== MASTHEAD ==================== -->
   <header class="masthead wrap">
     <div class="nameplate">
-      <span>The Wedding Gazette</span>
+      <span>The Lagos Wedding Gazette</span>
       <span class="nameplate__mid">Vol. I &middot; No. 1</span>
-      <span>Saturday, 14 June 2026</span>
+      <span>Saturday, 19 December 2026</span>
     </div>
 
     <hr class="rule rule--thick" />
 
     <h1 class="headline">
       <span class="headline__eyebrow">The Marriage of</span>
-      <span class="headline__main">Ada <span class="amp">&amp;</span> Elias</span>
+      <span class="headline__main">Adunni <span class="amp">&amp;</span> Tunde</span>
     </h1>
 
     <hr class="rule" />
 
     <div class="hero-grid">
       <div class="hero-deck">
-        <p class="kicker">Wedding Supplement</p>
-        <p class="deck">Being a full and true account of the union of two households, to be held at the Salt Warehouse,
-          Wapping, and attended by persons of good humour.</p>
-        <p class="byline">From the Office of the Bride &amp; Groom</p>
+        <p class="kicker">Lagos Supplement</p>
+        <p class="deck">Being a full and true account of the union of two Lagos households, to be held at The Yard,
+          Victoria Island, and attended by persons of good humour. Ẹ&nbsp;káàbọ̀.</p>
+        <p class="byline">From the Office of the Bride &amp; Groom &middot; Lekki Phase 1</p>
       </div>
 
       <figure class="hero-figure" data-reveal>
         <div class="blob blob--img">
-          <img src="https://picsum.photos/seed/adaelias-hero/1000/1250" alt="The couple, photographed in low light."
-            fetchpriority="high" />
+          <img src="https://picsum.photos/seed/adaelias-hero/1000/1250"
+            alt="Adunni and Tunde, photographed in low light." fetchpriority="high" />
         </div>
-        <figcaption>Fig. 1 &mdash; The couple, unbothered.</figcaption>
+        <figcaption>Fig. 1 &mdash; The couple, unbothered by Lagos.</figcaption>
       </figure>
     </div>
   </header>
@@ -976,40 +1015,51 @@
   <!-- ==================== TICKER ==================== -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      <span>Ada &amp; Elias</span><span>&bull;</span>
-      <span>14 &middot; 06 &middot; 26</span><span>&bull;</span>
-      <span>The Salt Warehouse, Wapping</span><span>&bull;</span>
-      <span>Supper at six</span><span>&bull;</span>
+      <span>Adunni &amp; Tunde</span><span>&bull;</span>
+      <span>19 &middot; 12 &middot; 26</span><span>&bull;</span>
+      <span>The Yard, Victoria Island</span><span>&bull;</span>
+      <span>Jollof at eight</span><span>&bull;</span>
+      <span>Small chops from five</span><span>&bull;</span>
+      <span>Aso ebi available</span><span>&bull;</span>
       <span>No florals</span><span>&bull;</span>
-      <span>Ada &amp; Elias</span><span>&bull;</span>
-      <span>14 &middot; 06 &middot; 26</span><span>&bull;</span>
-      <span>The Salt Warehouse, Wapping</span><span>&bull;</span>
-      <span>Supper at six</span><span>&bull;</span>
+      <span>Detty December</span><span>&bull;</span>
+      <span>No wahala</span><span>&bull;</span>
+      <span>Adunni &amp; Tunde</span><span>&bull;</span>
+      <span>19 &middot; 12 &middot; 26</span><span>&bull;</span>
+      <span>The Yard, Victoria Island</span><span>&bull;</span>
+      <span>Jollof at eight</span><span>&bull;</span>
+      <span>Small chops from five</span><span>&bull;</span>
+      <span>Aso ebi available</span><span>&bull;</span>
       <span>No florals</span><span>&bull;</span>
+      <span>Detty December</span><span>&bull;</span>
+      <span>No wahala</span><span>&bull;</span>
     </div>
   </div>
 
   <!-- ==================== STORY ==================== -->
   <section class="wrap" id="story">
     <div class="section-head">
-      <p class="kicker">The Long Read</p>
-      <h2 class="section-title">How a broken umbrella<br />led to a marriage</h2>
+      <p class="kicker">The Long Read &middot; Lagos</p>
+      <h2 class="section-title">How a borrowed umbrella<br />led to a marriage</h2>
     </div>
 
     <div class="story-grid">
       <div class="blob blob--panel story-panel" data-reveal>
         <div class="story-cols">
-          <p>It began, as these things do, with an umbrella that had no business being in working order. Elias had
-            borrowed it from a stranger in a doorway on Rivington Street, and Ada had watched him hand it back with the
-            solemnity of a man returning a relic.</p>
-          <p>They were both twenty-six and neither was looking for anything in particular. She was between flats. He was
-            between opinions about what to do with a degree in something impractical. The umbrella lasted four more
-            blocks before it gave up entirely, and by then they had already decided to split a cab.</p>
+          <p>It began, as these things do, in Lagos traffic — the kind that turns a short trip into a long meditation.
+            Tunde had borrowed an umbrella from a stranger at the Yaba bus stop, and Adunni had watched him hand it back
+            with the solemnity of a man returning a relic.</p>
+          <p>They were both twenty-six and neither was looking for anything in particular. She was between flats in
+            Lekki. He was between opinions about what to do with a degree in something impractical. The umbrella lasted
+            four more blocks before it gave up entirely, and by then they had already decided to share a cab to
+            Surulere.</p>
           <p>Nine years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. What
-            follows is an account of the day they intend to make it official, set down here for the benefit of friends,
-            family, and anyone who has ever been rained on at an opportune moment.</p>
-          <p>The ceremony will be short. The supper will not be. There will be a band, and there will be a point at
-            which the band stops, and what happens after that is between the guests and the river.</p>
+            follows is an account of the day they intend to make it official — first at the family compound in Surulere,
+            then at The Yard in Victoria Island — set down here for the benefit of friends, family, and anyone who has
+            ever been rained on at an opportune moment.</p>
+          <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be jollof, and
+            there will be a point at which the band stops, and what happens after that is between the guests and the
+            lagoon.</p>
         </div>
       </div>
 
@@ -1018,7 +1068,7 @@
           <img src="https://picsum.photos/seed/adaelias-story/900/1200" alt="A candid photograph from the archive."
             loading="lazy" />
         </div>
-        <figcaption>Fig. 2 &mdash; The flat, the winter, the radiator.</figcaption>
+        <figcaption>Fig. 2 &mdash; The flat, the harmattan, the radiator.</figcaption>
       </figure>
     </div>
   </section>
@@ -1034,12 +1084,12 @@
       <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
         data-cursor="grow" data-reveal>
         <span class="detail__num">01</span>
-        <h3 class="detail__title">The Ceremony</h3>
-        <p class="detail__lede">Half past two, by the water.</p>
+        <h3 class="detail__title">The Ìgbéyàwó</h3>
+        <p class="detail__lede">Friday, at the family compound, Surulere.</p>
         <div class="detail__body">
           <div>
-            <p>The Salt Warehouse, Wapping. Arrive from two. Seating is unassigned, the floor is uneven, and the wind is
-              not our friend. Wear something you can stand in for twenty minutes.</p>
+            <p>The traditional wedding. Aso oke, family, and more food than is strictly reasonable. Arrive from four.
+              Bring your dancing shoes and your appetite. Ẹ káàbọ̀.</p>
           </div>
         </div>
       </div>
@@ -1047,12 +1097,12 @@
       <div class="detail blob blob--panel-dark" role="button" tabindex="0" aria-expanded="false" data-detail
         data-cursor="grow" data-reveal style="--d:60ms">
         <span class="detail__num">02</span>
-        <h3 class="detail__title">The Reception</h3>
-        <p class="detail__lede">Supper at six, dancing until late.</p>
+        <h3 class="detail__title">The White Wedding</h3>
+        <p class="detail__lede">Saturday, at The Yard, Victoria Island.</p>
         <div class="detail__body">
           <div>
-            <p>Long tables, one long meal, no assigned seats and no speeches longer than four minutes. There will be a
-              band. There will be a point at which the band stops.</p>
+            <p>Half past two, by the water. Seating is unassigned, the floor is uneven, and the December breeze is not
+              our friend. Wear something you can stand in for twenty minutes.</p>
           </div>
         </div>
       </div>
@@ -1061,15 +1111,51 @@
         data-cursor="grow" data-reveal style="--d:120ms">
         <span class="detail__num">03</span>
         <h3 class="detail__title">The Dress Code</h3>
-        <p class="detail__lede">Come as your most comfortable self.</p>
+        <p class="detail__lede">Aso ebi available. Comfort is mandatory.</p>
         <div class="detail__body">
           <div>
-            <p>Black tie is welcome. So is the coat you have owned for a decade. There are no rules beyond this one: no
-              florals. We mean it.</p>
+            <p>Aso ebi is available in the family colours. Black tie is welcome. So is the agbada you have owned for a
+              decade. There are no rules beyond this one: no florals. We mean it.</p>
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ==================== MENU ==================== -->
+  <section class="wrap" style="margin-top:clamp(64px,10vw,160px)" id="menu">
+    <div class="section-head">
+      <p class="kicker">The Menu</p>
+      <h2 class="section-title">What we&rsquo;ll eat</h2>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="menu-item__name">Jollof rice</span>
+        <span class="menu-item__desc">Party style, smoky, from the family recipe.</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item__name">Small chops</span>
+        <span class="menu-item__desc">Puff-puff, samosa, spring roll, peppered gizzard.</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item__name">Suya</span>
+        <span class="menu-item__desc">From the spot on Awolowo Road, by the pound.</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item__name">Puff-puff</span>
+        <span class="menu-item__desc">Fried to order, from five o&rsquo;clock.</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item__name">Cake</span>
+        <span class="menu-item__desc">Three tiers. No florals.</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-item__name">Chapman</span>
+        <span class="menu-item__desc">The welcome drink. Non-negotiable.</span>
+      </div>
+    </div>
+    <p class="menu-note">A vegetarian plate is available. Tell us when you RSVP.</p>
   </section>
 
   <!-- ==================== GALLERY ==================== -->
@@ -1082,32 +1168,32 @@
     <div class="gallery-grid">
       <figure class="gal gal--1" data-reveal>
         <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g1/1100/880"
-            alt="An early photograph together." loading="lazy" /></div>
-        <figcaption>Fig. 3 &mdash; The first flat, 2017.</figcaption>
+            alt="An early photograph together, Lekki 2017." loading="lazy" /></div>
+        <figcaption>Fig. 3 &mdash; The first flat, Lekki, 2017.</figcaption>
       </figure>
 
       <figure class="gal gal--2" data-reveal style="--d:70ms">
         <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g2/720/960"
-            alt="A portrait in a doorway." loading="lazy" /></div>
-        <figcaption>Fig. 4 &mdash; Rivington Street.</figcaption>
+            alt="A portrait at the Yaba bus stop." loading="lazy" /></div>
+        <figcaption>Fig. 4 &mdash; Yaba bus stop, where it began.</figcaption>
       </figure>
 
       <figure class="gal gal--3" data-reveal style="--d:140ms">
-        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g3/800/800" alt="A detail shot."
-            loading="lazy" /></div>
-        <figcaption>Fig. 5 &mdash; Detail.</figcaption>
+        <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g3/800/800"
+            alt="A detail shot of aso oke fabric." loading="lazy" /></div>
+        <figcaption>Fig. 5 &mdash; Detail, aso oke.</figcaption>
       </figure>
 
       <figure class="gal gal--4" data-reveal style="--d:60ms">
         <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g4/880/1100"
-            alt="A photograph from a trip." loading="lazy" /></div>
-        <figcaption>Fig. 6 &mdash; Somewhere north, 2021.</figcaption>
+            alt="A photograph from the road to Ilashe." loading="lazy" /></div>
+        <figcaption>Fig. 6 &mdash; The road to Ilashe, 2021.</figcaption>
       </figure>
 
       <figure class="gal gal--5" data-reveal style="--d:120ms">
         <div class="blob blob--img"><img src="https://picsum.photos/seed/adaelias-g5/1200/750"
-            alt="A wide landscape photograph." loading="lazy" /></div>
-        <figcaption>Fig. 7 &mdash; The long walk back.</figcaption>
+            alt="A wide photograph of the beach at Ilashe." loading="lazy" /></div>
+        <figcaption>Fig. 7 &mdash; The long walk back from the beach.</figcaption>
       </figure>
     </div>
   </section>
@@ -1117,14 +1203,14 @@
     <button class="rsvp blob blob--panel-dark" id="rsvp" type="button" data-cursor="grow" aria-live="polite">
       <span class="rsvp__eyebrow">Kindly Reply</span>
       <span class="rsvp__label" id="rsvpLabel">I&rsquo;ll be there</span>
-      <span class="rsvp__hint" id="rsvpHint">by the first of May</span>
+      <span class="rsvp__hint" id="rsvpHint">by the first of December</span>
     </button>
   </section>
 
   <!-- ==================== COLOPHON ==================== -->
   <footer class="colophon wrap">
     <div class="colophon__grid">
-      <div>The Wedding Gazette<br />Printed at Wapping</div>
+      <div>The Lagos Wedding Gazette<br />Printed in Lagos, Nigeria</div>
       <div>Set in Anton &amp; Newsreader<br />Vol. I &middot; No. 1</div>
       <div>All photographs reproduced<br />without permission of anyone</div>
     </div>
@@ -1138,149 +1224,7 @@
       const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
       /* ==========================================================
-         VINE CURSOR
-         A living ink trail: a fading spine plus curling tendrils
-         that sprout perpendicular to the direction of travel.
-         Strokes are drawn white with mix-blend-mode:difference,
-         so the vine reads black on paper and white on ink.
-         ========================================================== */
-      function initVine() {
-        if (reduceMotion || !finePointer) return;
-
-        const canvas = document.getElementById('vineCanvas');
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        let W = 0, H = 0, DPR = 1;
-
-        function resize() {
-          DPR = Math.min(window.devicePixelRatio || 1, 2);
-          W = window.innerWidth;
-          H = window.innerHeight;
-          canvas.width = Math.floor(W * DPR);
-          canvas.height = Math.floor(H * DPR);
-          canvas.style.width = W + 'px';
-          canvas.style.height = H + 'px';
-          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-        }
-        resize();
-        window.addEventListener('resize', resize, { passive: true });
-
-        const TRAIL_LIFE = 1500;  // ms a spine segment survives
-        const BRANCH_FADE = 1000;  // ms a tendril takes to wither
-        const MAX_POINTS = 140;
-        const MIN_DIST = 5;     // px between samples
-        const MAX_BRANCH = 24;
-
-        const trail = [];  // { x, y, t }
-        const branches = [];  // { x, y, angle, len, curl, t, dur }
-
-        let last = null;
-
-        function onMove(e) {
-          const x = e.clientX;
-          const y = e.clientY;
-          const now = performance.now();
-
-          if (!last) {
-            last = { x, y };
-            return;
-          }
-          if (Math.hypot(x - last.x, y - last.y) < MIN_DIST) return;
-
-          const angle = Math.atan2(y - last.y, x - last.x);
-
-          // Occasionally sprout a tendril off the main line
-          if (Math.random() < 0.16 && branches.length < MAX_BRANCH) {
-            branches.push({
-              x, y,
-              angle: angle + (Math.random() < 0.5 ? -1 : 1) * (0.7 + Math.random() * 0.85),
-              len: 22 + Math.random() * 46,
-              curl: (Math.random() < 0.5 ? -1 : 1) * (0.55 + Math.random() * 1.1),
-              t: now,
-              dur: 850 + Math.random() * 700
-            });
-          }
-
-          trail.push({ x, y, t: now });
-          if (trail.length > MAX_POINTS) trail.shift();
-          last = { x, y };
-        }
-
-        function frame(now) {
-          ctx.clearRect(0, 0, W, H);
-          ctx.lineCap = 'round';
-          ctx.lineJoin = 'round';
-
-          // Prune dead spine points
-          while (trail.length && now - trail[0].t > TRAIL_LIFE) trail.shift();
-
-          // Draw the spine
-          for (let i = 1; i < trail.length; i++) {
-            const p0 = trail[i - 1];
-            const p1 = trail[i];
-            const age = now - p1.t;
-            if (age > TRAIL_LIFE) continue;
-
-            const life = 1 - age / TRAIL_LIFE;
-            ctx.beginPath();
-            ctx.moveTo(p0.x, p0.y);
-            ctx.lineTo(p1.x, p1.y);
-            ctx.strokeStyle = 'rgba(255,255,255,' + (life * 0.55).toFixed(3) + ')';
-            ctx.lineWidth = 0.6 + life * 0.9;
-            ctx.stroke();
-          }
-
-          // Draw tendrils
-          for (let i = branches.length - 1; i >= 0; i--) {
-            const b = branches[i];
-            const elapsed = now - b.t;
-
-            if (elapsed > b.dur + BRANCH_FADE) {
-              branches.splice(i, 1);
-              continue;
-            }
-
-            const grow = Math.min(1, elapsed / b.dur);
-            const eased = 1 - Math.pow(1 - grow, 3);   // ease-out cubic
-            const L = b.len * eased;
-
-            const tipX = b.x + Math.cos(b.angle) * L;
-            const tipY = b.y + Math.sin(b.angle) * L;
-            const ctrlX = b.x + Math.cos(b.angle + b.curl) * L * 0.55;
-            const ctrlY = b.y + Math.sin(b.angle + b.curl) * L * 0.55;
-
-            const fade = elapsed > b.dur
-              ? 1 - (elapsed - b.dur) / BRANCH_FADE
-              : 1;
-
-            ctx.beginPath();
-            ctx.moveTo(b.x, b.y);
-            ctx.quadraticCurveTo(ctrlX, ctrlY, tipX, tipY);
-            ctx.strokeStyle = 'rgba(255,255,255,' + (fade * 0.45).toFixed(3) + ')';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            if (fade > 0.2) {
-              ctx.beginPath();
-              ctx.arc(tipX, tipY, 1.3, 0, Math.PI * 2);
-              ctx.fillStyle = 'rgba(255,255,255,' + (fade * 0.5).toFixed(3) + ')';
-              ctx.fill();
-            }
-          }
-
-          requestAnimationFrame(frame);
-        }
-
-        window.addEventListener('pointermove', onMove, { passive: true });
-        document.addEventListener('pointerleave', () => { last = null; });
-        requestAnimationFrame(frame);
-      }
-
-      /* ==========================================================
          LAGGING RING CURSOR
-         Dot tracks exactly; ring lerps behind. Scale is a
-         separate CSS property so transforms never fight.
          ========================================================== */
       function initCursor() {
         if (reduceMotion || !finePointer) return;
@@ -1312,7 +1256,6 @@
         }
         loop();
 
-        // Grow the ring over interactive targets
         document.addEventListener('pointerover', (e) => {
           const t = e.target.closest('[data-cursor], a, button, [role="button"]');
           ring.classList.toggle('is-active', Boolean(t));
@@ -1353,7 +1296,6 @@
 
       /* ==========================================================
          DETAIL CARDS
-         Click or keyboard toggles the clip-reveal body.
          ========================================================== */
       function initDetails() {
         document.querySelectorAll('[data-detail]').forEach((card) => {
@@ -1383,9 +1325,9 @@
         if (!btn || !label || !hint) return;
 
         const states = [
-          { label: 'I\u2019ll be there', hint: 'by the first of May' },
+          { label: 'I\u2019ll be there', hint: 'by the first of December' },
           { label: 'Regretfully, no', hint: 'you will be missed' },
-          { label: 'Tell me more', hint: 'the details, in full' }
+          { label: 'Mo gb\u1ecd\u0301, mo n\u0301 b\u1ecd\u0300', hint: 'I heard, I\u2019m coming' }
         ];
         let index = 0;
         let lock = false;
@@ -1396,7 +1338,6 @@
           index = (index + 1) % states.length;
 
           btn.classList.remove('is-confirmed');
-          // Force reflow so the pop animation can restart
           void btn.offsetWidth;
           btn.classList.add('is-confirmed');
 
@@ -1410,7 +1351,6 @@
       /* ==========================================================
          BOOT
          ========================================================== */
-      initVine();
       initCursor();
       initReveals();
       initDetails();
