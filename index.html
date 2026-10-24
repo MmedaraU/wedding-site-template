@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adunni &amp; Tunde — 19 December 2026</title>
+  <title>Idara &amp; Emeka — 16 December 2028</title>
   <meta name="description"
-    content="The marriage of Adunni and Tunde. Ìgbéyàwó at the family compound, Surulere; white wedding at The Yard, Victoria Island. Ẹ káàbọ̀." />
+    content="The marriage of Idara Aniekan and Emeka Nwosu. Ibibio traditional at Ikot Ekpene; Ìgbá Nkwụ and white wedding at The Raffia Court, Uyo, Akwa Ibom. Mesiere. Nnọọ." />
   <meta name="theme-color" content="#ffffff" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,17 +23,12 @@
       --ink: #000;
       --paper: #fff;
       --hair: rgba(0, 0, 0, .16);
-
       --ease: cubic-bezier(.25, 1, .5, 1);
       --ease-out: cubic-bezier(.16, 1, .3, 1);
       --dur: 180ms;
-      /* UI feedback — Kowalski range */
       --slow: 700ms;
-      /* narrative entrance */
-
       --wrap: min(1180px, 100% - 2 * clamp(20px, 5vw, 64px));
       --gap: clamp(14px, 2vw, 32px);
-
       --display: 'Instrument Serif', 'Bodoni Moda', Georgia, serif;
       --text: 'Newsreader', Georgia, 'Times New Roman', serif;
       --sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -76,7 +71,6 @@
       font: inherit
     }
 
-    /* Custom cursor only when JS is running and the pointer is precise */
     @media (hover:hover) and (pointer:fine) {
 
       html.js body,
@@ -122,6 +116,8 @@
       gap: 1rem;
       align-items: baseline;
       margin-bottom: clamp(30px, 4.5vw, 64px);
+      padding-top: clamp(12px, 1.6vw, 18px);
+      border-top: 1px solid var(--ink);
     }
 
     .section-head .kicker {
@@ -140,13 +136,6 @@
     .section-head .section-title {
       grid-column: 1 / -1;
       margin-top: clamp(12px, 2vw, 24px);
-    }
-
-    .lede {
-      font-size: clamp(17px, .7vw + 14px, 21px);
-      line-height: 1.5;
-      margin: 0 0 1.4em;
-      text-wrap: pretty;
     }
 
     /* ============================================================
@@ -194,7 +183,7 @@
       width: 6px;
       height: 6px;
       background: #fff;
-      margin: -3px 0 0 -3px;
+      margin: -3px 0 0 -3px
     }
 
     .cursor-ring {
@@ -296,7 +285,7 @@
     .blob {
       position: relative;
       overflow: hidden;
-      isolation: isolate;
+      isolation: isolate
     }
 
     .blob--img {
@@ -374,30 +363,68 @@
     }
 
     /* ============================================================
-   7. HEADER
+   7. NAMEPLATE BAND
+   ============================================================ */
+    .nameplate {
+      width: var(--wrap);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.2rem;
+      align-items: baseline;
+      padding-block: clamp(14px, 2vw, 20px) clamp(10px, 1.4vw, 14px);
+      border-bottom: 1px solid var(--ink);
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .nameplate__left {
+      justify-self: start
+    }
+
+    .nameplate__center {
+      justify-self: center;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(13px, 1.4vw, 16px);
+      letter-spacing: .02em;
+      text-transform: none;
+      font-variant-numeric: oldstyle-nums;
+    }
+
+    .nameplate__right {
+      justify-self: end;
+      text-align: right
+    }
+
+    .nameplate__vol {
+      opacity: .6
+    }
+
+    @media (max-width:720px) {
+      .nameplate {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: .5rem;
+      }
+
+      .nameplate__left,
+      .nameplate__center,
+      .nameplate__right {
+        justify-self: center;
+        text-align: center
+      }
+    }
+
+    /* ============================================================
+   8. HERO
    ============================================================ */
     .masthead {
       width: var(--wrap);
       margin-inline: auto;
       padding-top: clamp(20px, 3vw, 36px);
-    }
-
-    .masthead__stamp {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1.5rem;
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      opacity: .6;
-    }
-
-    .masthead__stamp .roman {
-      font-family: var(--stamp);
-      letter-spacing: .16em;
-      opacity: .95;
     }
 
     .hero {
@@ -424,6 +451,7 @@
       margin: 0;
       text-wrap: balance;
       overflow-wrap: break-word;
+      text-shadow: .006em .006em 0 rgba(0, 0, 0, .18);
     }
 
     .names .amp {
@@ -480,6 +508,9 @@
       animation-duration: 46s;
     }
 
+    /* ============================================================
+   9. CAPTIONS
+   ============================================================ */
     figcaption {
       font-family: var(--display);
       font-style: italic;
@@ -493,7 +524,7 @@
       font-family: var(--sans);
       font-style: normal;
       font-size: 9.5px;
-      letter-spacing: .2em;
+      letter-spacing: .24em;
       text-transform: uppercase;
       margin-right: .9em;
       opacity: .75;
@@ -504,14 +535,77 @@
     }
 
     /* ============================================================
-   8. SECTION RHYTHM
+   10. STOP PRESS TICKER
+   ============================================================ */
+    .ticker {
+      width: 100%;
+      margin-block: clamp(48px, 8vw, 108px);
+      border-block: 1px solid var(--ink);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .ticker__label {
+      flex: none;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px clamp(14px, 2vw, 20px);
+      font-family: var(--stamp);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker__viewport {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker__track {
+      display: flex;
+      gap: 2.2rem;
+      width: max-content;
+      white-space: nowrap;
+      padding-left: 1.6rem;
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      animation: marquee 42s linear infinite;
+    }
+
+    .ticker__track span {
+      flex: none
+    }
+
+    .ticker__track span::before {
+      content: '—';
+      margin-right: .5rem;
+      opacity: .5
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ============================================================
+   11. SECTION RHYTHM
    ============================================================ */
     main>section+section {
       margin-top: clamp(72px, 12vw, 180px)
     }
 
     /* ============================================================
-   9. DATE STATEMENT
+   12. DATE + COUNTDOWN BULLETIN
    ============================================================ */
     .date-statement {
       text-align: center;
@@ -546,8 +640,78 @@
       opacity: .75;
     }
 
+    .countdown {
+      margin-top: clamp(30px, 4.5vw, 52px);
+      padding-block: clamp(22px, 3.4vw, 36px);
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      display: grid;
+      justify-items: center;
+      gap: clamp(14px, 2vw, 20px);
+    }
+
+    .countdown__caption {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      opacity: .55;
+      margin: 0;
+    }
+
+    .countdown__grid {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .countdown__block {
+      display: grid;
+      justify-items: center;
+      gap: .4em;
+      padding-inline: clamp(12px, 2.4vw, 32px);
+    }
+
+    .countdown__block+.countdown__block {
+      border-left: 1px solid var(--hair);
+    }
+
+    .countdown__num {
+      font-family: var(--display);
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1;
+      font-variant-numeric: oldstyle-nums;
+      min-width: 2.1ch;
+      text-align: center;
+    }
+
+    .countdown__label {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: .5;
+    }
+
+    .countdown__after {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(17px, 1.8vw, 22px);
+      line-height: 1.5;
+      margin: 0;
+      opacity: .8;
+      max-width: 36ch;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .countdown__block[data-unit="seconds"] {
+        display: none
+      }
+    }
+
     /* ============================================================
-   10. STORY
+   13. STORY
    ============================================================ */
     .story {
       display: grid;
@@ -557,7 +721,7 @@
     }
 
     .story__text {
-      grid-column: 1 / 8
+      grid-column: 1 / 9
     }
 
     .story__figure {
@@ -565,9 +729,14 @@
       margin: 0
     }
 
+    .story__text {
+      columns: 2;
+      column-gap: clamp(28px, 3.6vw, 48px);
+      column-rule: 1px solid var(--hair);
+    }
+
     .story__text p {
-      max-width: 62ch;
-      margin: 0 0 1.35em;
+      margin: 0 0 1.2em;
       text-wrap: pretty;
     }
 
@@ -578,9 +747,9 @@
     .story__text>p:first-of-type::first-letter {
       float: left;
       font-family: var(--display);
-      font-size: 4.2em;
-      line-height: .72;
-      padding: .04em .09em 0 0;
+      font-size: 4.4em;
+      line-height: .7;
+      padding: .05em .09em 0 0;
     }
 
     .story__figure .blob--img {
@@ -590,14 +759,14 @@
     }
 
     /* ============================================================
-   11. PROGRAMME
+   14. PROGRAMME
    ============================================================ */
     .programme {
       list-style: none;
       margin: 0;
       padding: 0;
       content-visibility: auto;
-      contain-intrinsic-size: auto 620px;
+      contain-intrinsic-size: auto 760px;
     }
 
     .programme li {
@@ -645,7 +814,7 @@
     }
 
     /* ============================================================
-   12. MENU
+   15. MENU
    ============================================================ */
     .menu-grid {
       display: grid;
@@ -691,7 +860,7 @@
     }
 
     /* ============================================================
-   13. TRAVEL
+   16. TRAVEL
    ============================================================ */
     .travel dl {
       margin: 0;
@@ -725,13 +894,15 @@
     }
 
     /* ============================================================
-   14. GALLERY
+   17. GALLERY
    ============================================================ */
     .gallery {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: calc(var(--gap) * 1.6);
       align-items: start;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 1200px;
     }
 
     .gal {
@@ -774,7 +945,7 @@
     }
 
     /* ============================================================
-   15. HAIRLINE THAT DRAWS
+   18. HAIRLINE THAT DRAWS
    ============================================================ */
     .hairline-draw {
       height: 1px;
@@ -790,7 +961,7 @@
     }
 
     /* ============================================================
-   16. LETTERS
+   19. LETTERS
    ============================================================ */
     .letters__list {
       list-style: none;
@@ -828,7 +999,7 @@
     }
 
     /* ============================================================
-   17. FORMS
+   20. FORMS
    ============================================================ */
     .field {
       display: block;
@@ -907,11 +1078,11 @@
 
     :focus-visible {
       outline: 2px solid var(--ink);
-      outline-offset: 4px;
+      outline-offset: 4px
     }
 
     /* ============================================================
-   18. RSVP
+   21. RSVP
    ============================================================ */
     .rsvp-section {
       display: flex;
@@ -967,7 +1138,7 @@
 
     .rsvp-done__text {
       margin: 0 0 clamp(22px, 3vw, 32px);
-      text-wrap: pretty;
+      text-wrap: pretty
     }
 
     .print-link {
@@ -989,7 +1160,7 @@
     }
 
     /* ============================================================
-   19. COLOPHON
+   22. COLOPHON
    ============================================================ */
     .colophon {
       width: var(--wrap);
@@ -1040,7 +1211,7 @@
     }
 
     /* ============================================================
-   20. REVEALS — slow, narrative
+   23. REVEALS
    ============================================================ */
     .js [data-reveal] {
       opacity: 0;
@@ -1060,11 +1231,13 @@
     }
 
     /* ============================================================
-   21. RESPONSIVE
+   24. RESPONSIVE
    ============================================================ */
     @media (max-width:900px) {
       .story__text {
-        grid-column: 1 / 13
+        grid-column: 1 / 13;
+        columns: 1;
+        column-rule: 0
       }
 
       .story__figure {
@@ -1083,11 +1256,6 @@
     }
 
     @media (max-width:720px) {
-      .masthead__stamp {
-        flex-wrap: wrap;
-        gap: .4rem 1.2rem
-      }
-
       .story__figure {
         grid-column: 1 / 13
       }
@@ -1134,10 +1302,14 @@
       .rsvp-blob {
         padding: clamp(24px, 6vw, 40px)
       }
+
+      .countdown__block {
+        padding-inline: clamp(10px, 3vw, 18px)
+      }
     }
 
     /* ============================================================
-   22. PRINT INVITATION
+   25. PRINT INVITATION
    ============================================================ */
     .invitation {
       display: none
@@ -1230,7 +1402,7 @@
     }
 
     /* ============================================================
-   23. PREFERENCES
+   26. PREFERENCES
    ============================================================ */
     @media (prefers-reduced-motion: reduce) {
 
@@ -1264,6 +1436,10 @@
       .hairline-draw {
         scale: 1 1
       }
+
+      .ticker__track {
+        animation: none
+      }
     }
 
     @media (prefers-reduced-transparency: reduce) {
@@ -1294,7 +1470,9 @@
       .programme__day,
       .programme__time,
       .letter cite,
-      .edition {
+      .edition,
+      .countdown__caption,
+      .countdown__label {
         opacity: 1
       }
 
@@ -1320,80 +1498,145 @@
     <span></span><span></span><span></span><span></span>
   </div>
 
-  <!-- ==================== HEADER ==================== -->
-  <header class="masthead">
-    <div class="masthead__stamp">
-      <span class="roman">MMXXVI</span>
-      <span>Lagos, Nigeria</span>
-    </div>
+  <!-- ==================== NAMEPLATE ==================== -->
+  <div class="nameplate">
+    <span class="nameplate__left">The Uyo Wedding Gazette</span>
+    <span class="nameplate__center">Saturday, the sixteenth of December, two thousand and twenty-eight</span>
+    <span class="nameplate__right">
+      <span class="nameplate__vol">Vol. I &middot; No. 1</span>
+    </span>
+  </div>
 
+  <!-- ==================== HERO ==================== -->
+  <header class="masthead">
     <div class="hero">
       <p class="hero__kicker">Together with their families</p>
 
-      <h1 class="names">Adunni <span class="amp">&amp;</span> Tunde</h1>
+      <h1 class="names">Idara <span class="amp">&amp;</span> Emeka</h1>
 
       <div class="hero__rule" aria-hidden="true"></div>
 
       <p class="hero__request">request the pleasure of your company</p>
 
       <p class="hero__date">
-        Saturday, the nineteenth of December<br />
-        two thousand and twenty-six
+        Saturday, the sixteenth of December<br />
+        two thousand and twenty-eight
       </p>
 
-      <p class="hero__venue">The Yard, Victoria Island, Lagos</p>
+      <p class="hero__venue">The Raffia Court, Uyo, Akwa Ibom</p>
     </div>
 
     <figure class="hero-figure" data-reveal>
       <div class="blob blob--img">
-        <img src="https://picsum.photos/seed/adaelias-hero/900/1125"
-          alt="Adunni and Tunde, photographed in low light, unhurried." width="900" height="1125"
-          fetchpriority="high" />
+        <img src="https://picsum.photos/seed/idaraemeka-hero/900/1125"
+          alt="Idara and Emeka, photographed in low light, unhurried." width="900" height="1125" fetchpriority="high" />
       </div>
-      <figcaption><span class="num">i.</span>the two of them, unhurried — Lekki, 2017</figcaption>
+      <figcaption><span class="num">Fig. i</span>the two of them, unhurried &mdash; Lekki, 2017</figcaption>
     </figure>
   </header>
 
+  <!-- ==================== STOP PRESS ==================== -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__label">Stop Press</div>
+    <div class="ticker__viewport">
+      <div class="ticker__track">
+        <span>Idara &amp; Emeka</span>
+        <span>16 &middot; XII &middot; 28</span>
+        <span>The Raffia Court, Uyo</span>
+        <span>&Igrave;gb&aacute; Nkw&#7909; at ten</span>
+        <span>Afang at six</span>
+        <span>Small chops from five</span>
+        <span>Aso ebi available</span>
+        <span>Mesiere. Nn&#7885;&#7885;.</span>
+        <span>Palm wine, cold</span>
+        <span>No florals</span>
+        <span>No wahala</span>
+        <span>Idara &amp; Emeka</span>
+        <span>16 &middot; XII &middot; 28</span>
+        <span>The Raffia Court, Uyo</span>
+        <span>&Igrave;gb&aacute; Nkw&#7909; at ten</span>
+        <span>Afang at six</span>
+        <span>Small chops from five</span>
+        <span>Aso ebi available</span>
+        <span>Mesiere. Nn&#7885;&#7885;.</span>
+        <span>Palm wine, cold</span>
+        <span>No florals</span>
+        <span>No wahala</span>
+      </div>
+    </div>
+  </div>
+
   <main>
 
-    <!-- ==================== DATE STATEMENT ==================== -->
-    <section class="date-statement wrap" aria-label="The date">
+    <!-- ==================== DATE + BULLETIN ==================== -->
+    <section class="date-statement wrap" aria-label="The date and countdown">
       <p class="date-statement__eyebrow">Save the date</p>
-      <p class="date-statement__date">19 &middot; XII &middot; 26</p>
-      <p class="date-statement__sub">Detty December, Lagos</p>
+      <p class="date-statement__date">16 &middot; XII &middot; 28</p>
+      <p class="date-statement__sub">December in Akwa Ibom</p>
+
+      <div class="countdown" id="countdown" role="timer" hidden>
+        <p class="countdown__caption" id="countdownCaption">Until the day</p>
+
+        <div class="countdown__grid" id="countdownGrid">
+          <div class="countdown__block" data-unit="days">
+            <span class="countdown__num">--</span>
+            <span class="countdown__label">days</span>
+          </div>
+          <div class="countdown__block" data-unit="hours">
+            <span class="countdown__num">--</span>
+            <span class="countdown__label">hours</span>
+          </div>
+          <div class="countdown__block" data-unit="minutes">
+            <span class="countdown__num">--</span>
+            <span class="countdown__label">minutes</span>
+          </div>
+          <div class="countdown__block" data-unit="seconds">
+            <span class="countdown__num">--</span>
+            <span class="countdown__label">seconds</span>
+          </div>
+        </div>
+
+        <p class="countdown__after" id="countdownAfter" hidden>
+          They were married on the sixteenth of December,<br />
+          two thousand and twenty-eight.
+        </p>
+      </div>
     </section>
 
     <!-- ==================== STORY ==================== -->
     <section class="wrap" id="story" aria-labelledby="story-title">
       <div class="section-head">
         <p class="kicker">Our story</p>
-        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
         <h2 class="section-title" id="story-title">We met in Lagos traffic</h2>
       </div>
 
       <div class="story">
         <div class="story__text" data-reveal>
-          <p>Tunde borrowed an umbrella from a stranger at the Yaba bus stop, and handed it back with the solemnity of a
-            man returning a relic. We were both twenty-six and neither of us was looking for anything in particular.</p>
+          <p>We are from two places. I am Ibibio, from Ikot Ekpene &mdash; raffia city, where my grandmother wove. He is
+            Igbo, from Awka &mdash; where the kola is broken before anything else is said. We met in Lagos, in traffic,
+            the way these things happen here.</p>
+          <p>He had borrowed an umbrella from a stranger at the Yaba bus stop, and handed it back with the solemnity of
+            a man returning a relic. We were both twenty-six and neither of us was looking for anything in particular.
+          </p>
           <p>I was between flats in Lekki. He was between opinions about what to do with a degree in something
             impractical. The umbrella lasted four more blocks before it gave up entirely, and by then we had already
             decided to share a cab to Surulere.</p>
-          <p>Nine years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. What
-            follows is an account of the day we intend to make it official — first at the family compound in Surulere,
-            then at The Yard in Victoria Island — set down here for the friends and family who have been rained on with
-            us.</p>
-          <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be jollof, and
+          <p>Eleven years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. In
+            December, our two families will meet at my compound in Ikot Ekpene, where the kola will be broken and the
+            palm wine poured. The next day, in Uyo, the white wedding.</p>
+          <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be afang, and
             there will be a point at which the band stops, and what happens after that is between our guests and the
-            lagoon.</p>
+            palm court.</p>
         </div>
 
         <figure class="story__figure" data-reveal style="--d:120ms">
           <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/adaelias-story/750/1000"
+            <img src="https://picsum.photos/seed/idaraemeka-story/750/1000"
               alt="A candid photograph from the archive — the flat in Lekki." width="750" height="1000"
               loading="lazy" />
           </div>
-          <figcaption><span class="num">ii.</span>the flat, the harmattan, the radiator</figcaption>
+          <figcaption><span class="num">Fig. ii</span>the flat, the harmattan, the radiator</figcaption>
         </figure>
       </div>
     </section>
@@ -1402,28 +1645,34 @@
     <section class="wrap" aria-labelledby="programme-title">
       <div class="section-head">
         <p class="kicker">Order of the day</p>
-        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
-        <h2 class="section-title" id="programme-title">Three days, one wedding</h2>
+        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
+        <h2 class="section-title" id="programme-title">Two days, two traditions</h2>
       </div>
 
       <ol class="programme">
         <li>
-          <span class="programme__day">Friday, 18 December</span>
-          <span class="programme__title">Ìgbéyàwó</span>
-          <span class="programme__place">Family compound, Surulere</span>
+          <span class="programme__day">Friday, 15 December</span>
+          <span class="programme__title">Ibibio Traditional</span>
+          <span class="programme__place">Family compound, Ikot Ekpene</span>
           <span class="programme__time">from four o&rsquo;clock</span>
         </li>
         <li>
-          <span class="programme__day">Saturday, 19 December</span>
+          <span class="programme__day">Saturday, 16 December</span>
+          <span class="programme__title">&Igrave;gb&aacute; Nkw&#7909;</span>
+          <span class="programme__place">The Raffia Court, Uyo</span>
+          <span class="programme__time">ten o&rsquo;clock</span>
+        </li>
+        <li>
+          <span class="programme__day">Saturday, 16 December</span>
           <span class="programme__title">White Wedding</span>
-          <span class="programme__place">The Yard, Victoria Island</span>
+          <span class="programme__place">The Raffia Court, Uyo</span>
           <span class="programme__time">half past two</span>
         </li>
         <li>
-          <span class="programme__day">Saturday, 19 December</span>
-          <span class="programme__title">Supper &amp; Dancing</span>
-          <span class="programme__place">The Yard, by the water</span>
-          <span class="programme__time">eight o&rsquo;clock</span>
+          <span class="programme__day">Saturday, 16 December</span>
+          <span class="programme__title">Reception &amp; Dancing</span>
+          <span class="programme__place">The Raffia Court, by the palm court</span>
+          <span class="programme__time">six o&rsquo;clock</span>
         </li>
       </ol>
     </section>
@@ -1432,11 +1681,27 @@
     <section class="wrap" aria-labelledby="menu-title">
       <div class="section-head">
         <p class="kicker">The provisions</p>
-        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
         <h2 class="section-title" id="menu-title">What we&rsquo;ll eat</h2>
       </div>
 
       <div class="menu-grid">
+        <div class="menu-item">
+          <span class="menu-item__name">Afang soup</span>
+          <span class="menu-item__desc">Ibibio. Afang leaves, waterleaf, pounded yam.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Ofe onugbu</span>
+          <span class="menu-item__desc">Igbo. Bitterleaf, cocoyam, fufu.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Ekpang Nkukwo</span>
+          <span class="menu-item__desc">Grated cocoyam in cocoyam leaves. Ibibio, properly.</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item__name">Nkwobi</span>
+          <span class="menu-item__desc">Spiced cow foot, palm oil, utazi. Igbo.</span>
+        </div>
         <div class="menu-item">
           <span class="menu-item__name">Jollof rice</span>
           <span class="menu-item__desc">Party style, smoky, from the family recipe.</span>
@@ -1446,53 +1711,45 @@
           <span class="menu-item__desc">Puff-puff, samosa, spring roll, peppered gizzard.</span>
         </div>
         <div class="menu-item">
-          <span class="menu-item__name">Suya</span>
-          <span class="menu-item__desc">From the spot on Awolowo Road, by the pound.</span>
+          <span class="menu-item__name">Palm wine</span>
+          <span class="menu-item__desc">Cold, from the tapper. Both cultures approve.</span>
         </div>
         <div class="menu-item">
-          <span class="menu-item__name">Puff-puff</span>
-          <span class="menu-item__desc">Fried to order, from five o&rsquo;clock.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Cake</span>
-          <span class="menu-item__desc">Three tiers. No florals.</span>
-        </div>
-        <div class="menu-item">
-          <span class="menu-item__name">Chapman</span>
-          <span class="menu-item__desc">The welcome drink. Non-negotiable.</span>
+          <span class="menu-item__name">Chapman &amp; Zobo</span>
+          <span class="menu-item__desc">The welcome drinks. Non-negotiable.</span>
         </div>
       </div>
-      <p class="menu-note">A vegetarian plate is available — tell us when you reply.</p>
+      <p class="menu-note">A vegetarian plate is available &mdash; tell us when you reply.</p>
     </section>
 
     <!-- ==================== TRAVEL ==================== -->
     <section class="wrap travel" aria-labelledby="travel-title">
       <div class="section-head">
         <p class="kicker">Travel &amp; stay</p>
-        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
         <h2 class="section-title" id="travel-title">Getting there, staying over</h2>
       </div>
 
       <dl>
         <div>
           <dt>Fly</dt>
-          <dd>Murtala Muhammed (LOS). Forty minutes to Victoria Island, on a good day.</dd>
+          <dd>Victor Attah International (QUO), Uyo. Twenty minutes to the city.</dd>
         </div>
         <div>
           <dt>Stay</dt>
-          <dd>The Wheatbaker, Ikoyi — fifteen minutes from The Yard.</dd>
+          <dd>Ibom Icon Hotel &amp; Golf Resort, Uyo &mdash; fifteen minutes from The Raffia Court.</dd>
         </div>
         <div>
           <dt>Stay</dt>
-          <dd>Eko Hotel, Victoria Island — ten minutes, walking distance to the after-party.</dd>
+          <dd>Guest houses in Ewet Housing are ten minutes away; book early.</dd>
         </div>
         <div>
           <dt>Move</dt>
-          <dd>Book a driver for the weekend. Traffic is not a rumour.</dd>
+          <dd>Hire a driver for the weekend. Uyo is calm; Ikot Ekpene is forty-five minutes.</dd>
         </div>
         <div>
           <dt>Note</dt>
-          <dd>December is Detty December. Book early or regret it quietly.</dd>
+          <dd>December in Akwa Ibom is busy. Book early or regret it quietly.</dd>
         </div>
       </dl>
     </section>
@@ -1501,33 +1758,34 @@
     <section class="wrap" aria-labelledby="gallery-title">
       <div class="section-head">
         <p class="kicker">Exhibits</p>
-        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
         <h2 class="section-title" id="gallery-title">The evidence</h2>
       </div>
 
       <div class="gallery">
         <figure class="gal" data-reveal>
           <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/adaelias-g1/1000/800"
+            <img src="https://picsum.photos/seed/idaraemeka-g1/1000/800"
               alt="An early photograph together, the first flat in Lekki." width="1000" height="800" loading="lazy" />
           </div>
-          <figcaption><span class="num">iii.</span>the first flat, Lekki, 2017</figcaption>
+          <figcaption><span class="num">Fig. iii</span>the first flat, Lekki, 2017</figcaption>
         </figure>
 
         <figure class="gal" data-reveal style="--d:100ms">
           <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/adaelias-g2/750/1000"
+            <img src="https://picsum.photos/seed/idaraemeka-g2/750/1000"
               alt="A portrait at the Yaba bus stop, where it began." width="750" height="1000" loading="lazy" />
           </div>
-          <figcaption><span class="num">iv.</span>Yaba bus stop, where it began</figcaption>
+          <figcaption><span class="num">Fig. iv</span>Yaba bus stop, where it began</figcaption>
         </figure>
 
         <figure class="gal" data-reveal style="--d:180ms">
           <div class="blob blob--img">
-            <img src="https://picsum.photos/seed/adaelias-g3/1200/675" alt="The beach at Ilashe, late afternoon."
-              width="1200" height="675" loading="lazy" />
+            <img src="https://picsum.photos/seed/idaraemeka-g3/1200/675"
+              alt="Her grandmother's compound in Ikot Ekpene, late afternoon." width="1200" height="675"
+              loading="lazy" />
           </div>
-          <figcaption><span class="num">v.</span>the long walk back from Ilashe</figcaption>
+          <figcaption><span class="num">Fig. v</span>her grandmother&rsquo;s compound, Ikot Ekpene</figcaption>
         </figure>
       </div>
     </section>
@@ -1538,26 +1796,31 @@
 
       <div class="section-head">
         <p class="kicker">The correspondence</p>
-        <span class="folio" aria-hidden="true">19 &middot; XII &middot; 26</span>
+        <span class="folio" aria-hidden="true">16 &middot; XII &middot; 28</span>
         <h2 class="section-title" id="letters-title">Letters to the couple</h2>
       </div>
 
       <ul class="letters__list" id="letterList">
         <li class="letter">
           <p>Never go to bed angry. Go to bed with jollof.</p>
-          <cite>— Auntie Bisi, Surulere</cite>
+          <cite>&mdash; Auntie Ngozi, Awka</cite>
         </li>
         <li class="letter">
           <p>Marriage is not a sprint. It is Lagos traffic. Pack snacks.</p>
-          <cite>— Uncle Femi, Ikeja</cite>
+          <cite>&mdash; Uncle Femi, Ikeja</cite>
         </li>
         <li class="letter">
-          <p>May your house be loud with laughter and your generator never fail.</p>
-          <cite>— The Okonkwos, Lekki</cite>
+          <p>Onye wetara &#7885;j&#7883;, wetara nd&#7909;. He who brings kola brings life. Begin everything with kola.
+          </p>
+          <cite>&mdash; Papa Chukwuka, Awka</cite>
         </li>
         <li class="letter">
-          <p>You two have been sharing a cab for nine years. The rest is paperwork.</p>
-          <cite>— Damilola, Yaba</cite>
+          <p>A woman from Ikot Ekpene does not lose her way. She is only finding a better one.</p>
+          <cite>&mdash; Mama Ekaette, Ikot Ekpene</cite>
+        </li>
+        <li class="letter">
+          <p>You two have been sharing a cab for eleven years. The rest is paperwork.</p>
+          <cite>&mdash; Damilola, Yaba</cite>
         </li>
       </ul>
 
@@ -1587,17 +1850,14 @@
               <span>Your name</span>
               <input type="text" name="name" autocomplete="name" required />
             </label>
-
             <label class="field">
               <span>Bringing</span>
               <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
             </label>
-
             <label class="field">
               <span>Anything we should know</span>
               <input type="text" name="notes" placeholder="dietary, access, etc." />
             </label>
-
             <label class="field">
               <span>One song that will get you dancing</span>
               <input type="text" name="song" placeholder="The band needs a setlist." />
@@ -1608,7 +1868,7 @@
 
           <div class="rsvp-done" id="rsvpDone" hidden tabindex="-1" aria-live="polite">
             <p class="rsvp-done__title">Received.</p>
-            <p class="rsvp-done__text">We&rsquo;ll see you in December. Watch out for the aso ebi.</p>
+            <p class="rsvp-done__text">We&rsquo;ll see you in Uyo. Watch out for the aso ebi.</p>
             <button class="btn btn--wide" type="button" id="rsvpAgain">Send another reply</button>
           </div>
         </div>
@@ -1621,29 +1881,29 @@
 
   <!-- ==================== COLOPHON ==================== -->
   <footer class="colophon">
-    <div class="monogram" aria-hidden="true">A<em>&amp;</em>T</div>
+    <div class="monogram" aria-hidden="true">I<em>&amp;</em>E</div>
 
     <div class="colophon__grid">
-      <div>The Lagos Wedding Gazette<br />Printed in Lagos, Nigeria</div>
-      <div>Made in Lagos,<br />with love</div>
+      <div>The Uyo Wedding Gazette<br />Printed in Uyo, Akwa Ibom</div>
+      <div>Made in Akwa Ibom,<br />with love</div>
       <div>All photographs reproduced<br />without permission of anyone</div>
     </div>
 
-    <p class="edition">No. 0047 of 0200 &middot; MMXXVI</p>
+    <p class="edition">No. 0047 of 0200 &middot; MMXXVIII</p>
   </footer>
 
   <!-- ==================== PRINT INVITATION ==================== -->
   <section class="invitation" aria-hidden="true">
     <p class="invitation__eyebrow">Together with their families</p>
-    <p class="invitation__names">Adunni <em>&amp;</em> Tunde</p>
+    <p class="invitation__names">Idara <em>&amp;</em> Emeka</p>
     <p class="invitation__request">request the pleasure of your company</p>
     <p class="invitation__date">
-      Saturday, the nineteenth of December<br />
-      two thousand and twenty-six
+      Saturday, the sixteenth of December<br />
+      two thousand and twenty-eight
     </p>
-    <p class="invitation__venue">The Yard, Victoria Island, Lagos</p>
+    <p class="invitation__venue">The Raffia Court, Uyo, Akwa Ibom</p>
     <p class="invitation__rsvp">Kindly reply by the first of December</p>
-    <p class="invitation__welcome">Ẹ káàbọ̀</p>
+    <p class="invitation__welcome">Mesiere. Nn&#7885;&#7885;.</p>
   </section>
 
   <script>
@@ -1653,31 +1913,19 @@
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-      /* ==========================================================
-         LAGGING RING CURSOR
-         Dot is exact. Ring lerps behind. Scale is a separate CSS
-         property so position and hover state never fight.
-         ========================================================== */
       function initCursor() {
         if (reduceMotion || !finePointer) return;
-
         const dot = document.getElementById('cursorDot');
         const ring = document.getElementById('cursorRing');
         if (!dot || !ring) return;
 
-        let mx = window.innerWidth / 2;
-        let my = window.innerHeight / 2;
-        let rx = mx, ry = my;
-        let primed = false;
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        let rx = mx, ry = my, primed = false;
 
         window.addEventListener('pointermove', (e) => {
-          mx = e.clientX;
-          my = e.clientY;
+          mx = e.clientX; my = e.clientY;
           dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
-          if (!primed) {
-            primed = true;
-            document.body.classList.add('cursor-ready');
-          }
+          if (!primed) { primed = true; document.body.classList.add('cursor-ready'); }
         }, { passive: true });
 
         (function loop() {
@@ -1691,30 +1939,19 @@
           const t = e.target.closest('a, button, input, textarea, [role="button"]');
           ring.classList.toggle('is-active', Boolean(t));
         });
-
         document.addEventListener('pointerdown', () => ring.classList.add('is-press'));
         document.addEventListener('pointerup', () => ring.classList.remove('is-press'));
-
-        document.addEventListener('pointerleave', () => {
-          document.body.classList.remove('cursor-ready');
-        });
-        document.addEventListener('pointerenter', () => {
-          if (primed) document.body.classList.add('cursor-ready');
-        });
+        document.addEventListener('pointerleave', () => document.body.classList.remove('cursor-ready'));
+        document.addEventListener('pointerenter', () => { if (primed) document.body.classList.add('cursor-ready'); });
       }
 
-      /* ==========================================================
-         NARRATIVE REVEALS — 700ms, blur to sharp
-         ========================================================== */
       function initReveals() {
         const targets = document.querySelectorAll('[data-reveal]');
         if (!targets.length) return;
-
         if (reduceMotion || !('IntersectionObserver' in window)) {
           targets.forEach((el) => el.classList.add('in'));
           return;
         }
-
         const io = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -1722,22 +1959,13 @@
             io.unobserve(entry.target);
           });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
         targets.forEach((el) => io.observe(el));
       }
 
-      /* ==========================================================
-         THE HAIRLINE THAT DRAWS — once, above the letters
-         ========================================================== */
       function initHairline() {
         const el = document.querySelector('.hairline-draw');
         if (!el) return;
-
-        if (reduceMotion || !('IntersectionObserver' in window)) {
-          el.classList.add('in');
-          return;
-        }
-
+        if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('in'); return; }
         const io = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -1745,13 +1973,77 @@
             io.disconnect();
           });
         }, { threshold: 0.2 });
-
         io.observe(el);
       }
 
-      /* ==========================================================
-         RSVP FORM
-         ========================================================== */
+      function initCountdown() {
+        const root = document.getElementById('countdown');
+        if (!root) return;
+
+        const grid = document.getElementById('countdownGrid');
+        const caption = document.getElementById('countdownCaption');
+        const after = document.getElementById('countdownAfter');
+
+        const cells = {
+          days: root.querySelector('[data-unit="days"] .countdown__num'),
+          hours: root.querySelector('[data-unit="hours"] .countdown__num'),
+          minutes: root.querySelector('[data-unit="minutes"] .countdown__num'),
+          seconds: root.querySelector('[data-unit="seconds"] .countdown__num')
+        };
+
+        // 16 December 2028, 14:30 WAT (UTC+1, no DST) → 13:30 UTC
+        const TARGET = Date.UTC(2028, 11, 16, 13, 30, 0);
+        const STEP = reduceMotion ? 60000 : 1000;
+        const pad = (n) => (n < 10 ? '0' + n : String(n));
+
+        let timeout = null;
+        let onScreen = true;
+
+        function render() {
+          const diff = TARGET - Date.now();
+          if (diff <= 0) {
+            grid.hidden = true;
+            caption.hidden = true;
+            after.hidden = false;
+            return false;
+          }
+          const s = Math.floor(diff / 1000);
+          cells.days.textContent = pad(Math.floor(s / 86400));
+          cells.hours.textContent = pad(Math.floor((s % 86400) / 3600));
+          cells.minutes.textContent = pad(Math.floor((s % 3600) / 60));
+          cells.seconds.textContent = pad(s % 60);
+          return true;
+        }
+
+        function schedule() {
+          if (timeout) clearTimeout(timeout);
+          if (!onScreen) return;
+          timeout = setTimeout(tick, STEP - (Date.now() % STEP) + 10);
+        }
+
+        function tick() { if (render()) schedule(); }
+
+        render();
+        root.hidden = false;
+        schedule();
+
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(([entry]) => {
+            onScreen = entry.isIntersecting;
+            if (onScreen) tick();
+            else if (timeout) { clearTimeout(timeout); timeout = null; }
+          }).observe(root);
+        }
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            if (timeout) { clearTimeout(timeout); timeout = null; }
+          } else if (onScreen) {
+            tick();
+          }
+        });
+      }
+
       function initRsvp() {
         const form = document.getElementById('rsvpForm');
         const done = document.getElementById('rsvpDone');
@@ -1760,13 +2052,8 @@
 
         form.addEventListener('submit', (e) => {
           e.preventDefault();
-
           const nameInput = form.elements.name;
-          if (!nameInput.value.trim()) {
-            nameInput.focus();
-            return;
-          }
-
+          if (!nameInput.value.trim()) { nameInput.focus(); return; }
           form.hidden = true;
           done.hidden = false;
           done.focus();
@@ -1782,9 +2069,6 @@
         }
       }
 
-      /* ==========================================================
-         LETTERS — new notes prepend to the correspondence column
-         ========================================================== */
       function initLetters() {
         const form = document.getElementById('letterForm');
         const list = document.getElementById('letterList');
@@ -1792,51 +2076,34 @@
 
         form.addEventListener('submit', (e) => {
           e.preventDefault();
-
           const nameEl = form.elements.name;
           const msgEl = form.elements.message;
           const message = msgEl.value.trim();
           const name = nameEl.value.trim();
-
-          if (!message) {
-            msgEl.focus();
-            return;
-          }
+          if (!message) { msgEl.focus(); return; }
 
           const li = document.createElement('li');
           li.className = 'letter';
-
           const p = document.createElement('p');
           p.textContent = message;
-
           const cite = document.createElement('cite');
-          cite.textContent = '\u2014 ' + (name || 'A guest') + ', Lagos';
-
+          cite.textContent = '\u2014 ' + (name || 'A guest') + ', Uyo';
           li.append(p, cite);
 
-          if (list.firstChild) {
-            list.insertBefore(li, list.firstChild);
-          } else {
-            list.appendChild(li);
-          }
+          if (list.firstChild) list.insertBefore(li, list.firstChild);
+          else list.appendChild(li);
 
           form.reset();
 
           if (!reduceMotion && li.animate) {
             li.animate(
-              [
-                { opacity: 0, transform: 'translateY(14px)' },
-                { opacity: 1, transform: 'translateY(0)' }
-              ],
+              [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'translateY(0)' }],
               { duration: 700, easing: 'cubic-bezier(.16,1,.3,1)' }
             );
           }
         });
       }
 
-      /* ==========================================================
-         PRINT INVITATION
-         ========================================================== */
       function initPrint() {
         document.querySelectorAll('[data-print]').forEach((btn) => {
           btn.addEventListener('click', () => window.print());
@@ -1846,6 +2113,7 @@
       initCursor();
       initReveals();
       initHairline();
+      initCountdown();
       initRsvp();
       initLetters();
       initPrint();
