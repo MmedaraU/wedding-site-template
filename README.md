@@ -1,4 +1,4 @@
-# Mmedara & Ikedinachi — Wedding Website
+# Wedding Website Template
 
 A custom, static wedding site. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JS.
 
