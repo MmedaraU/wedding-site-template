@@ -1,47 +1,127 @@
 # Wedding Website Template
 
-A custom, static wedding site. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JS.
+A custom, static wedding website. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JavaScript. 
 
-## The Files
-- `index.html` — The main site.
+**Live Date:** 16 December 2028  
+**Location:** Eket, Akwa Ibom
+
+---
+
+## 🚨 PRE-LAUNCH CHECKLIST (Placeholders to Replace)
+
+Before sharing the link with guests, you must find and replace all the bracketed placeholders and subject-to-change details listed below.
+
+### 1. Travel & Stay Details (`index.html`)
+Find the `<section class="travel-section">` block and replace:
+*   `[Hotel Name & Address]`: The name and address of the hotel.
+*   `[Discounted Rate]`: The final negotiated room rate (e.g., replace with `₦10,000` or `₦15,000`). **This appears in two places:** on the website (Travel section) and in the Google Apps Script (Accommodation email).
+*   `[Church Name], [Church Address]`: The name and address of the church.
+*   `[Reception Hall Name], [Reception Hall Address]`: The name and address of the reception venue.
+*   `[Park Name]`: The name of the park for departure.
+
+### 2. Google Maps Links (`index.html`)
+In the Travel section, find the `<a href="...">` tags and replace the generic search links with the actual links. 
+*   `https://www.google.com/maps?q=Hotel+Name+Address+Eket`
+*   `https://www.google.com/maps?q=Church+Name+Address+Eket`
+*   `https://www.google.com/maps?q=Reception+Hall+Name+Address+Eket`
+*   `https://www.google.com/maps?q=Park+Name+Address+Eket`
+
+### 3. The Google Apps Script (Backend & Email)
+Open your Apps Script editor and update the following:
+*   **`logoUrl`**: (At the very top) If you have a logo for the email header, you must host it on a public image host like **Sirv** (see note below) and paste the direct image URL here. If you leave it as `''`, it will use a text-based monogram.
+*   **Email 2 (Accommodation)**: Scroll down to the second email template and replace:
+    *   `[YOUR BANK NAME]`
+    *   `[YOUR ACCOUNT NAME]`
+    *   `[YOUR ACCOUNT NUMBER]`
+    *   `[YOUR PHONE NUMBER]` (Where guests send their payment receipts).
+
+### 4. Images (`index.html`)
+The site currently uses placeholder images from `picsum.photos`. 
+*   Replace the Hero Image (`1600x1067`).
+*   Replace the Story Image (`900x1200`).
+*   Replace the three Gallery Images (`900x1125`).
+
+### 5. The RSVP Form Connection (`index.html`)
+Ensure the `SCRIPT_URL` variable at the top of the `<script>` block is updated with your deployed Apps Script URL (it must end in `/exec`).
+
+---
+
+## 1. The Files
+- `index.html` — The main website.
 - `404.html` — The custom "page not found" page.
 - `README.md` — This file.
 
-## How to make changes
+---
 
-### 1. Text and Content
-Open `index.html` in any text editor (VS Code, Notepad, etc.). The content is written directly in the HTML. 
-- To change the names, search for `Mmedara & Ikedinachi`.
-- To change the story, search for `<div class="story__text"`.
-- To change the menu or travel details, search for `<div class="feast">` or `<div class="travel">`.
+## 2. How to Make Changes
 
-### 2. Photos
-The site currently uses placeholder images from `picsum.photos`. 
-To use real photos:
+### A. Text & Content
+Open `index.html` in any text editor (VS Code, Notepad, etc.). The content is written directly in the HTML.
+- **Names:** Search for `Mmedara & Ikedinachi`.
+- **Story:** Search for `<div class="story__text"`.
+- **Schedule:** Search for `<ol class="programme">`.
+- **Dress Code (Colours):** Search for `<div class="aso-grid">`.
+
+### B. Photos
+The site uses placeholder images. To use real photos:
 1. Create an `images` folder next to `index.html`.
 2. Put your photos in it.
 3. In `index.html`, find the `<img>` tags and replace the `src="https://picsum.photos/..."` with `src="images/your-photo.jpg"`.
-4. *Note:* Keep the `aspect-ratio` in mind. The hero photo is portrait (4:5), the story photo is portrait (3:4), and the gallery photos are uniform (4:5).
+4. **Aspect Ratios:**
+   - **Hero Image:** Landscape on desktop (`3:2`), portrait on mobile (`4:5`). Recommended size: `1600x1067`.
+   - **Story Image:** Portrait (`3:4`). Recommended size: `900x1200`.
+   - **Gallery Images:** Uniform portrait (`4:5`). Recommended size: `900x1125`.
 
-### 3. The Countdown
-The countdown targets **16 December 2028 at 14:30 WAT**. 
+### C. The Countdown
+The countdown targets **16 December 2028 at 08:00 WAT** (the White Wedding). 
 To change it, find this line in the `<script>` block at the bottom of `index.html`:
-`const TARGET = Date.UTC(2028, 11, 16, 13, 30, 0);`
-*(Remember: Months are 0-indexed, so `11` is December. Time is in UTC).*
+`const TARGET = Date.UTC(2028, 11, 16, 7, 0, 0);`
+*(Remember: WAT is UTC+1. Months are 0-indexed, so `11` is December).*
 
-### 4. The Forms (RSVP & Letters)
-Both forms submit silently to a Google Sheet using a Google Apps Script.
+### D. Favicon
+The site currently uses an inline SVG Favicon in the `<head>` of `index.html`. If you want to use a `.png` favicon later, replace the `<link rel="icon" ...>` tag.
 
-**If the forms stop working:**
-1. Check the `SCRIPT_URL` variable at the very top of the `<script>` block in `index.html`. It must be the deployed `/exec` URL.
-2. Ensure your Google Sheet has two tabs named exactly `RSVP` and `Letters`.
-3. Ensure the headers in Row 1 of those tabs exactly match: `Timestamp`, `Name`, `Guests`, `Notes`, `Song` and `Timestamp`, `Name`, `Message`.
-4. If you need to redeploy the Apps Script, go to `Extensions > Apps Script` in your Google Sheet, click `Deploy > Manage Deployments`, and create a new version.
+---
 
-**To view responses:** Open the Google Sheet linked to the Apps Script. Every submission will appear in a new row.
+## 3. The Forms (RSVP & Letters)
 
-## Design System
-If you need to match the design in future edits, here are the core tokens:
+Both forms submit silently to a Google Sheet using a Google Apps Script. The RSVP form also sends automated HTML confirmation emails via `MailApp`.
+
+### A. Google Sheet Setup
+You need a Google Sheet with two tabs named exactly `RSVP` and `Letters`.
+
+**Paste these TSV (Tab-Separated Values) strings into Cell A1 of each tab:**
+
+**RSVP Tab:**
+```text
+Timestamp	Name	Email	Attending	Guests	GuestNames	Children	Accommodation	Transport	Dietary	Song
+```
+
+**Letters Tab:**
+```text
+Timestamp	Name	Message
+```
+
+### B. ⚠️ The #1 Rule for Apps Script
+If you make *any* change to the Apps Script code, you **must** redeploy it as a **New version** (`Deploy > Manage deployments > Edit > Version: New version > Deploy`). If you don't do this, Google will keep running the old code, and you will pull your hair out wondering why your changes aren't working.
+
+### C. Troubleshooting Forms
+If data stops writing to the sheet or emails stop sending:
+1. Check the `SCRIPT_URL` in `index.html`. It must be the `/exec` URL.
+2. Check the **Executions** log in the Apps Script editor for errors.
+3. Ensure your sheet tab names and headers match exactly (case-sensitive).
+
+### D. Email Deliverability & Logos
+*   **Daily Limit:** Google Apps Script has a daily email limit (100/day for free Gmail, 1,500/day for Workspace). If you have a massive guest list, emails might silently fail after the limit. The data will still save to the sheet.
+*   **Email Logo Hosting:** Email clients require images to have public URLs. **Sirv** is recommended for hosting your email logo (`.png` or `.jpg`). Upload the logo to Sirv, copy the direct image link, and paste it into the `logoUrl` variable in the Apps Script. 
+
+### E. Aso Ebi (Private Arrangement)
+The website features a "Colours of the Day" section to guide guests on what to wear. There is **no Aso Ebi ordering or distribution mechanism on the site**. If you decide to provide Aso Ebi fabric to specific guests, you will manage this privately outside of the website's RSVP system.
+
+---
+
+## 4. Design System
+If you need to match the design in future edits, here are the core tokens used in the CSS:
 
 **Colors**
 - Background (Wine): `#2A0E14`
@@ -49,13 +129,22 @@ If you need to match the design in future edits, here are the core tokens:
 - Accent 1 (Coral): `#E24E42`
 - Accent 2 (Gold): `#B8935A`
 
+**Dress Code Swatches (CSS Gradients)**
+- Emerald Green: `linear-gradient(135deg, #1E3A2F 0%, #0F241D 100%)`
+- Dark Espresso: `linear-gradient(135deg, #3A2318 0%, #1E110B 100%)`
+- Tuscan Gold: `linear-gradient(135deg, #E8D5B5 0%, #C9A46B 100%)`
+
 **Fonts (Google Fonts)**
-- Display: `Fraunces` (uses variable settings for optical size and softness)
+- Display: `Fraunces` (Variable font; uses `WONK` and `SOFT` axes)
 - Body: `Newsreader`
 - Sans/UI: `Inter`
 
-## Deploying
-Because this is pure static HTML/CSS/JS, you can host it anywhere for free:
+---
+
+## 5. Deploying
+Because this is pure static HTML/CSS/JS, you can host the site itself anywhere for free:
 - **Netlify Drop:** Drag the folder containing your files onto [app.netlify.com/drop](https://app.netlify.com/drop).
 - **Vercel:** Run `vercel` in the terminal.
 - **GitHub Pages:** Push to a repo and enable Pages in settings.
+
+*Note: Ensure `404.html` is at the root of your deployment folder. Most hosts (Netlify, Vercel, GitHub Pages) will automatically serve it for missing routes.*

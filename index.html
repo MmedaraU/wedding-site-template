@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mmedara &amp; Ikedinachi — 16 December 2028</title>
   <meta name="description"
-    content="Two rivers, one sea. The marriage of Mmedara Umana (Onna) and Ikedinachi Okpara (Amasiri). Ibibio traditional at the family compound, Onna; Ìgbá Nkwụ and white wedding at The Palm Court, Uyo, Akwa Ibom." />
+    content="Two rivers, one sea. The marriage of Mmedara Umana (Onna) and Ikedinachi Okpara (Amasiri). Ibibio traditional at the family compound, Onna; Ìgbá Nkwụ and white wedding at The Palm Court, Eket, Akwa Ibom." />
   <meta name="theme-color" content="#2A0E14" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232A0E14'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23B8935A' stroke-width='3'/%3E%3Ctext x='50' y='58' font-family='Georgia, serif' font-style='italic' font-size='36' fill='%23E24E42' text-anchor='middle'%3EM%26I%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -367,7 +369,7 @@
    ============================================================ */
     .hero-photo {
       width: var(--wrap);
-      max-width: 820px;
+      max-width: 1080px;
       margin: clamp(48px, 8vw, 120px) auto 0;
       padding: 0;
     }
@@ -377,8 +379,15 @@
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: center 25%;
+      object-position: center;
       filter: saturate(1.06) contrast(1.02);
+    }
+
+    @media (min-width: 720px) {
+      .hero-photo__img {
+        aspect-ratio: 3 / 2;
+        object-position: center 30%;
+      }
     }
 
     .hero-photo__caption {
@@ -720,16 +729,16 @@
           transparent 2px 4px);
     }
 
-    .aso__swatch--wine {
-      background: linear-gradient(135deg, #5C1A22 0%, #3D0E16 100%);
+    .aso__swatch--green {
+      background: linear-gradient(135deg, #1E3A2F 0%, #0F241D 100%);
     }
 
-    .aso__swatch--coral {
-      background: linear-gradient(135deg, #E24E42 0%, #B8352C 100%);
+    .aso__swatch--brown {
+      background: linear-gradient(135deg, #3A2318 0%, #1E110B 100%);
     }
 
-    .aso__swatch--gold {
-      background: linear-gradient(135deg, #D4A868 0%, #B8935A 60%, #8F6E3F 100%);
+    .aso__swatch--tuscan {
+      background: linear-gradient(135deg, #E8D5B5 0%, #C9A46B 100%);
     }
 
     .aso__day {
@@ -805,79 +814,6 @@
       }
     }
 
-    /* ============================================================
-   10. FEAST
-   ============================================================ */
-    .feast-section {
-      padding-block: clamp(64px, 10vw, 140px)
-    }
-
-    .feast {
-      border-top: 1px solid var(--gold-faint);
-    }
-
-    .feast__dish {
-      padding: clamp(24px, 3.2vw, 40px) 0;
-      border-bottom: 1px solid var(--gold-faint);
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: clamp(16px, 3vw, 48px);
-      align-items: baseline;
-    }
-
-    .feast__name {
-      font-family: var(--display);
-      font-style: italic;
-      font-variation-settings: 'opsz' 144, 'SOFT' 40, 'WONK' 1;
-      font-size: clamp(30px, 4vw, 54px);
-      line-height: .95;
-      letter-spacing: -.02em;
-      margin: 0;
-      color: var(--ivory);
-    }
-
-    .feast__meta {
-      text-align: right
-    }
-
-    .feast__origin {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin: 0 0 .6em;
-    }
-
-    .feast__desc {
-      font-family: var(--text);
-      font-size: 15px;
-      line-height: 1.55;
-      color: var(--ivory-soft);
-      margin: 0;
-    }
-
-    .feast__note {
-      font-family: var(--sans);
-      font-size: 10.5px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: .7;
-      margin: clamp(24px, 3vw, 36px) 0 0;
-    }
-
-    @media (max-width:720px) {
-      .feast__dish {
-        grid-template-columns: 1fr;
-        gap: .5em
-      }
-
-      .feast__meta {
-        text-align: left
-      }
-    }
 
     /* ============================================================
    11. TRAVEL (FIXED)
@@ -921,6 +857,26 @@
       .travel {
         grid-template-columns: 1fr
       }
+    }
+
+    .map-link {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-soft);
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      display: inline-block;
+    }
+
+    .map-link:hover {
+      color: var(--coral);
+      border-bottom-color: var(--coral);
+    }
+
+    .map-link::after {
+      content: ' ↗';
+      font-size: 0.8em;
+      vertical-align: super;
+      opacity: 0.7;
     }
 
     /* ============================================================
@@ -977,16 +933,23 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      max-width: 70ch;
+      display: grid;
+      grid-template-columns: 1fr;
+      /* 1 column on mobile */
+      border-top: 1px solid var(--gold-faint);
+    }
+
+    @media (min-width: 860px) {
+      .letters__list {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns on desktop */
+        column-gap: clamp(32px, 5vw, 72px);
+      }
     }
 
     .letter {
       padding: clamp(24px, 3vw, 36px) 0;
       border-bottom: 1px solid var(--gold-faint);
-    }
-
-    .letters__list>.letter:first-child {
-      border-top: 1px solid var(--gold-faint)
     }
 
     .letter p {
@@ -1103,6 +1066,128 @@
     .letter-form {
       max-width: 70ch;
       margin-top: clamp(32px, 5vw, 56px)
+    }
+
+    /* ============================================================
+   RSVP CUSTOM FIELDS
+   ============================================================ */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-bottom: clamp(18px, 2.4vw, 26px);
+    }
+
+    @media (min-width: 480px) {
+      .radio-group {
+        flex-direction: row;
+        gap: 2em;
+      }
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      cursor: pointer;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(16px, 1.4vw, 19px);
+      color: var(--wine);
+    }
+
+    .radio-label input[type="radio"] {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(42, 14, 20, 0.4);
+      border-radius: 50%;
+      outline: none;
+      transition: border-color var(--dur) var(--ease), border-width var(--dur) var(--ease);
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"]:checked {
+      border-color: var(--coral);
+      border-width: 5px;
+    }
+
+    /* Dropdown Styling */
+    .field select {
+      width: 100%;
+      font: inherit;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(17px, 1.5vw, 21px);
+      line-height: 1.5;
+      color: inherit;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(184, 147, 90, .4);
+      border-radius: 0;
+      padding: .5em 0;
+      padding-right: 1.5em;
+      /* <-- ADD THIS (Makes room for the arrow) */
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+      text-overflow: ellipsis;
+      /* <-- ADD THIS (Adds ... if text is somehow still too long) */
+      white-space: nowrap;
+      /* <-- ADD THIS */
+      overflow: hidden;
+      /* <-- ADD THIS */
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23888888%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right .5em top 50%;
+      background-size: .65em auto;
+    }
+
+    /* Dropdown specific fix inside the ivory RSVP card */
+    .rsvp-card .field select {
+      color: var(--wine);
+      border-bottom-color: rgba(42, 14, 20, 0.3);
+      background-color: rgba(42, 14, 20, 0.03);
+      /* Subtle tint so it looks clickable */
+      padding-left: 0.5em;
+    }
+
+    /* Force the dropdown menu options to be legible */
+    .rsvp-card .field select option {
+      color: var(--wine);
+      background-color: var(--ivory);
+    }
+
+    .field select:focus {
+      border-bottom-color: var(--coral);
+    }
+
+    .field-select-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 clamp(16px, 3vw, 24px);
+    }
+
+    /* Switch to a perfect 2x2 grid on larger screens */
+    @media (min-width: 480px) {
+      .field-select-group {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Ensure long labels don't break the boxes */
+    .field-select-group .field {
+      min-width: 0;
+    }
+
+    /* ----------------- */
+
+    @media (min-width: 600px) {
+      .field-select-group {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     /* ============================================================
@@ -1303,8 +1388,7 @@
     <a href="#rivers" class="bead" data-bead="rivers" data-label="Two rivers" aria-label="Two rivers"></a>
     <a href="#story" class="bead" data-bead="story" data-label="Our story" aria-label="Our story"></a>
     <a href="#programme" class="bead" data-bead="programme" data-label="Programme" aria-label="Programme"></a>
-    <a href="#aso" class="bead" data-bead="aso" data-label="Aso ebi" aria-label="Aso ebi"></a>
-    <a href="#feast" class="bead" data-bead="feast" data-label="The feast" aria-label="The feast"></a>
+    <a href="#aso" class="bead" data-bead="aso" data-label="Colours" aria-label="Colours"></a>
     <a href="#travel" class="bead" data-bead="travel" data-label="Travel" aria-label="Travel"></a>
     <a href="#gallery" class="bead" data-bead="gallery" data-label="Photographs" aria-label="Photographs"></a>
     <a href="#letters" class="bead" data-bead="letters" data-label="Letters" aria-label="Letters"></a>
@@ -1314,7 +1398,7 @@
   <!-- ==================== HERO ==================== -->
   <header class="hero" id="hero">
     <div class="hero__top">
-      <span>Uyo &middot; Akwa Ibom</span>
+      <span>Eket &middot; Akwa Ibom</span>
       <span>MMXXVIII</span>
     </div>
 
@@ -1323,9 +1407,9 @@
 
       <h1 class="names">Mmedara <span class="amp">&amp;</span> Ikedinachi</h1>
 
-      <p class="hero__venue">The Palm Court &middot; Uyo &middot; Akwa Ibom</p>
+      <p class="hero__venue">The Palm Court &middot; Eket &middot; Akwa Ibom</p>
 
-      <p class="hero__date">16 &middot; XII &middot; 28</p>
+      <p class="hero__date">16 &middot; DEC &middot; 28</p>
 
       <div class="hero__countdown" id="countdown" aria-live="polite">
         <span><span class="num" data-countdown="days">&mdash;</span> <span class="unit">days</span></span>
@@ -1345,8 +1429,8 @@
 
   <!-- ==================== HERO PHOTO ==================== -->
   <figure class="hero-photo" data-reveal>
-    <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-hero/1200/1500"
-      alt="Mmedara and Ikedinachi, photographed at golden hour." width="1200" height="1500" class="hero-photo__img"
+    <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-hero/1600/1067"
+      alt="Mmedara and Ikedinachi, photographed at golden hour." width="1600" height="1067" class="hero-photo__img"
       fetchpriority="high" />
     <figcaption class="hero-photo__caption">The two of them, unhurried.</figcaption>
   </figure>
@@ -1409,205 +1493,169 @@
   <!-- ==================== STORY ==================== -->
   <section class="story wrap" id="story" aria-labelledby="story-title">
     <p class="kicker">Our story</p>
-    <h2 class="h2" id="story-title">We met in Lagos traffic</h2>
+    <h2 class="h2" id="story-title">Under Mama Yene&rsquo;s umbrella</h2>
 
     <div class="story__layout">
       <div class="story__text" data-reveal>
-        <p>We are from two places. I am Ibibio, from Onna &mdash; where the creek runs close and the palm stands tall.
-          He is Igbo, from Amasiri, in Afikpo &mdash; where the ekpe comes out at dusk and the new yam is not eaten
-          quietly. We met in Lagos, in traffic, the way these things happen here.</p>
-        <p>He had borrowed an umbrella from a stranger at the Yaba bus stop, and handed it back with the solemnity of a
-          man returning a relic. We were both twenty-six and neither of us was looking for anything in particular.</p>
-        <p>I was between flats in Lekki. He was between opinions about what to do with a degree in something
-          impractical. The umbrella lasted four more blocks before it gave up entirely, and by then we had already
-          decided to share a cab to Surulere.</p>
-        <p>Eleven years later the umbrella is gone, the flat is not, and the cab has become a standing arrangement. In
-          December, our two families will meet at my compound in Onna, where the kola will be broken and the palm wine
-          poured. The next day, in Uyo, the white wedding.</p>
-        <p>The ceremony will be short. The owambe will not be. There will be a band, and there will be afang, and there
-          will be a point at which the band stops, and what happens after that is between our guests and the palm court.
-        </p>
+        <p>We met in our second year at university, under a friend&rsquo;s POS umbrella. Shout out to Mama Yene, who
+          owned the
+          umbrella and the POS. We weren&rsquo;t friends then&mdash;just two people sheltering from the same rain. Not
+          long
+          after, the friend left school, and the umbrella went with her.</p>
+        <p>We didn&rsquo;t speak again until final year. He was finishing a four-year chemistry degree; I was in the
+          fifth
+          year of chemical engineering. We were both in our respective final years, but we might as well have been on
+          different campuses for all we saw of each other.</p>
+        <p>Then he called. It was a health crisis&mdash;his&mdash;and he needed someone to talk to. We spoke that day,
+          and the
+          next, and the next. When school resumed, we kept talking. We kept hanging out. We were always together,
+          walking the
+          same routes, weathering the same days.</p>
+        <p>He said &ldquo;I love you&rdquo; first. I didn&rsquo;t say it back immediately, but I didn&rsquo;t stop
+          thinking
+          about it. We&rsquo;ve been officially together since 2023, though we&rsquo;ve known each other since 2020.</p>
+        <p>Now we&rsquo;re getting married in Eket. The traditional rites on Thursday, the white wedding on Saturday at
+          eight
+          in the morning, and the reception at noon. Two families, two rivers, one sea.</p>
       </div>
 
       <figure class="story__figure" data-reveal style="--d:120ms">
         <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-story/900/1200"
           alt="A candid photograph from the archive — the flat in Lekki." width="900" height="1200" loading="lazy" />
-        <figcaption>Lekki, 2017</figcaption>
+        <figcaption>University days, 2020</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ==================== PROGRAMME ==================== -->
   <section class="programme-section wrap" id="programme" aria-labelledby="programme-title">
-    <p class="kicker">Order of the day</p>
+    <p class="kicker">The celebration</p>
     <h2 class="h2" id="programme-title">Two days, two traditions</h2>
 
     <ol class="programme">
       <li class="programme__item">
-        <span class="programme__day">Friday, 15 December</span>
-        <span class="programme__title">Ibibio Traditional</span>
-        <span class="programme__place">Family compound &middot; Onna &middot; 4pm</span>
+        <span class="programme__day">Thursday, 14 December 2028</span>
+        <span class="programme__title">The Traditional Wedding</span>
+        <span class="programme__place">Eket &middot; Details to follow</span>
       </li>
       <li class="programme__item">
-        <span class="programme__day">Saturday, 16 December</span>
-        <span class="programme__title">&Igrave;gb&aacute; Nkw&#7909;</span>
-        <span class="programme__place">The Palm Court &middot; Uyo &middot; 10am</span>
+        <span class="programme__day">Saturday, 16 December 2028</span>
+        <span class="programme__title">The White Wedding</span>
+        <span class="programme__place">Eket &middot; 8:00 am</span>
       </li>
       <li class="programme__item">
-        <span class="programme__day">Saturday, 16 December</span>
-        <span class="programme__title">White Wedding</span>
-        <span class="programme__place">The Palm Court &middot; Uyo &middot; 2:30pm</span>
-      </li>
-      <li class="programme__item">
-        <span class="programme__day">Saturday, 16 December</span>
-        <span class="programme__title">Reception &amp; Dancing</span>
-        <span class="programme__place">The Palm Court &middot; by the water &middot; 6pm</span>
+        <span class="programme__day">Saturday, 16 December 2028</span>
+        <span class="programme__title">The Reception</span>
+        <span class="programme__place">Eket &middot; 12:00 pm</span>
       </li>
     </ol>
+
+    <p class="aso__note" style="margin-top: 24px;">Please note: Because we are blending two large families, specific
+      event
+      invitations will be shared separately. Your RSVP indicates your interest, and we will follow up with the exact
+      itinerary for your invitation.</p>
   </section>
 
-  <!-- ==================== ASO EBI ==================== -->
+  <!-- ==================== COLOURS OF THE DAY ==================== -->
   <section class="aso-section wrap" id="aso" aria-labelledby="aso-title">
-    <p class="kicker">Aso ebi</p>
-    <h2 class="h2" id="aso-title">What we&rsquo;ll wear</h2>
+    <p class="kicker">Dress code</p>
+    <h2 class="h2" id="aso-title">Colours of the day</h2>
 
     <div class="aso-grid">
       <div class="aso" data-reveal>
-        <div class="aso__swatch aso__swatch--wine">
-          <span class="aso__day">Friday</span>
-        </div>
+        <div class="aso__swatch aso__swatch--green"></div>
         <div class="aso__info">
-          <p class="aso__name">Wine</p>
-          <p class="aso__desc">The traditional. Deep, dyed, unhurried. For the Ìgbá Nkwụ and the visits between
-            compounds.</p>
+          <p class="aso__name">Emerald Green</p>
+          <p class="aso__desc">Rich, grounded, and elegant. A timeless choice for the celebration.</p>
         </div>
       </div>
 
       <div class="aso" data-reveal style="--d:100ms">
-        <div class="aso__swatch aso__swatch--coral">
-          <span class="aso__day">Saturday</span>
-        </div>
+        <div class="aso__swatch aso__swatch--brown"></div>
         <div class="aso__info">
-          <p class="aso__name">Coral</p>
-          <p class="aso__desc">The white wedding. The colour of ekan, worn close to the skin. Bridal party, mothers, and
-            the ones who insist.</p>
+          <p class="aso__name">Dark Brown</p>
+          <p class="aso__desc">Earthy, warm, and sophisticated. A beautiful, quiet statement.</p>
         </div>
       </div>
 
       <div class="aso" data-reveal style="--d:200ms">
-        <div class="aso__swatch aso__swatch--gold">
-          <span class="aso__day">Saturday evening</span>
-        </div>
+        <div class="aso__swatch aso__swatch--tuscan"></div>
         <div class="aso__info">
-          <p class="aso__name">Antique Gold</p>
-          <p class="aso__desc">For the reception. Warm, worn, unhurried. The aunties will set the pace.</p>
+          <p class="aso__name">Tuscan Gold</p>
+          <p class="aso__desc">Warm, sun-baked, and earthy. A rich, golden stone tone.</p>
         </div>
       </div>
     </div>
 
-    <p class="aso__note">Fabric sourced in Uyo &middot; Order by the first of December</p>
-  </section>
-
-  <!-- ==================== FEAST ==================== -->
-  <section class="feast-section wrap" id="feast" aria-labelledby="feast-title">
-    <p class="kicker">The provisions</p>
-    <h2 class="h2" id="feast-title">What we&rsquo;ll eat</h2>
-
-    <div class="feast">
-      <div class="feast__dish">
-        <p class="feast__name">Afang</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Ibibio</p>
-          <p class="feast__desc">Afang leaves, waterleaf, pounded yam.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Ekpang Nkukwo</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Ibibio</p>
-          <p class="feast__desc">Grated cocoyam in cocoyam leaves. Done properly, or not at all.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Ofe Onugbu</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Igbo</p>
-          <p class="feast__desc">Bitterleaf, cocoyam, fufu. The Afikpo version.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Nkwobi</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Igbo</p>
-          <p class="feast__desc">Spiced cow foot, palm oil, utazi leaf.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Jollof rice</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Party</p>
-          <p class="feast__desc">Smoky, from the family recipe. The one argument we allow.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Small chops</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Party</p>
-          <p class="feast__desc">Puff-puff, samosa, spring roll, peppered gizzard. From five.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Palm wine</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Both</p>
-          <p class="feast__desc">Cold, from the tapper. Both cultures approve.</p>
-        </div>
-      </div>
-      <div class="feast__dish">
-        <p class="feast__name">Chapman &amp; Zobo</p>
-        <div class="feast__meta">
-          <p class="feast__origin">Welcome</p>
-          <p class="feast__desc">Non-negotiable. The aunties will check.</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="feast__note">A vegetarian plate is available &mdash; tell us when you reply.</p>
+    <p class="aso__note">We kindly ask our guests to dress in these colours for the celebration.</p>
   </section>
 
   <!-- ==================== TRAVEL ==================== -->
   <section class="travel-section wrap" id="travel" aria-labelledby="travel-title">
-    <p class="kicker">Travel &amp; stay</p>
+    <p class="kicker">Travel & stay</p>
     <h2 class="h2" id="travel-title">Getting there, staying over</h2>
 
     <div class="travel">
-      <div class="travel__item">
-        <p class="travel__label">Fly</p>
-        <p class="travel__body">Victor Attah International (QUO), Uyo. Twenty minutes to the city.</p>
-      </div>
-      <div class="travel__item">
-        <p class="travel__label">Stay</p>
-        <p class="travel__body">Ibom Icon Hotel &amp; Golf Resort, Uyo &mdash; fifteen minutes from The Palm Court.</p>
-      </div>
-      <div class="travel__item">
-        <p class="travel__label">Stay</p>
-        <p class="travel__body">Guest houses in Ewet Housing are ten minutes away. Book early.</p>
-      </div>
-      <div class="travel__item">
-        <p class="travel__label">Move</p>
-        <p class="travel__body">Hire a driver. Onna is forty minutes east of Uyo; Amasiri is three hours north, past
-          Afikpo. Plan the two separately.</p>
-      </div>
-      <div class="travel__item">
-        <p class="travel__label">Note</p>
-        <p class="travel__body">December in Akwa Ibom is busy, and the road north is long. Book early or regret it
-          quietly.</p>
-      </div>
-      <div class="travel__item">
-        <p class="travel__label">Ask</p>
-        <p class="travel__body">Write to <em>rsvp@MmedaraandIkedinachi.ng</em> with any question. Someone will answer.
+
+      <!-- Group 1: Accommodation -->
+      <div class="travel__item travel__item--full">
+        <p class="travel__label">Accommodation & Booking</p>
+        <p class="travel__body">
+          Accommodation for guests has been arranged at
+          <a href="https://www.google.com/maps?q=Hotel+Name+Address+Eket" target="_blank" rel="noopener"
+            class="map-link">
+            <strong>[Hotel Name]</strong>
+          </a>,
+          chosen specifically for its proximity to the <strong>reception hall</strong>. We have negotiated a special
+          discounted rate of <strong>[Discounted Rate] per night</strong> for our guests.<br><br>
+          To reserve your room, please indicate your need for lodging on the RSVP form. Once we receive your response,
+          we
+          will email you the bank details, payment instructions, and confirmation steps directly.
         </p>
       </div>
+
+      <!-- Group 2: Venues -->
+      <div class="travel__item">
+        <p class="travel__label">The Venues</p>
+        <p class="travel__body">
+          <strong>The Church:</strong><br>
+          <a href="https://www.google.com/maps?q=Church+Name+Address+Eket" target="_blank" rel="noopener"
+            class="map-link">
+            [Church Name], [Church Address]
+          </a><br><br>
+
+          <strong>The Reception Hall:</strong><br>
+          <a href="https://www.google.com/maps?q=Reception+Hall+Name+Address+Eket" target="_blank" rel="noopener"
+            class="map-link">
+            [Reception Hall Name], [Reception Hall Address]
+          </a>
+        </p>
+      </div>
+
+      <!-- Group 3: Transport -->
+      <div class="travel__item">
+        <p class="travel__label">Getting Around</p>
+        <p class="travel__body">
+          <strong>Daytime:</strong> Motorcycles (bikes) are the primary public transport.<br><br>
+          <strong>Evening (after 6pm):</strong> Only tricycles (kekes) are available.<br><br>
+          Fares are typically ₦300–₦600 from anywhere in town, depending on distance.
+        </p>
+      </div>
+
+      <!-- Group 4: Departure -->
+      <div class="travel__item travel__item--full">
+        <p class="travel__label">Sign Out & Departure</p>
+        <p class="travel__body">
+          Kindly confirm your check-out time with us. This allows us to notify the hotel staff and coordinate group
+          transportation to the park on your departure day.<br><br>
+          Should you book private transport, please inform the driver/rider that your destination is
+          <a href="https://www.google.com/maps?q=Park+Name+Address+Eket" target="_blank" rel="noopener"
+            class="map-link">
+            <strong>[Park Name]</strong>
+          </a>.
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -1644,29 +1692,28 @@
 
     <ul class="letters__list" id="letterList">
       <li class="letter">
-        <p>Never go to bed angry. Go to bed with jollof.</p>
-        <cite>&mdash; Auntie Ngozi, Afikpo</cite>
+        <p>Ima ke akpan, kûbọk ke idem. Love comes first, but take care of yourselves.</p>
+        <cite>&mdash; Auntie Ekaette</cite>
       </li>
       <li class="letter">
-        <p>Onye wetara &#7885;j&#7883;, wetara nd&#7909;. He who brings kola brings life. Begin everything with kola.
-        </p>
-        <cite>&mdash; Papa Chukwuka, Amasiri</cite>
+        <p>Nwayọọ bụ ike. Gentleness is strength. There is no need to rush what is built to last.</p>
+        <cite>&mdash; Uncle Chukwuka</cite>
       </li>
       <li class="letter">
         <p>Two rivers meet at the sea. Nobody argues with the sea.</p>
-        <cite>&mdash; Elder Aniekan, Onna</cite>
+        <cite>&mdash; Uncle Aniekan</cite>
       </li>
       <li class="letter">
-        <p>Marriage is not a sprint. It is Lagos traffic. Pack snacks.</p>
-        <cite>&mdash; Uncle Femi, Ikeja</cite>
+        <p>Always make time for each other. The rest will fall into place.</p>
+        <cite>&mdash; Auntie Ngozi</cite>
       </li>
       <li class="letter">
-        <p>A woman from Onna does not lose her way. She is only finding a better one.</p>
-        <cite>&mdash; Mama Ekaette, Onna</cite>
+        <p>Marriage is a journey, not a sprint. Pack snacks.</p>
+        <cite>&mdash; Damilola</cite>
       </li>
       <li class="letter">
-        <p>You two have been sharing a cab for eleven years. The rest is paperwork.</p>
-        <cite>&mdash; Damilola, Yaba</cite>
+        <p>You two have been sharing a life for years. The rest is paperwork.</p>
+        <cite>&mdash; The Okonkwos</cite>
       </li>
     </ul>
 
@@ -1691,29 +1738,82 @@
         <p class="kicker">Kindly reply</p>
         <h2 class="h2" id="rsvp-title">Will you be there?</h2>
 
+        <div class="radio-group" role="group" aria-label="Attendance">
+          <label class="radio-label">
+            <input type="radio" name="attending" value="Yes" required checked />
+            <span>Joyfully accepts</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attending" value="No" required />
+            <span>Regretfully declines</span>
+          </label>
+        </div>
+
         <label class="field">
           <span>Your name</span>
           <input type="text" name="name" autocomplete="name" required />
         </label>
-        <label class="field">
-          <span>Bringing</span>
-          <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
-        </label>
-        <label class="field">
-          <span>Anything we should know</span>
-          <input type="text" name="notes" placeholder="dietary, access, etc." />
-        </label>
-        <label class="field">
-          <span>One song that will get you dancing</span>
-          <input type="text" name="song" placeholder="The band needs a setlist." />
-        </label>
+
+        <div id="rsvpDetails">
+          <label class="field">
+            <span>Email address</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="For your confirmation" />
+          </label>
+
+          <label class="field">
+            <span>Total attendees (including you)</span>
+            <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
+          </label>
+
+          <div class="field" id="guestNamesField" style="display:none">
+            <span>Guest name(s)</span>
+            <input type="text" name="guestNames" placeholder="Who is coming with you?" />
+          </div>
+
+          <div class="field-select-group">
+            <label class="field">
+              <span>Hotel stay?</span>
+              <select name="accommodation">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Any children?</span>
+              <select name="children">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Shuttle needed</span>
+              <select name="transport">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Dietary requirements / allergies</span>
+            <input type="text" name="dietary" placeholder="e.g. Vegetarian, nut allergy" />
+          </label>
+
+          <label class="field">
+            <span>One song that will get you dancing</span>
+            <input type="text" name="song" placeholder="The band needs a setlist." />
+          </label>
+        </div>
 
         <button class="btn btn--wide" type="submit">Send reply</button>
       </form>
 
       <div class="rsvp-done" id="rsvpDone" hidden tabindex="-1" aria-live="polite">
         <p class="rsvp-done__title">Received.</p>
-        <p class="rsvp-done__text">We&rsquo;ll see you in Uyo. Watch out for the aso ebi.</p>
+        <p class="rsvp-done__text">We&rsquo;ve received your reply. We will be in touch soon with your specific event
+          invitation and further details.</p>
         <button class="btn btn--wide" type="button" id="rsvpAgain">Send another reply</button>
       </div>
     </div>
@@ -1722,12 +1822,11 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
     <div class="footer__monogram">M&amp;I</div>
-    <p class="footer__line">Mmedara &amp; Ikedinachi &middot; 16 &middot; XII &middot; 28 &middot; Uyo</p>
+    <p class="footer__line">Mmedara &amp; Ikedinachi &middot; 16 &middot; DEC &middot; 28 &middot; Eket</p>
     <nav class="footer__nav" aria-label="Footer">
       <a href="#story">Story</a>
       <a href="#programme">Programme</a>
-      <a href="#aso">Aso ebi</a>
-      <a href="#feast">Feast</a>
+      <a href="#aso">Colours</a>
       <a href="#travel">Travel</a>
       <a href="#letters">Letters</a>
       <a href="#rsvp">RSVP</a>
@@ -1873,22 +1972,66 @@
         const again = document.getElementById('rsvpAgain');
         if (!form || !done) return;
 
+        const attendingRadios = form.querySelectorAll('input[name="attending"]');
+        const rsvpDetails = document.getElementById('rsvpDetails');
+        const emailInput = form.querySelector('input[name="email"]');
+        const guestsInput = form.querySelector('input[name="guests"]');
+        const guestNamesField = document.getElementById('guestNamesField');
+
+        function toggleRsvpDetails() {
+          const isAttending = form.querySelector('input[name="attending"]:checked').value === 'Yes';
+          rsvpDetails.style.display = isAttending ? 'block' : 'none';
+          if (isAttending) {
+            emailInput.setAttribute('required', 'required');
+          } else {
+            emailInput.removeAttribute('required');
+          }
+        }
+
+        attendingRadios.forEach(r => r.addEventListener('change', toggleRsvpDetails));
+
+        guestsInput.addEventListener('input', () => {
+          const count = parseInt(guestsInput.value, 10);
+          guestNamesField.style.display = count > 1 ? 'block' : 'none';
+        });
+
+        toggleRsvpDetails();
+
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
           const nameInput = form.elements.name;
           if (!nameInput.value.trim()) { nameInput.focus(); return; }
+
+          const isAttending = form.querySelector('input[name="attending"]:checked').value === 'Yes';
+          const emailInput = form.elements.email;
+
+          // Force email if they are attending
+          if (isAttending && !emailInput.value.trim()) {
+            emailInput.focus();
+            alert('Please provide an email address so we can send your confirmation.');
+            return;
+          }
 
           const btn = form.querySelector('button[type="submit"]');
           const originalText = btn.textContent;
           btn.textContent = 'Sending...';
           btn.disabled = true;
 
-          // Map HTML names to the exact Google Sheet headers
           const payload = new URLSearchParams();
+          payload.append('formType', 'RSVP');
           payload.append('Name', nameInput.value.trim());
-          payload.append('Guests', form.elements.guests.value);
-          payload.append('Notes', form.elements.notes.value.trim());
-          payload.append('Song', form.elements.song.value.trim());
+          payload.append('Attending', isAttending ? 'Yes' : 'No');
+
+          if (isAttending) {
+            payload.append('Email', form.elements.email.value.trim());
+            payload.append('Guests', form.elements.guests.value);
+            payload.append('GuestNames', form.elements.guestNames.value.trim());
+            payload.append('Children', form.elements.children.value);
+            payload.append('Accommodation', form.elements.accommodation.value); // <-- Add this
+            payload.append('Transport', form.elements.transport.value);
+            payload.append('Dietary', form.elements.dietary.value.trim());
+            payload.append('Song', form.elements.song.value.trim());
+          }
 
           try {
             await fetch(SCRIPT_URL, {
@@ -1915,6 +2058,7 @@
             done.hidden = true;
             form.hidden = false;
             form.reset();
+            toggleRsvpDetails();
             form.elements.name.focus();
           });
         }
@@ -1942,8 +2086,8 @@
           btn.textContent = 'Sending...';
           btn.disabled = true;
 
-          // Map HTML names to the exact Google Sheet headers
           const payload = new URLSearchParams();
+          payload.append('formType', 'Letters');
           payload.append('Name', name || 'A guest');
           payload.append('Message', message);
 
@@ -1955,13 +2099,12 @@
               body: payload
             });
 
-            // Optimistically add the letter to the page
             const li = document.createElement('li');
             li.className = 'letter';
             const p = document.createElement('p');
             p.textContent = message;
             const cite = document.createElement('cite');
-            cite.textContent = '\u2014 ' + (name || 'A guest') + ', Uyo';
+            cite.textContent = '\u2014 ' + (name || 'A guest') + ', Eket';
             li.append(p, cite);
 
             if (list.firstChild) list.insertBefore(li, list.firstChild);
@@ -1987,7 +2130,6 @@
           }
         });
       }
-
       /* ==========================================================
          7. BOOT
          ========================================================== */
