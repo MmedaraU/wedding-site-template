@@ -636,9 +636,13 @@
 
     .story__text {
       color: var(--ivory-soft);
+      font-family: var(--text);
+      /* Newsreader */
       font-size: clamp(16px, .4vw + 15px, 19px);
+      line-height: 1.65;
+      font-style: normal;
+      /* Ensures upright text */
       min-width: 0;
-      /* Fixes overlap */
     }
 
     .story__text p {
@@ -1099,11 +1103,12 @@
     }
 
     .letter p {
-      font-family: var(--display);
-      font-style: italic;
-      font-variation-settings: 'opsz' 144, 'WONK' 1;
-      font-size: clamp(19px, 1.9vw, 26px);
-      line-height: 1.42;
+      font-family: var(--text);
+      /* Newsreader */
+      font-style: normal;
+      /* Removes the italics */
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.6;
       color: var(--ivory);
       margin: 0 0 .7em;
       text-wrap: pretty;
@@ -1830,27 +1835,7 @@
     </div>
   </section>
 
-  <!-- ==================== WISHING WELL ==================== -->
-  <section class="wishing-well wrap" id="gifts" aria-labelledby="gifts-title">
-    <div class="wishing-well__card">
-      <p class="kicker">Wishing Well</p>
-      <h2 class="h2" id="gifts-title">Gifts of Love</h2>
 
-      <p class="wishing-well__text">
-        Your presence at our wedding is the greatest gift we could ask for. However, if you would like to bless us with
-        a
-        cash gift as we begin our life together, we have set up a wishing well.
-      </p>
-
-      <div class="wishing-well__details">
-        <p><strong>Bank:</strong> [YOUR BANK NAME]</p>
-        <p><strong>Account Name:</strong> [YOUR ACCOUNT NAME]</p>
-        <p><strong>Account Number:</strong> <span id="account-number">[YOUR ACCOUNT NUMBER]</span></p>
-      </div>
-
-      <button class="btn" type="button" id="copyBtn">Copy Account Number</button>
-    </div>
-  </section>
 
   <!-- ==================== GALLERY ==================== -->
   <section class="gallery-section wrap" id="gallery" aria-labelledby="gallery-title">
@@ -2007,6 +1992,28 @@
           invitation and further details.</p>
         <button class="btn btn--wide" type="button" id="rsvpAgain">Send another reply</button>
       </div>
+    </div>
+  </section>
+
+  <!-- ==================== WISHING WELL ==================== -->
+  <section class="wishing-well wrap" id="gifts" aria-labelledby="gifts-title">
+    <div class="wishing-well__card">
+      <p class="kicker">Wishing Well</p>
+      <h2 class="h2" id="gifts-title">Gifts of Love</h2>
+
+      <p class="wishing-well__text">
+        Your presence at our wedding is the greatest gift we could ask for. However, if you would like to bless us with
+        a
+        cash gift as we begin our life together, we have set up a wishing well.
+      </p>
+
+      <div class="wishing-well__details">
+        <p><strong>Bank:</strong> [YOUR BANK NAME]</p>
+        <p><strong>Account Name:</strong> [YOUR ACCOUNT NAME]</p>
+        <p><strong>Account Number:</strong> <span id="account-number">[YOUR ACCOUNT NUMBER]</span></p>
+      </div>
+
+      <button class="btn" type="button" id="copyBtn">Copy Account Number</button>
     </div>
   </section>
 
