@@ -429,14 +429,31 @@
       width: var(--wrap);
       margin-inline: auto;
       display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__bottom-row {
+      display: flex;
       justify-content: space-between;
       align-items: baseline;
+      width: 100%;
       font-family: var(--sans);
       font-size: 10px;
       letter-spacing: .24em;
       text-transform: uppercase;
       color: var(--gold);
       opacity: .55;
+    }
+
+    .hero__scroll {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity var(--dur) var(--ease);
+    }
+
+    .hero__scroll:hover {
+      opacity: 1
     }
 
     .hero__scroll {
@@ -924,6 +941,11 @@
       /* Fixes clipped text */
     }
 
+    /* ADD THIS */
+    .travel__item--full {
+      grid-column: 1 / -1;
+    }
+
     .travel__label {
       font-family: var(--sans);
       font-size: 10px;
@@ -969,12 +991,18 @@
     }
 
     /* ============================================================
-   12. GALLERY (SIDE-BY-SIDE)
+   12. GALLERY (SIDE-BY-SIDE & MOBILE SWIPE)
    ============================================================ */
     .gallery-section {
       padding-block: clamp(64px, 10vw, 140px)
     }
 
+    .gallery-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Desktop: Beautiful Grid */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -990,7 +1018,6 @@
     .gallery__item img {
       width: 100%;
       aspect-ratio: 4 / 5;
-      /* Uniform aspect ratio so they align side-by-side */
       object-fit: cover;
       filter: saturate(1.06) contrast(1.02);
       display: block;
@@ -1009,6 +1036,75 @@
       background: rgba(26, 18, 16, .78);
       padding: 7px 12px;
       backdrop-filter: blur(8px);
+    }
+
+    /* The Arrow Buttons (Hidden on Desktop) */
+    .gallery-next,
+    .gallery-prev {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--wine);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-next {
+      right: 8px;
+    }
+
+    .gallery-prev {
+      left: 8px;
+    }
+
+    .gallery-next:hover,
+    .gallery-prev:hover {
+      color: var(--ivory);
+      border-color: var(--ivory);
+    }
+
+    /* Mobile: Swipeable Carousel */
+    @media (max-width: 860px) {
+      .gallery {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 24px;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+
+        /* Hide scrollbar for a clean look */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .gallery::-webkit-scrollbar {
+        display: none;
+      }
+
+      .gallery__item {
+        /* Takes up 85% of the screen so the next image peeks in */
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+      }
+
+      .gallery-next,
+      .gallery-prev {
+        display: flex;
+        /* Show arrows on mobile */
+      }
     }
 
     /* ============================================================
@@ -1597,10 +1693,20 @@
       </div>
     </div>
 
+
+
     <div class="hero__bottom">
-      <span>Mesiere</span>
-      <a href="#rivers" class="hero__scroll">Scroll &darr;</a>
-      <span>Nn&#7885;&#7885;</span>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mmedara+%26+Ikedinachi%27s+Wedding&dates=20281216T070000Z/20281216T130000Z&details=Join+us+for+the+white+wedding+and+reception+in+Eket!&location=The+Palm+Court,+Eket"
+        target="_blank" rel="noopener" class="btn btn--ghost"
+        style="font-size: 10px; padding: 0.8em 1.6em; margin-bottom: 16px;">
+        Add to Calendar
+      </a>
+
+      <div class="hero__bottom-row">
+        <span>Mesiere</span>
+        <a href="#rivers" class="hero__scroll">Scroll &darr;</a>
+        <span>Nn&#7885;&#7885;</span>
+      </div>
     </div>
   </header>
 
@@ -1725,17 +1831,18 @@
         <span class="programme__title">The Reception</span>
         <span class="programme__place">Eket &middot; 12:00 pm</span>
       </li>
-      <div style="margin-top: 40px; text-align: center;">
-        <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link" target="_blank"
-          rel="noopener" class="btn">
-          View Full Day-of Programme
-        </a>
-      </div>
     </ol>
 
+    <div style="margin-top: 40px; text-align: center;">
+      <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link" target="_blank"
+        rel="noopener" class="btn">
+        View Full Day-of Programme
+      </a>
+    </div>
+
     <p class="aso__note" style="margin-top: 24px;">Please note: Because we are blending two large families, specific
-      event
-      invitations will be shared separately. Your RSVP indicates your interest, and we will follow up with the exact
+      event invitations will be shared separately. Your RSVP indicates your interest, and we will follow up with the
+      exact
       itinerary for your invitation.</p>
   </section>
 
@@ -1788,12 +1895,11 @@
             href="https://www.google.com/maps?q=Hotel+Name+Address+Eket" target="_blank" rel="noopener"
             class="map-link"><strong>[Hotel Name]</strong></a>, chosen for its proximity to the reception hall.<br><br>
           To reserve your room, simply indicate your need for lodging on the RSVP form. Once received, we will email you
-          the
-          booking details and payment instructions directly.
+          the booking details and payment instructions directly.
         </p>
       </div>
 
-      <!-- Group 2: Venues -->
+      <!-- Group 2: Venues (Half width) -->
       <div class="travel__item">
         <p class="travel__label">The Venues</p>
         <p class="travel__body">
@@ -1806,22 +1912,20 @@
         </p>
       </div>
 
-      <!-- Group 3: Transport & Departure -->
+      <!-- Group 3: Transport & Departure (Half width) -->
       <div class="travel__item">
         <p class="travel__label">Transport & Departure</p>
         <p class="travel__body">
           <strong>Getting Around:</strong> Use bikes during the day, and kekes (tricycles) after 6pm. Fares are
-          typically
-          ₦300–₦600.<br><br>
+          typically ₦300–₦600.<br><br>
           <strong>Leaving Eket:</strong> Please confirm your check-out time with us. If booking private transport, tell
-          your
-          driver your destination is <a href="https://www.google.com/maps?q=Park+Name+Address+Eket" target="_blank"
+          your driver your destination is <a href="https://www.google.com/maps?q=Park+Name+Address+Eket" target="_blank"
             rel="noopener" class="map-link"><strong>[Park Name]</strong></a>.
         </p>
       </div>
 
-      <!-- Group 4: Local Help (Full width) -->
-      <div class="travel__item travel__item--full">
+      <!-- Group 4: Local Help (Half width) -->
+      <div class="travel__item">
         <p class="travel__label">Local Help</p>
         <p class="travel__body">
           If you are lost or delayed, please do not call the bride or groom. Reach out to our coordinators
@@ -1832,34 +1936,81 @@
         </p>
       </div>
 
+      <!-- Group 5: Shuttle Schedule (Half width, hidden until Dec 1, 2028) -->
+      <div class="travel__item">
+        <p class="travel__label">Shuttle Schedule</p>
+        <p class="travel__body">
+          We have arranged complimentary transportation for guests staying at the partner hotel.<br><br>
+          <strong>To Church:</strong> Departs the hotel lobby promptly at 7:00 AM.<br>
+          <strong>To Reception:</strong> Departs the church immediately following the ceremony.<br>
+          <strong>Return to Hotel:</strong> Runs continuously from the reception hall starting at 8:00 PM.
+        </p>
+      </div>
+
     </div>
   </section>
-
-
 
   <!-- ==================== GALLERY ==================== -->
   <section class="gallery-section wrap" id="gallery" aria-labelledby="gallery-title">
     <p class="kicker">Photographs</p>
     <h2 class="h2" id="gallery-title">The evidence</h2>
 
-    <div class="gallery">
-      <figure class="gallery__item" data-reveal>
-        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g1/900/1125"
-          alt="An early photograph together, Lekki, 2017." width="900" height="1125" loading="lazy" />
-        <figcaption class="gallery__caption">Lekki &middot; 2017</figcaption>
-      </figure>
+    <div class="gallery-wrapper">
 
-      <figure class="gallery__item" data-reveal style="--d:100ms">
-        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g2/900/1125"
-          alt="Her grandmother's compound in Onna, late afternoon." width="900" height="1125" loading="lazy" />
-        <figcaption class="gallery__caption">Onna &middot; late afternoon</figcaption>
-      </figure>
+      <!-- LEFT ARROW -->
+      <button class="gallery-prev" id="galleryPrev" aria-label="Previous photo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
 
-      <figure class="gallery__item" data-reveal style="--d:200ms">
-        <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g3/900/1125"
-          alt="A portrait at the Yaba bus stop, where it began." width="900" height="1125" loading="lazy" />
-        <figcaption class="gallery__caption">Yaba &middot; where it began</figcaption>
-      </figure>
+      <!-- RIGHT ARROW -->
+      <button class="gallery-next" id="galleryNext" aria-label="Next photo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </button>
+
+      <div class="gallery">
+        <figure class="gallery__item" data-reveal>
+          <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g1/900/1125"
+            alt="An early photograph together, Lekki, 2017." width="900" height="1125" loading="lazy" />
+          <figcaption class="gallery__caption">Lekki &middot; 2017</figcaption>
+        </figure>
+
+        <figure class="gallery__item" data-reveal style="--d:100ms">
+          <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g2/900/1125"
+            alt="Her grandmother's compound in Onna, late afternoon." width="900" height="1125" loading="lazy" />
+          <figcaption class="gallery__caption">Onna &middot; late afternoon</figcaption>
+        </figure>
+
+        <figure class="gallery__item" data-reveal style="--d:200ms">
+          <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g3/900/1125"
+            alt="A portrait at the Yaba bus stop, where it began." width="900" height="1125" loading="lazy" />
+          <figcaption class="gallery__caption">Yaba &middot; where it began</figcaption>
+        </figure>
+
+        <figure class="gallery__item" data-reveal style="--d:300ms">
+          <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g4/900/1125" alt="A candid moment from the archive."
+            width="900" height="1125" loading="lazy" />
+          <figcaption class="gallery__caption">The journey &middot; ongoing</figcaption>
+        </figure>
+
+        <figure class="gallery__item" data-reveal style="--d:400ms">
+          <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g5/900/1125" alt="Another photograph together."
+            width="900" height="1125" loading="lazy" />
+          <figcaption class="gallery__caption">Us &middot; always</figcaption>
+        </figure>
+
+        <figure class="gallery__item" data-reveal style="--d:500ms">
+          <img src="https://picsum.photos/seed/Mmedara-Ikedinachi-g6/900/1125" alt="A final portrait." width="900"
+            height="1125" loading="lazy" />
+          <figcaption class="gallery__caption">Looking forward</figcaption>
+        </figure>
+      </div>
+
     </div>
   </section>
 
@@ -2194,6 +2345,33 @@
       }
 
       /* ==========================================================
+         TIMED REVEALS (Hide elements until a specific date)
+         ========================================================== */
+      function initTimedReveals() {
+        const timeGatedElements = document.querySelectorAll('[data-reveal-date]');
+        if (!timeGatedElements.length) return;
+
+        // Get current time in milliseconds
+        const now = new Date().getTime();
+
+        timeGatedElements.forEach(el => {
+          const revealDateStr = el.getAttribute('data-reveal-date');
+
+          // Set the reveal time to midnight (00:00) on the specified date
+          const revealDate = new Date(revealDateStr + 'T00:00:00').getTime();
+
+          if (now < revealDate) {
+            // It's too early: hide the element
+            el.style.display = 'none';
+          } else {
+            // It's time: show the element (or let CSS handle it)
+            el.style.display = '';
+          }
+        });
+      }
+
+
+      /* ==========================================================
          5. RSVP FORM (Google Sheets)
          ========================================================== */
       function initRsvp() {
@@ -2407,6 +2585,66 @@
       }
 
       /* ==========================================================
+         GALLERY ARROW SCROLL
+         ========================================================== */
+      function initGalleryScroll() {
+        const gallery = document.querySelector('.gallery');
+        const nextBtn = document.getElementById('galleryNext');
+        const prevBtn = document.getElementById('galleryPrev');
+        if (!gallery || !nextBtn || !prevBtn) return;
+
+        // Function to show/hide arrows based on scroll position
+        function updateButtonVisibility() {
+          // Hide left arrow if we are at the very start
+          if (gallery.scrollLeft <= 5) {
+            prevBtn.style.opacity = '0';
+            prevBtn.style.pointerEvents = 'none';
+          } else {
+            prevBtn.style.opacity = '1';
+            prevBtn.style.pointerEvents = 'auto';
+          }
+
+          // Hide right arrow if we are at the very end (with a 10px buffer)
+          if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 10) {
+            nextBtn.style.opacity = '0';
+            nextBtn.style.pointerEvents = 'none';
+          } else {
+            nextBtn.style.opacity = '1';
+            nextBtn.style.pointerEvents = 'auto';
+          }
+        }
+
+        // Scroll to the next image
+        nextBtn.addEventListener('click', () => {
+          const firstItem = gallery.querySelector('.gallery__item');
+          if (firstItem) {
+            const scrollAmount = firstItem.offsetWidth + 16; // width + gap
+            gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          }
+        });
+
+        // Scroll to the previous image
+        prevBtn.addEventListener('click', () => {
+          const firstItem = gallery.querySelector('.gallery__item');
+          if (firstItem) {
+            const scrollAmount = firstItem.offsetWidth + 16;
+            gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          }
+        });
+
+        // Update arrow visibility as the user swipes manually
+        gallery.addEventListener('scroll', updateButtonVisibility);
+
+        // Update on window resize (e.g., rotating phone)
+        window.addEventListener('resize', updateButtonVisibility);
+
+        // Run once on load
+        updateButtonVisibility();
+
+      }
+
+
+      /* ==========================================================
          7. BOOT
          ========================================================== */
       initCountdown();
@@ -2415,7 +2653,9 @@
       initRsvp();
       initLetters();
       initCopyButton();
-      initMobileMenu(); // <-- Add this
+      initMobileMenu();
+      initTimedReveals();
+      initGalleryScroll(); // <-- Add this
     })();
   </script>
 
