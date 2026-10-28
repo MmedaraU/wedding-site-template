@@ -219,6 +219,91 @@
     }
 
     /* ============================================================
+   MOBILE MENU
+   ============================================================ */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: transparent;
+      border: none;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      padding: 10px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--ivory);
+      transition: transform 300ms var(--ease), opacity 300ms var(--ease);
+    }
+
+    /* X animation when open */
+    .menu-toggle.is-open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--wine);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms var(--ease);
+    }
+
+    .mobile-menu.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(24px, 5vw, 32px);
+      color: var(--ivory);
+      text-decoration: none;
+      transition: color 200ms var(--ease);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--coral);
+    }
+
+    /* Prevent scrolling when menu is open */
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* Show toggle and menu only on mobile/tablet */
+    @media (max-width: 1024px) {
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* ============================================================
    4. HERO
    ============================================================ */
     .hero {
@@ -923,6 +1008,67 @@
     }
 
     /* ============================================================
+   12. WISHING WELL (Gifts)
+   ============================================================ */
+    .wishing-well {
+      padding-block: clamp(64px, 10vw, 140px);
+    }
+
+    .wishing-well__card {
+      background: var(--ivory);
+      color: var(--wine);
+      padding: clamp(36px, 6vw, 72px);
+      max-width: 640px;
+      margin-inline: auto;
+      position: relative;
+      text-align: center;
+      border: 1px solid var(--gold-soft);
+    }
+
+    .wishing-well__card .kicker {
+      color: var(--wine);
+      opacity: .6;
+    }
+
+    .wishing-well__card .h2 {
+      color: var(--wine);
+      margin-bottom: 24px;
+    }
+
+    .wishing-well__text {
+      font-family: var(--display);
+      font-size: clamp(16px, 1.4vw, 19px);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: rgba(42, 14, 20, 0.8);
+    }
+
+    .wishing-well__details {
+      font-family: var(--display);
+      font-size: clamp(16px, 1.4vw, 19px);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      padding: 20px;
+      background: rgba(42, 14, 20, 0.04);
+      border-left: 3px solid var(--coral);
+      text-align: left;
+    }
+
+    .wishing-well__details p {
+      margin: 0;
+    }
+
+    .wishing-well__details strong {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-block;
+      width: 130px;
+    }
+
+    /* ============================================================
    13. LETTERS
    ============================================================ */
     .letters-section {
@@ -1382,6 +1528,25 @@
 
   <script>document.documentElement.classList.add('js');</script>
 
+  <!-- ==================== MOBILE MENU ==================== -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+    <a href="#hero">Announcement</a>
+    <a href="#rivers">Two Rivers</a>
+    <a href="#story">Our Story</a>
+    <a href="#programme">Programme</a>
+    <a href="#aso">Colours</a>
+    <a href="#travel">Travel & Stay</a>
+    <a href="#gallery">Photographs</a>
+    <a href="#letters">Letters</a>
+    <a href="#rsvp">RSVP</a>
+  </nav>
+
   <!-- ==================== BEAD RAIL ==================== -->
   <nav class="bead-rail" aria-label="Sections">
     <a href="#hero" class="bead is-active" data-bead="hero" data-label="Announcement" aria-label="Announcement"></a>
@@ -1390,6 +1555,7 @@
     <a href="#programme" class="bead" data-bead="programme" data-label="Programme" aria-label="Programme"></a>
     <a href="#aso" class="bead" data-bead="aso" data-label="Colours" aria-label="Colours"></a>
     <a href="#travel" class="bead" data-bead="travel" data-label="Travel" aria-label="Travel"></a>
+    <a href="#gifts" class="bead" data-bead="gifts" data-label="Wishing Well" aria-label="Wishing Well"></a>
     <a href="#gallery" class="bead" data-bead="gallery" data-label="Photographs" aria-label="Photographs"></a>
     <a href="#letters" class="bead" data-bead="letters" data-label="Letters" aria-label="Letters"></a>
     <a href="#rsvp" class="bead" data-bead="rsvp" data-label="RSVP" aria-label="RSVP"></a>
@@ -1541,13 +1707,19 @@
       <li class="programme__item">
         <span class="programme__day">Saturday, 16 December 2028</span>
         <span class="programme__title">The White Wedding</span>
-        <span class="programme__place">Eket &middot; 8:00 am</span>
+        <span class="programme__place">Eket &middot; Details to follow</span>
       </li>
       <li class="programme__item">
         <span class="programme__day">Saturday, 16 December 2028</span>
         <span class="programme__title">The Reception</span>
         <span class="programme__place">Eket &middot; 12:00 pm</span>
       </li>
+      <div style="margin-top: 40px; text-align: center;">
+        <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link" target="_blank"
+          rel="noopener" class="btn">
+          View Full Day-of Programme
+        </a>
+      </div>
     </ol>
 
     <p class="aso__note" style="margin-top: 24px;">Please note: Because we are blending two large families, specific
@@ -1597,20 +1769,16 @@
 
     <div class="travel">
 
-      <!-- Group 1: Accommodation -->
+      <!-- Group 1: Accommodation (Full width) -->
       <div class="travel__item travel__item--full">
-        <p class="travel__label">Accommodation & Booking</p>
+        <p class="travel__label">Accommodation</p>
         <p class="travel__body">
-          Accommodation for guests has been arranged at
-          <a href="https://www.google.com/maps?q=Hotel+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link">
-            <strong>[Hotel Name]</strong>
-          </a>,
-          chosen specifically for its proximity to the <strong>reception hall</strong>. We have negotiated a special
-          discounted rate of <strong>[Discounted Rate] per night</strong> for our guests.<br><br>
-          To reserve your room, please indicate your need for lodging on the RSVP form. Once we receive your response,
-          we
-          will email you the bank details, payment instructions, and confirmation steps directly.
+          We have secured a discounted rate of <strong>[Discounted Rate] per night</strong> at <a
+            href="https://www.google.com/maps?q=Hotel+Name+Address+Eket" target="_blank" rel="noopener"
+            class="map-link"><strong>[Hotel Name]</strong></a>, chosen for its proximity to the reception hall.<br><br>
+          To reserve your room, simply indicate your need for lodging on the RSVP form. Once received, we will email you
+          the
+          booking details and payment instructions directly.
         </p>
       </div>
 
@@ -1620,42 +1788,61 @@
         <p class="travel__body">
           <strong>The Church:</strong><br>
           <a href="https://www.google.com/maps?q=Church+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link">
-            [Church Name], [Church Address]
-          </a><br><br>
-
-          <strong>The Reception Hall:</strong><br>
+            class="map-link">[Church Name], [Church Address]</a><br><br>
+          <strong>The Reception:</strong><br>
           <a href="https://www.google.com/maps?q=Reception+Hall+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link">
-            [Reception Hall Name], [Reception Hall Address]
-          </a>
+            class="map-link">[Reception Hall Name], [Reception Hall Address]</a>
         </p>
       </div>
 
-      <!-- Group 3: Transport -->
+      <!-- Group 3: Transport & Departure -->
       <div class="travel__item">
-        <p class="travel__label">Getting Around</p>
+        <p class="travel__label">Transport & Departure</p>
         <p class="travel__body">
-          <strong>Daytime:</strong> Motorcycles (bikes) are the primary public transport.<br><br>
-          <strong>Evening (after 6pm):</strong> Only tricycles (kekes) are available.<br><br>
-          Fares are typically ₦300–₦600 from anywhere in town, depending on distance.
+          <strong>Getting Around:</strong> Use bikes during the day, and kekes (tricycles) after 6pm. Fares are
+          typically
+          ₦300–₦600.<br><br>
+          <strong>Leaving Eket:</strong> Please confirm your check-out time with us. If booking private transport, tell
+          your
+          driver your destination is <a href="https://www.google.com/maps?q=Park+Name+Address+Eket" target="_blank"
+            rel="noopener" class="map-link"><strong>[Park Name]</strong></a>.
         </p>
       </div>
 
-      <!-- Group 4: Departure -->
+      <!-- Group 4: Local Help (Full width) -->
       <div class="travel__item travel__item--full">
-        <p class="travel__label">Sign Out & Departure</p>
+        <p class="travel__label">Local Help</p>
         <p class="travel__body">
-          Kindly confirm your check-out time with us. This allows us to notify the hotel staff and coordinate group
-          transportation to the park on your departure day.<br><br>
-          Should you book private transport, please inform the driver/rider that your destination is
-          <a href="https://www.google.com/maps?q=Park+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link">
-            <strong>[Park Name]</strong>
-          </a>.
+          If you are lost or delayed, please do not call the bride or groom. Reach out to our coordinators
+          instead:<br><br>
+          <strong>[Coordinator Name 1]:</strong> <a href="tel:[Phone Number 1]" class="map-link">[Phone Number
+            1]</a><br>
+          <strong>[Coordinator Name 2]:</strong> <a href="tel:[Phone Number 2]" class="map-link">[Phone Number 2]</a>
         </p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ==================== WISHING WELL ==================== -->
+  <section class="wishing-well wrap" id="gifts" aria-labelledby="gifts-title">
+    <div class="wishing-well__card">
+      <p class="kicker">Wishing Well</p>
+      <h2 class="h2" id="gifts-title">Gifts of Love</h2>
+
+      <p class="wishing-well__text">
+        Your presence at our wedding is the greatest gift we could ask for. However, if you would like to bless us with
+        a
+        cash gift as we begin our life together, we have set up a wishing well.
+      </p>
+
+      <div class="wishing-well__details">
+        <p><strong>Bank:</strong> [YOUR BANK NAME]</p>
+        <p><strong>Account Name:</strong> [YOUR ACCOUNT NAME]</p>
+        <p><strong>Account Number:</strong> <span id="account-number">[YOUR ACCOUNT NUMBER]</span></p>
+      </div>
+
+      <button class="btn" type="button" id="copyBtn">Copy Account Number</button>
     </div>
   </section>
 
@@ -1690,6 +1877,21 @@
     <p class="kicker">The correspondence</p>
     <h2 class="h2" id="letters-title">Letters to the couple</h2>
 
+    <!-- FORM FIRST -->
+    <form class="letter-form" id="letterForm" novalidate style="margin-top: 0; margin-bottom: clamp(48px, 6vw, 72px);">
+      <label class="field">
+        <span>Your name</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Who is writing?" />
+      </label>
+      <label class="field">
+        <span>Your word</span>
+        <textarea name="message" rows="3" maxlength="220" required
+          placeholder="Advice, a memory, a warning — 220 characters or fewer."></textarea>
+      </label>
+      <button class="btn" type="submit">Send to the couple</button>
+    </form>
+
+    <!-- EXAMPLES SECOND -->
     <ul class="letters__list" id="letterList">
       <li class="letter">
         <p>Ima ke akpan, kûbọk ke idem. Love comes first, but take care of yourselves.</p>
@@ -1716,19 +1918,6 @@
         <cite>&mdash; The Okonkwos</cite>
       </li>
     </ul>
-
-    <form class="letter-form" id="letterForm" novalidate>
-      <label class="field">
-        <span>Your name</span>
-        <input type="text" name="name" autocomplete="name" placeholder="Who is writing?" />
-      </label>
-      <label class="field">
-        <span>Your word</span>
-        <textarea name="message" rows="3" maxlength="220" required
-          placeholder="Advice, a memory, a warning — 220 characters or fewer."></textarea>
-      </label>
-      <button class="btn" type="submit">Send to the couple</button>
-    </form>
   </section>
 
   <!-- ==================== RSVP ==================== -->
@@ -1797,13 +1986,9 @@
           </div>
 
           <label class="field">
-            <span>Dietary requirements / allergies</span>
-            <input type="text" name="dietary" placeholder="e.g. Vegetarian, nut allergy" />
-          </label>
-
-          <label class="field">
-            <span>One song that will get you dancing</span>
-            <input type="text" name="song" placeholder="The band needs a setlist." />
+            <span>Any requests or questions?</span>
+            <textarea name="requests" rows="3"
+              placeholder="Dietary needs, access requirements, or anything else we should know."></textarea>
           </label>
         </div>
 
@@ -1828,6 +2013,7 @@
       <a href="#programme">Programme</a>
       <a href="#aso">Colours</a>
       <a href="#travel">Travel</a>
+      <a href="#gifts">Wishing Well</a>
       <a href="#letters">Letters</a>
       <a href="#rsvp">RSVP</a>
     </nav>
@@ -1964,6 +2150,37 @@
       }
 
       /* ==========================================================
+         WISHING WELL - COPY BUTTON
+         ========================================================== */
+      function initCopyButton() {
+        const copyBtn = document.getElementById('copyBtn');
+        const accountNum = document.getElementById('account-number');
+        if (!copyBtn || !accountNum) return;
+
+        copyBtn.addEventListener('click', () => {
+          const textToCopy = accountNum.textContent.trim();
+
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = 'var(--coral)';
+            copyBtn.style.borderColor = 'var(--coral)';
+            copyBtn.style.color = 'var(--ivory)';
+
+            setTimeout(() => {
+              copyBtn.textContent = originalText;
+              copyBtn.style.background = 'var(--wine)';
+              copyBtn.style.borderColor = 'var(--wine)';
+              copyBtn.style.color = 'var(--ivory)';
+            }, 2000);
+          }).catch(err => {
+            console.error('Failed to copy: ', err);
+            alert('Please highlight and copy the account number manually.');
+          });
+        });
+      }
+
+      /* ==========================================================
          5. RSVP FORM (Google Sheets)
          ========================================================== */
       function initRsvp() {
@@ -2029,8 +2246,7 @@
             payload.append('Children', form.elements.children.value);
             payload.append('Accommodation', form.elements.accommodation.value); // <-- Add this
             payload.append('Transport', form.elements.transport.value);
-            payload.append('Dietary', form.elements.dietary.value.trim());
-            payload.append('Song', form.elements.song.value.trim());
+            payload.append('Requests', form.elements.requests.value.trim());
           }
 
           try {
@@ -2130,6 +2346,37 @@
           }
         });
       }
+
+      /* ==========================================================
+         MOBILE MENU
+         ========================================================== */
+      function initMobileMenu() {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        const links = menu.querySelectorAll('a');
+        if (!toggle || !menu) return;
+
+        function toggleMenu() {
+          const isOpen = menu.classList.contains('is-open');
+          toggle.classList.toggle('is-open');
+          menu.classList.toggle('is-open');
+          document.body.classList.toggle('menu-open');
+          toggle.setAttribute('aria-expanded', !isOpen);
+        }
+
+        toggle.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            toggle.classList.remove('is-open');
+            menu.classList.remove('is-open');
+            document.body.classList.remove('menu-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
       /* ==========================================================
          7. BOOT
          ========================================================== */
@@ -2138,6 +2385,8 @@
       initReveals();
       initRsvp();
       initLetters();
+      initCopyButton();
+      initMobileMenu(); // <-- Add this
     })();
   </script>
 
