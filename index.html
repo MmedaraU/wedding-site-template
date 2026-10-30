@@ -1846,31 +1846,31 @@
 
 
     <div class="hero__bottom">
-
       <!-- Button Row -->
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+
+        <!-- 1. Add to Calendar -->
         <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mmedara+%26+Ikedinachi%27s+Wedding&dates=20281216T070000Z/20281216T130000Z&details=Join+us+for+the+white+wedding+and+reception+in+Eket!&location=The+Palm+Court,+Eket"
           target="_blank" rel="noopener" class="btn btn--ghost" style="font-size: 10px; padding: 0.8em 1.6em;">
           Add to Calendar
         </a>
 
-        <!-- Buttons Row -->
-        <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-
-          <!-- Programme Button -->
+        <!-- 2. View Programme (Hidden until Dec 16, 2028) -->
+        <div data-reveal-date="2028-12-16" style="display: flex;">
           <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link"
-            target="_blank" rel="noopener" class="btn">
-            View Full Day-of Programme
+            target="_blank" rel="noopener" class="btn btn--ghost" style="font-size: 10px; padding: 0.8em 1.6em;">
+            View Programme
           </a>
-
-          <!-- Wedding Photos Button (Hidden until Dec 17, 2028) -->
-          <div data-reveal-date="2028-12-17" style="display: flex;">
-            <a href="[YOUR_GOOGLE_PHOTOS_LINK_HERE]" target="_blank" rel="noopener" class="btn">
-              View Wedding Photos
-            </a>
-          </div>
-
         </div>
+
+        <!-- 3. Wedding Photos (Hidden until Dec 17, 2028) -->
+        <div data-reveal-date="2028-12-17" style="display: flex;">
+          <a href="[YOUR_GOOGLE_PHOTOS_LINK_HERE]" target="_blank" rel="noopener" class="btn btn--ghost"
+            style="font-size: 10px; padding: 0.8em 1.6em;">
+            Wedding Photos
+          </a>
+        </div>
+
       </div>
 
       <div class="hero__bottom-row">
@@ -2012,6 +2012,25 @@
     </li>
   </ol>
 
+  <!-- Buttons Row (Inside Programme Section) -->
+  <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+
+    <!-- View Programme (Hidden until Dec 16, 2028) -->
+    <div data-reveal-date="2028-12-16" style="display: flex;">
+      <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link" target="_blank"
+        rel="noopener" class="btn">
+        View Full Day-of Programme
+      </a>
+    </div>
+
+    <!-- Wedding Photos (Hidden until Dec 17, 2028) -->
+    <div data-reveal-date="2028-12-17" style="display: flex;">
+      <a href="[YOUR_GOOGLE_PHOTOS_LINK_HERE]" target="_blank" rel="noopener" class="btn">
+        View Wedding Photos
+      </a>
+    </div>
+
+  </div>
   <!-- ==================== COLOURS OF THE DAY ==================== -->
   <section class="aso-section wrap" id="aso" aria-labelledby="aso-title">
     <p class="kicker">Dress code</p>
