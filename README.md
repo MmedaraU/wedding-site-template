@@ -1,4 +1,4 @@
-# Wedding Website Template
+#  Wedding Website Template
 
 A custom, static wedding website. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JavaScript.
 
@@ -13,19 +13,20 @@ Before sharing the link with guests, you must find and replace all the bracketed
 
 ### 1. Website Content (`index.html`)
 *   **Wishing Well:** Replace `[YOUR BANK NAME]`, `[YOUR ACCOUNT NAME]`, `[YOUR ACCOUNT NUMBER]`.
-*   **Programme:** Replace `[YOUR_GOOGLE_DRIVE_LINK]` with the link to your Day-of Programme PDF.
-*   **Wedding Photos:** Replace `[YOUR_GOOGLE_PHOTOS_LINK_HERE]` (found in both the Hero section and the Programme section).
+*   **Programme:** The Google Drive link is already set. Just ensure the file permissions in Google Drive are set to "Anyone with the link can view".
+*   **Wedding Photos:** Replace `[YOUR_GOOGLE_PHOTOS_LINK_HERE]` (found in the Hero section and the Programme section).
+*   **Local Help (In Colours Section):** Replace `[Coordinator Name 1]`, `[Phone Number 1]`, `[Coordinator Name 2]`, `[Phone Number 2]`.
 
 ### 2. Google Maps Links (`index.html`)
-In the Travel section, update the `<a href="...">` tags with the actual Google Maps links for your venues.
+In the Programme section, update the `<a href="...">` tags with the actual Google Maps links for your venues.
 
 ### 3. The Google Apps Script
 Open your Apps Script editor and update the `EMAIL_CONFIG` at the very top:
-*   **`logoUrl`**: Host your logo on Sirv (or any public image host) and paste the URL here.
-*   **`coupleEmail`**: Enter both of your emails separated by a comma (e.g., `'a@gmail.com, b@gmail.com'`).
+*   **`logoUrl`**: Host your logo on Sirv and paste the URL here.
+*   **`coupleEmail`**: Currently set to `'mediumana@gmail.com, okparaemmanuel2017@gmail.com'`.
 
 ### 4. The Password Gate (`index.html`)
-Find `const CORRECT_HASH = '...';` in the `<script>` block at the bottom. Replace the hash with your new SHA-256 hashed password.
+Find `const CORRECT_HASH = '...';` in the `<script>` block. Replace the hash with your new SHA-256 hashed password.
 
 ---
 
@@ -33,31 +34,39 @@ Find `const CORRECT_HASH = '...';` in the `<script>` block at the bottom. Replac
 - `index.html` — The main website.
 - `404.html` — The custom "page not found" page.
 - `scanner.html` — The private page for ushers (Currently dormant).
-- `RESTORE_QR_CHECKIN.md` — Instructions for turning the QR codes back on.
+- `RESTORE_QR_CHECKIN.md` — Instructions for turning QR codes back on.
 - `README.md` — This file.
 
 ---
 
-## 2. The Forms & Google Sheets
+## 2. The Google Sheets Setup
 
-### A. Google Sheet Setup
-Ensure your Google Sheet has two tabs named exactly `RSVP` and `Letters`.
+You now need **three** tabs in your Google Sheet:
+1.  `RSVP`
+2.  `Letters`
+3.  `Guest List` (For your planner)
 
-**Paste these TSV headers into Cell A1:**
-**RSVP Tab:**
+### A. RSVP Tab Headers
+Paste this TSV into Cell A1:
 ```text
-Timestamp	Name	Email	Attending	Guests	GuestNames	Children	Accommodation	Requests	CheckedIn
+Timestamp	Name	Email	Attending	Guests	Requests	CheckedIn
 ```
-**Letters Tab:**
+
+### B. Letters Tab Headers
+Paste this TSV into Cell A1:
 ```text
 Timestamp	Name	Message
 ```
 
-### B. The "New Version" Rule
-If you make *any* change to the Apps Script code, you **must** redeploy it as a **New version** (`Deploy > Manage deployments > Edit > Version: New version > Deploy`). If you don't, Google will keep running the old code.
+### C. Guest List Tab Headers (Crucial for sync)
+The sync script looks for these exact headers in your `Guest List` tab:
+```text
+Names	Guest Response	Number to expect	Category	How to invite	Invited to
+```
+*(When someone RSVPs, the script will automatically find their name, update their "Guest Response" to "Coming" or "Not Coming", and update the "Number to expect").*
 
-### C. Dynamic Letters
-The website automatically fetches the **6 most recent** letters from your Google Sheet and displays them. If you want to hide a letter, simply delete the row from the Google Sheet. If the sheet is empty, it defaults to showing the hardcoded sample letters.
+### D. The "New Version" Rule
+If you make *any* change to the Apps Script code, you **must** redeploy it as a **New version** (`Deploy > Manage deployments > Edit > Version: New version > Deploy`). If you don't, Google will keep running the old code.
 
 ---
 
@@ -81,6 +90,6 @@ You can hide any element until a specific date by adding `data-reveal-date="YYYY
 - Tuscan Gold: `linear-gradient(135deg, #E8D5B5 0%, #C9A46B 100%)`
 
 **Fonts (Google Fonts)**
-- Display: `Fraunces` (Variable font)
+- Display: `Fraunces`
 - Body: `Newsreader`
 - Sans/UI: `Inter`
