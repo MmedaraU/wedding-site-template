@@ -12,7 +12,6 @@ A custom, static wedding website. No build step, no frameworks, no dependencies.
 Before sharing the link with guests, you must find and replace all the bracketed placeholders and subject-to-change details listed below.
 
 ### 1. Website Content (`index.html`)
-*   **Travel & Stay:** Replace `[Discounted Rate]`, `[Hotel Name]`, `[Church Name]`, `[Church Address]`, `[Reception Hall Name]`, `[Reception Hall Address]`, `[Park Name]`, `[Coordinator Name 1]`, `[Phone Number 1]`, `[Coordinator Name 2]`, `[Phone Number 2]`.
 *   **Wishing Well:** Replace `[YOUR BANK NAME]`, `[YOUR ACCOUNT NAME]`, `[YOUR ACCOUNT NUMBER]`.
 *   **Programme:** Replace `[YOUR_GOOGLE_DRIVE_LINK]` with the link to your Day-of Programme PDF.
 *   **Wedding Photos:** Replace `[YOUR_GOOGLE_PHOTOS_LINK_HERE]` (found in both the Hero section and the Programme section).
@@ -24,7 +23,6 @@ In the Travel section, update the `<a href="...">` tags with the actual Google M
 Open your Apps Script editor and update the `EMAIL_CONFIG` at the very top:
 *   **`logoUrl`**: Host your logo on Sirv (or any public image host) and paste the URL here.
 *   **`coupleEmail`**: Enter both of your emails separated by a comma (e.g., `'a@gmail.com, b@gmail.com'`).
-*   **Email 2 (Accommodation)**: Scroll down to the second email template and replace `[Hotel Name]`, `[Hotel Full Address]`, `[YOUR BANK NAME]`, `[YOUR ACCOUNT NAME]`, `[YOUR ACCOUNT NUMBER]`, and `[YOUR PHONE NUMBER]`.
 
 ### 4. The Password Gate (`index.html`)
 Find `const CORRECT_HASH = '...';` in the `<script>` block at the bottom. Replace the hash with your new SHA-256 hashed password.
