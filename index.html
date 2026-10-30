@@ -1846,11 +1846,32 @@
 
 
     <div class="hero__bottom">
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mmedara+%26+Ikedinachi%27s+Wedding&dates=20281216T070000Z/20281216T130000Z&details=Join+us+for+the+white+wedding+and+reception+in+Eket!&location=The+Palm+Court,+Eket"
-        target="_blank" rel="noopener" class="btn btn--ghost"
-        style="font-size: 10px; padding: 0.8em 1.6em; margin-bottom: 16px;">
-        Add to Calendar
-      </a>
+
+      <!-- Button Row -->
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mmedara+%26+Ikedinachi%27s+Wedding&dates=20281216T070000Z/20281216T130000Z&details=Join+us+for+the+white+wedding+and+reception+in+Eket!&location=The+Palm+Court,+Eket"
+          target="_blank" rel="noopener" class="btn btn--ghost" style="font-size: 10px; padding: 0.8em 1.6em;">
+          Add to Calendar
+        </a>
+
+        <!-- Buttons Row -->
+        <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+
+          <!-- Programme Button -->
+          <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link"
+            target="_blank" rel="noopener" class="btn">
+            View Full Day-of Programme
+          </a>
+
+          <!-- Wedding Photos Button (Hidden until Dec 17, 2028) -->
+          <div data-reveal-date="2028-12-17" style="display: flex;">
+            <a href="[YOUR_GOOGLE_PHOTOS_LINK_HERE]" target="_blank" rel="noopener" class="btn">
+              View Wedding Photos
+            </a>
+          </div>
+
+        </div>
+      </div>
 
       <div class="hero__bottom-row">
         <span>Mesiere</span>
@@ -1961,40 +1982,35 @@
   </section>
 
   <!-- ==================== PROGRAMME ==================== -->
-  <section class="programme-section wrap" id="programme" aria-labelledby="programme-title">
-    <p class="kicker">The celebration</p>
-    <h2 class="h2" id="programme-title">Two days, two traditions</h2>
-
-    <ol class="programme">
-      <li class="programme__item">
-        <span class="programme__day">Thursday, 14 December 2028</span>
-        <span class="programme__title">The Traditional Wedding</span>
-        <span class="programme__place">Eket &middot; Details to follow</span>
-      </li>
-      <li class="programme__item">
-        <span class="programme__day">Saturday, 16 December 2028</span>
-        <span class="programme__title">The White Wedding</span>
-        <span class="programme__place">Eket &middot; Details to follow</span>
-      </li>
-      <li class="programme__item">
-        <span class="programme__day">Saturday, 16 December 2028</span>
-        <span class="programme__title">The Reception</span>
-        <span class="programme__place">Eket &middot; 12:00 pm</span>
-      </li>
-    </ol>
-
-    <div style="margin-top: 40px; text-align: center;">
-      <a href="https://drive.google.com/file/d/1g8EO8iBaB7kxK11vExy6n7sEpRFz4_BC/view?usp=drive_link" target="_blank"
-        rel="noopener" class="btn">
-        View Full Day-of Programme
-      </a>
-    </div>
-
-    <p class="aso__note" style="margin-top: 24px;">Please note: Because we are blending two large families, specific
-      event invitations will be shared separately. Your RSVP indicates your interest, and we will follow up with the
-      exact
-      itinerary for your invitation.</p>
-  </section>
+  <ol class="programme">
+    <li class="programme__item">
+      <span class="programme__day">Thursday, 14 December 2028</span>
+      <span class="programme__title">The Traditional Wedding</span>
+      <span class="programme__place">
+        <a href="https://www.google.com/maps?q=Family+Compound+Onna" target="_blank" rel="noopener"
+          class="map-link">Family Compound, Onna</a><br>
+        Details to follow
+      </span>
+    </li>
+    <li class="programme__item">
+      <span class="programme__day">Saturday, 16 December 2028</span>
+      <span class="programme__title">The White Wedding</span>
+      <span class="programme__place">
+        <a href="https://www.google.com/maps?q=Church+Name+Address+Eket" target="_blank" rel="noopener"
+          class="map-link">[Church Name]</a><br>
+        Details to follow
+      </span>
+    </li>
+    <li class="programme__item">
+      <span class="programme__day">Saturday, 16 December 2028</span>
+      <span class="programme__title">The Reception</span>
+      <span class="programme__place">
+        <a href="https://www.google.com/maps?q=Reception+Hall+Name+Address+Eket" target="_blank" rel="noopener"
+          class="map-link">[Reception Hall Name]</a><br>
+        12:00 pm
+      </span>
+    </li>
+  </ol>
 
   <!-- ==================== COLOURS OF THE DAY ==================== -->
   <section class="aso-section wrap" id="aso" aria-labelledby="aso-title">
@@ -2101,19 +2117,6 @@
         </p>
       </div>
 
-      <!-- Group 2: Venues (Half width) -->
-      <div class="travel__item">
-        <p class="travel__label">The Venues</p>
-        <p class="travel__body">
-          <strong>The Church:</strong><br>
-          <a href="https://www.google.com/maps?q=Church+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link">[Church Name], [Church Address]</a><br><br>
-          <strong>The Reception:</strong><br>
-          <a href="https://www.google.com/maps?q=Reception+Hall+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link">[Reception Hall Name], [Reception Hall Address]</a>
-        </p>
-      </div>
-
       <!-- Group 3: Transport & Departure (Half width) -->
       <div class="travel__item">
         <p class="travel__label">Transport & Departure</p>
@@ -2135,17 +2138,6 @@
           <strong>[Coordinator Name 1]:</strong> <a href="tel:[Phone Number 1]" class="map-link">[Phone Number
             1]</a><br>
           <strong>[Coordinator Name 2]:</strong> <a href="tel:[Phone Number 2]" class="map-link">[Phone Number 2]</a>
-        </p>
-      </div>
-
-      <!-- Group 5: Shuttle Schedule (Half width, hidden until Dec 1, 2028) -->
-      <div class="travel__item">
-        <p class="travel__label">Shuttle Schedule</p>
-        <p class="travel__body">
-          We have arranged complimentary transportation for guests staying at the partner hotel.<br><br>
-          <strong>To Church:</strong> Departs the hotel lobby promptly at 7:00 AM.<br>
-          <strong>To Reception:</strong> Departs the church immediately following the ceremony.<br>
-          <strong>Return to Hotel:</strong> Runs continuously from the reception hall starting at 8:00 PM.
         </p>
       </div>
 
@@ -2315,14 +2307,6 @@
             <label class="field">
               <span>Any children?</span>
               <select name="children">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Shuttle needed</span>
-              <select name="transport">
                 <option value="No">No</option>
                 <option value="Yes">Yes</option>
               </select>
@@ -2653,7 +2637,6 @@
             payload.append('GuestNames', form.elements.guestNames.value.trim());
             payload.append('Children', form.elements.children.value);
             payload.append('Accommodation', form.elements.accommodation.value);
-            payload.append('Transport', form.elements.transport.value);
             payload.append('Requests', form.elements.requests.value.trim());
           }
 
