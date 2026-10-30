@@ -8,6 +8,7 @@
   <meta name="description"
     content="Two rivers, one sea. The marriage of Mmedara Umana (Onna) and Ikedinachi Okpara (Amasiri). Ibibio traditional at the family compound, Onna; Ìgbá Nkwụ and white wedding at The Palm Court, Eket, Akwa Ibom." />
   <meta name="theme-color" content="#2A0E14" />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232A0E14'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23B8935A' stroke-width='3'/%3E%3Ctext x='50' y='58' font-family='Georgia, serif' font-style='italic' font-size='36' fill='%23E24E42' text-anchor='middle'%3EM%26I%3C/text%3E%3C/svg%3E" />
 
@@ -920,6 +921,59 @@
       }
     }
 
+    /* ============================================================
+   9.5. THE FEAST (MENU)
+   ============================================================ */
+    .menu-section {
+      padding-block: clamp(64px, 10vw, 140px)
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 64px);
+    }
+
+    /* 4 columns on desktop */
+    @media (min-width: 860px) {
+      .menu-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .menu-category__title {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-faint);
+      padding-bottom: 16px;
+      margin: 0 0 24px;
+    }
+
+    .menu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-list li {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'WONK' 1;
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.4;
+      color: var(--ivory);
+      margin-bottom: 14px;
+    }
+
+    .menu-list__divider {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px dashed rgba(184, 147, 90, 0.3);
+    }
 
     /* ============================================================
    11. TRAVEL (FIXED)
@@ -1608,6 +1662,85 @@
     }
 
     /* ============================================================
+   PASSWORD GATE
+   ============================================================ */
+    .password-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--wine);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .password-gate.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .password-gate__box {
+      background: var(--ivory);
+      color: var(--wine);
+      padding: clamp(36px, 6vw, 72px);
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      border: 1px solid var(--gold-soft);
+      text-align: center;
+    }
+
+    .password-gate__box::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid var(--gold-soft);
+      pointer-events: none;
+    }
+
+    .password-gate__box .kicker {
+      color: var(--wine);
+      opacity: 0.6;
+    }
+
+    .password-gate__box .h2 {
+      color: var(--wine);
+    }
+
+    .password-gate__box .field input {
+      color: var(--wine);
+      border-bottom-color: rgba(42, 14, 20, 0.3);
+      text-align: center;
+    }
+
+    .password-gate__box .field input:focus {
+      border-bottom-color: var(--coral);
+    }
+
+    .password-gate__box .btn {
+      background: var(--wine);
+      border-color: var(--wine);
+      color: var(--ivory);
+    }
+
+    .password-gate__box .btn:hover {
+      background: var(--coral);
+      border-color: var(--coral);
+    }
+
+    /* Hide the body until the password is entered */
+    body.locked {
+      overflow: hidden;
+    }
+
+    body.locked>*:not(.password-gate):not(script) {
+      display: none !important;
+    }
+
+    /* ============================================================
    18. PREFERENCES
    ============================================================ */
     @media (prefers-reduced-motion: reduce) {
@@ -1631,9 +1764,24 @@
   </style>
 </head>
 
-<body>
+<body class="locked">
 
   <script>document.documentElement.classList.add('js');</script>
+  <!-- ==================== PASSWORD GATE ==================== -->
+  <div id="password-gate" class="password-gate">
+    <div class="password-gate__box">
+      <p class="kicker">Private</p>
+      <h2 class="h2" style="margin-bottom: 24px;">Enter Password</h2>
+      <form id="passwordForm">
+        <label class="field">
+          <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password" required />
+        </label>
+        <button class="btn btn--wide" type="submit">Enter</button>
+        <p id="passwordError" style="color: var(--coral); font-size: 14px; margin-top: 16px; display: none;">Incorrect
+          password.</p>
+      </form>
+    </div>
+  </div>
 
   <!-- ==================== MOBILE MENU ==================== -->
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -1648,6 +1796,7 @@
     <a href="#story">Our Story</a>
     <a href="#programme">Programme</a>
     <a href="#aso">Colours</a>
+    <a href="#menu">The Feast</a>
     <a href="#travel">Travel & Stay</a>
     <a href="#gallery">Photographs</a>
     <a href="#letters">Letters</a>
@@ -1661,11 +1810,12 @@
     <a href="#story" class="bead" data-bead="story" data-label="Our story" aria-label="Our story"></a>
     <a href="#programme" class="bead" data-bead="programme" data-label="Programme" aria-label="Programme"></a>
     <a href="#aso" class="bead" data-bead="aso" data-label="Colours" aria-label="Colours"></a>
+    <a href="#menu" class="bead" data-bead="menu" data-label="The Feast" aria-label="The Feast"></a>
     <a href="#travel" class="bead" data-bead="travel" data-label="Travel" aria-label="Travel"></a>
-    <a href="#gifts" class="bead" data-bead="gifts" data-label="Wishing Well" aria-label="Wishing Well"></a>
     <a href="#gallery" class="bead" data-bead="gallery" data-label="Photographs" aria-label="Photographs"></a>
     <a href="#letters" class="bead" data-bead="letters" data-label="Letters" aria-label="Letters"></a>
     <a href="#rsvp" class="bead" data-bead="rsvp" data-label="RSVP" aria-label="RSVP"></a>
+    <a href="#gifts" class="bead" data-bead="gifts" data-label="Wishing Well" aria-label="Wishing Well"></a>
   </nav>
 
   <!-- ==================== HERO ==================== -->
@@ -1880,6 +2030,58 @@
     <p class="aso__note">We kindly ask our guests to dress in these colours for the celebration.</p>
   </section>
 
+  <!-- ==================== THE FEAST (MENU) ==================== -->
+  <section class="menu-section wrap" id="menu" aria-labelledby="menu-title">
+    <p class="kicker">The provisions</p>
+    <h2 class="h2" id="menu-title">What we&rsquo;ll eat</h2>
+
+    <div class="menu-grid">
+
+      <!-- Rice Dishes -->
+      <div class="menu-category" data-reveal>
+        <h3 class="menu-category__title">Rice Dishes</h3>
+        <ul class="menu-list">
+          <li>Jollof Rice</li>
+          <li>Fried Rice</li>
+          <li>White Rice with Shredded Beef Sauce</li>
+        </ul>
+      </div>
+
+      <!-- Soups -->
+      <div class="menu-category" data-reveal style="--d:100ms">
+        <h3 class="menu-category__title">Soups</h3>
+        <ul class="menu-list">
+          <li>Fisherman Soup</li>
+          <li>Afang Soup</li>
+          <li>White Soup</li>
+          <li>Egusi Soup</li>
+        </ul>
+      </div>
+
+      <!-- Sides & Swallow -->
+      <div class="menu-category" data-reveal style="--d:200ms">
+        <h3 class="menu-category__title">Sides & Swallow</h3>
+        <ul class="menu-list">
+          <li>Salad</li>
+          <li>Moi-moi</li>
+          <li class="menu-list__divider">Eba &middot; Fufu &middot; Semo</li>
+          <li>Pounded Yam &middot; Wheat</li>
+        </ul>
+      </div>
+
+      <!-- Proteins -->
+      <div class="menu-category" data-reveal style="--d:300ms">
+        <h3 class="menu-category__title">Proteins</h3>
+        <ul class="menu-list">
+          <li>Fish</li>
+          <li>Beef</li>
+          <li>Chicken</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== TRAVEL ==================== -->
   <section class="travel-section wrap" id="travel" aria-labelledby="travel-title">
     <p class="kicker">Travel & stay</p>
@@ -1891,11 +2093,11 @@
       <div class="travel__item travel__item--full">
         <p class="travel__label">Accommodation</p>
         <p class="travel__body">
-          We have secured a discounted rate of <strong>[Discounted Rate] per night</strong> at <a
-            href="https://www.google.com/maps?q=Hotel+Name+Address+Eket" target="_blank" rel="noopener"
-            class="map-link"><strong>[Hotel Name]</strong></a>, chosen for its proximity to the reception hall.<br><br>
+          We have secured a discounted rate of <strong>[Discounted Rate] per night</strong> at our partner hotel, chosen
+          specifically for its proximity to the reception hall.<br><br>
           To reserve your room, simply indicate your need for lodging on the RSVP form. Once received, we will email you
-          the booking details and payment instructions directly.
+          the
+          hotel name, exact address, and payment instructions directly.
         </p>
       </div>
 
@@ -2176,10 +2378,11 @@
       <a href="#story">Story</a>
       <a href="#programme">Programme</a>
       <a href="#aso">Colours</a>
+      <a href="#menu">The Feast</a>
       <a href="#travel">Travel</a>
-      <a href="#gifts">Wishing Well</a>
       <a href="#letters">Letters</a>
       <a href="#rsvp">RSVP</a>
+      <a href="#gifts">Wishing Well</a>
     </nav>
     <p class="footer__colophon">Made in Akwa Ibom, with love</p>
   </footer>
@@ -2643,6 +2846,50 @@
 
       }
 
+      /* ==========================================================
+         PASSWORD GATE
+         ========================================================== */
+      async function initPasswordGate() {
+        const gate = document.getElementById('password-gate');
+        const form = document.getElementById('passwordForm');
+        const input = document.getElementById('passwordInput');
+        const error = document.getElementById('passwordError');
+
+        // 🚨 PASTE YOUR 64-CHARACTER SHA-256 HASH HERE
+        const CORRECT_HASH = 'ea93db20351c5d43536e4a149518faa205fde92cefd62005a4524aaf64b3bdda';
+
+        // If already unlocked in this session, hide the gate and reveal the body
+        if (sessionStorage.getItem('unlocked') === 'true') {
+          gate.classList.add('is-hidden');
+          document.body.classList.remove('locked');
+          return;
+        }
+
+        // The hashing function
+        async function sha256(message) {
+          const msgBuffer = new TextEncoder().encode(message);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+          return hashHex;
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const hashedInput = await sha256(input.value);
+
+          if (hashedInput === CORRECT_HASH) {
+            sessionStorage.setItem('unlocked', 'true');
+            gate.classList.add('is-hidden');
+            document.body.classList.remove('locked'); // Reveals the site
+          } else {
+            error.style.display = 'block';
+            input.value = '';
+            input.focus();
+          }
+        });
+      }
 
       /* ==========================================================
          7. BOOT
@@ -2655,7 +2902,8 @@
       initCopyButton();
       initMobileMenu();
       initTimedReveals();
-      initGalleryScroll(); // <-- Add this
+      initGalleryScroll();
+      initPasswordGate(); // <-- Add this
     })();
   </script>
 

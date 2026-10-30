@@ -150,31 +150,33 @@
       resultDiv.className = '';
       resultDiv.innerText = 'Processing...';
 
-      // Send the scanned text to Google Sheets
-      const payload = new URLSearchParams();
-      payload.append('formType', 'CheckIn');
-      payload.append('GuestData', decodedText);
+      // Send the scanned text via GET request
+      const url = SCRIPT_URL + '?formType=CheckIn&GuestData=' + encodeURIComponent(decodedText);
 
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: payload
-      })
-        .then(() => {
-          resultDiv.className = 'success';
-          resultDiv.innerText = '✅ Checked in: ' + decodedText;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.result === 'success') {
+            resultDiv.className = 'success';
+            resultDiv.innerText = '✅ Checked in: ' + decodedText;
+          } else {
+            resultDiv.className = 'error';
+            resultDiv.innerText = '❌ ' + data.message;
+          }
 
           // Resume scanning after 2 seconds
           setTimeout(() => {
             resultDiv.innerText = 'Waiting for scan...';
-            html5qrCodeScanner.resume();
-          }, 2000);
+            html5QrcodeScanner.resume();
+          }, 2500);
         })
         .catch((err) => {
           resultDiv.className = 'error';
-          resultDiv.innerText = '❌ Error checking in. Try again.';
-          html5QrcodeScanner.resume();
+          resultDiv.innerText = '❌ Network error. Try again.';
+          setTimeout(() => {
+            resultDiv.innerText = 'Waiting for scan...';
+            html5QrcodeScanner.resume();
+          }, 2500);
         });
     }
 
