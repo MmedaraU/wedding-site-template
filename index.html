@@ -2337,31 +2337,16 @@
 
           <label class="field">
             <span>Total attendees (including you)</span>
-            <input type="number" name="guests" min="1" max="4" value="1" inputmode="numeric" />
+            <input type="number" name="guests" min="1" max="10" value="1" inputmode="numeric" />
           </label>
 
-          <div class="field" id="guestNamesField" style="display:none">
-            <span>Guest name(s)</span>
-            <input type="text" name="guestNames" placeholder="Who is coming with you?" />
-          </div>
-
-          <div class="field-select-group">
-            <label class="field">
-              <span>Hotel stay?</span>
-              <select name="accommodation">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Any children?</span>
-              <select name="children">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </label>
-          </div>
+          <label class="field">
+            <span>Hotel stay?</span>
+            <select name="accommodation">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </label>
 
           <label class="field">
             <span>Any requests or questions?</span>
@@ -2664,8 +2649,6 @@
         const attendingRadios = form.querySelectorAll('input[name="attending"]');
         const rsvpDetails = document.getElementById('rsvpDetails');
         const emailInput = form.querySelector('input[name="email"]');
-        const guestsInput = form.querySelector('input[name="guests"]');
-        const guestNamesField = document.getElementById('guestNamesField');
 
         // 1. Handle UI Toggles
         function toggleRsvpDetails() {
@@ -2679,12 +2662,6 @@
         }
 
         attendingRadios.forEach(r => r.addEventListener('change', toggleRsvpDetails));
-
-        guestsInput.addEventListener('input', () => {
-          const count = parseInt(guestsInput.value, 10);
-          guestNamesField.style.display = count > 1 ? 'block' : 'none';
-        });
-
         toggleRsvpDetails(); // Run on page load
 
         // 2. Handle Form Submission
@@ -2706,7 +2683,6 @@
               alert('Please provide an email address so we can send your confirmation.');
               return;
             }
-            // Native browser email format check (requires an @ and a domain)
             if (!emailInput.checkValidity()) {
               emailInput.focus();
               alert('Please enter a valid email address (e.g., name@example.com).');
@@ -2719,7 +2695,7 @@
           btn.textContent = 'Sending...';
           btn.disabled = true;
 
-          // 4. Build Payload (Matches your Google Sheet Headers)
+          // 4. Build Payload (Updated to remove GuestNames & Children)
           const payload = new URLSearchParams();
           payload.append('formType', 'RSVP');
           payload.append('Name', nameInput.value.trim());
@@ -2728,8 +2704,6 @@
           if (isAttending) {
             payload.append('Email', form.elements.email.value.trim());
             payload.append('Guests', form.elements.guests.value);
-            payload.append('GuestNames', form.elements.guestNames.value.trim());
-            payload.append('Children', form.elements.children.value);
             payload.append('Accommodation', form.elements.accommodation.value);
             payload.append('Requests', form.elements.requests.value.trim());
           }
@@ -2755,18 +2729,19 @@
           }
         });
 
-        // 6. Reset Form for "Send another reply"
+        // 6. Reset Form
         if (again) {
           again.addEventListener('click', () => {
             done.hidden = true;
             form.hidden = false;
             form.reset();
             toggleRsvpDetails();
-            guestNamesField.style.display = 'none'; // Hide guest names on reset
             form.elements.name.focus();
           });
         }
       }
+
+
       /* ==========================================================
          6. LETTERS FORM (Google Sheets)
          ========================================================== */
