@@ -716,7 +716,8 @@
     .programme {
       list-style: none;
       margin: 0;
-      padding: 0 0 0 clamp(28px, 3.4vw, 44px);
+      /* Added right padding to balance the layout */
+      padding: 0 clamp(16px, 3.4vw, 44px) 0 clamp(28px, 3.4vw, 44px);
       position: relative;
     }
 
@@ -1644,6 +1645,33 @@
       opacity: .6;
     }
 
+    .footer__help {
+      margin: 0 0 clamp(24px, 4vw, 40px);
+      padding-top: clamp(24px, 4vw, 40px);
+      border-top: 1px solid var(--gold-faint);
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ivory-soft);
+    }
+
+    .footer__help p {
+      margin: 0 0 8px;
+    }
+
+    .footer__help a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-soft);
+      transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+
+    .footer__help a:hover {
+      color: var(--coral);
+      border-bottom-color: var(--coral);
+    }
+
     /* ============================================================
    17. REVEALS
    ============================================================ */
@@ -2128,11 +2156,14 @@
       <div class="travel__item travel__item--full">
         <p class="travel__label">Accommodation</p>
         <p class="travel__body">
-          We have secured a discounted rate of <strong>[Discounted Rate] per night</strong> at our partner hotel, chosen
-          specifically for its proximity to the reception hall.<br><br>
-          To reserve your room, simply indicate your need for lodging on the RSVP form. Once received, we will email you
-          the
-          hotel name, exact address, and payment instructions directly.
+          We have secured a discounted rate of <strong>[Discounted Rate] per night</strong> at <a
+            href="https://www.google.com/maps?q=Hotel+Name+Address+Eket" target="_blank" rel="noopener"
+            class="map-link"><strong>[Hotel Name]</strong></a>, chosen for its proximity to the reception hall.<br><br>
+          To reserve your room, simply indicate your need for lodging on the <a href="#rsvp"
+            style="color: var(--coral); text-decoration: underline; text-underline-offset: 4px;">RSVP form</a>. Once
+          received,
+          we will email you
+          the booking details and payment instructions directly.
         </p>
       </div>
 
@@ -2387,6 +2418,15 @@
       <a href="#rsvp">RSVP</a>
       <a href="#gifts">Wishing Well</a>
     </nav>
+    <div class="footer__help">
+      <p>Lost or delayed on the wedding day? Call our coordinators:</p>
+      <p>
+        <a href="tel:[Phone Number 1]">[Coordinator Name 1]</a>
+        &middot;
+        <a href="tel:[Phone Number 2]">[Coordinator Name 2]</a>
+      </p>
+    </div>
+
     <p class="footer__colophon">Made in Akwa Ibom, with love</p>
   </footer>
 
@@ -2576,6 +2616,41 @@
         });
       }
 
+
+      /* ==========================================================
+         FETCH LETTERS FROM GOOGLE SHEET (Last 6)
+         ========================================================== */
+      async function fetchLetters() {
+        const list = document.getElementById('letterList');
+        if (!list) return;
+
+        try {
+          const response = await fetch(SCRIPT_URL);
+          const letters = await response.json();
+
+          // If there are letters in the sheet, replace the hardcoded samples
+          if (letters.length > 0) {
+            list.innerHTML = ''; // Clear the hardcoded HTML samples
+
+            letters.forEach(letter => {
+              const li = document.createElement('li');
+              li.className = 'letter';
+
+              const p = document.createElement('p');
+              p.textContent = letter.message;
+
+              const cite = document.createElement('cite');
+              cite.textContent = '\u2014 ' + letter.name;
+
+              li.append(p, cite);
+              list.appendChild(li);
+            });
+          }
+        } catch (error) {
+          console.log('Could not fetch letters:', error);
+          // If the fetch fails, the hardcoded HTML samples remain visible as a fallback.
+        }
+      }
 
       /* ==========================================================
          5. RSVP FORM (Google Sheets)
@@ -2901,11 +2976,12 @@
       initReveals();
       initRsvp();
       initLetters();
+      fetchLetters(); // <-- This makes it happen
       initCopyButton();
       initMobileMenu();
       initTimedReveals();
       initGalleryScroll();
-      initPasswordGate(); // <-- Add this
+      initPasswordGate();
     })();
   </script>
 
