@@ -1,6 +1,6 @@
 # Wedding Website Template
 
-A custom, static wedding website. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JavaScript. 
+A custom, static wedding website. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JavaScript.
 
 **Live Date:** 16 December 2028  
 **Location:** Eket, Akwa Ibom
@@ -12,109 +12,65 @@ A custom, static wedding website. No build step, no frameworks, no dependencies.
 Before sharing the link with guests, you must find and replace all the bracketed placeholders and subject-to-change details listed below.
 
 ### 1. Website Content (`index.html`)
-Find these sections and replace the bracketed text:
-*   **Travel & Stay (Accommodation):** `[Discounted Rate]`, `[Hotel Name]`.
-*   **Travel & Stay (Venues):** `[Church Name]`, `[Church Address]`, `[Reception Hall Name]`, `[Reception Hall Address]`.
-*   **Travel & Stay (Transport):** `[Park Name]`.
-*   **Travel & Stay (Local Help):** `[Coordinator Name 1]`, `[Phone Number 1]`, `[Coordinator Name 2]`, `[Phone Number 2]`.
-*   **Wishing Well:** `[YOUR BANK NAME]`, `[YOUR ACCOUNT NAME]`, `[YOUR ACCOUNT NUMBER]`.
+*   **Travel & Stay:** Replace `[Discounted Rate]`, `[Hotel Name]`, `[Church Name]`, `[Church Address]`, `[Reception Hall Name]`, `[Reception Hall Address]`, `[Park Name]`, `[Coordinator Name 1]`, `[Phone Number 1]`, `[Coordinator Name 2]`, `[Phone Number 2]`.
+*   **Wishing Well:** Replace `[YOUR BANK NAME]`, `[YOUR ACCOUNT NAME]`, `[YOUR ACCOUNT NUMBER]`.
 *   **Programme:** Replace `[YOUR_GOOGLE_DRIVE_LINK]` with the link to your Day-of Programme PDF.
+*   **Wedding Photos:** Replace `[YOUR_GOOGLE_PHOTOS_LINK_HERE]` (found in both the Hero section and the Programme section).
 
 ### 2. Google Maps Links (`index.html`)
-In the Travel section, find the `<a href="...">` tags and replace the generic search links with the actual links for your venues.
-*   `https://www.google.com/maps?q=Hotel+Name+Address+Eket`
-*   `https://www.google.com/maps?q=Church+Name+Address+Eket`
-*   `https://www.google.com/maps?q=Reception+Hall+Name+Address+Eket`
-*   `https://www.google.com/maps?q=Park+Name+Address+Eket`
+In the Travel section, update the `<a href="...">` tags with the actual Google Maps links for your venues.
 
-### 3. The Google Apps Script (Backend & Email)
-Open your Apps Script editor and update the following:
-*   **`logoUrl`**: (At the very top) If you have a logo for the email header, host it on a public image host like **Sirv** and paste the direct image URL here. If left as `''`, it uses a text-based monogram.
-*   **Email 2 (Accommodation)**: Scroll down to the second email template and replace:
-    *   `[Discounted Rate]`
-    *   `[YOUR BANK NAME]`
-    *   `[YOUR ACCOUNT NAME]`
-    *   `[YOUR ACCOUNT NUMBER]`
-    *   `[YOUR PHONE NUMBER]` (Where guests send their payment receipts).
+### 3. The Google Apps Script
+Open your Apps Script editor and update the `EMAIL_CONFIG` at the very top:
+*   **`logoUrl`**: Host your logo on Sirv (or any public image host) and paste the URL here.
+*   **`coupleEmail`**: Enter both of your emails separated by a comma (e.g., `'a@gmail.com, b@gmail.com'`).
+*   **Email 2 (Accommodation)**: Scroll down to the second email template and replace `[Hotel Name]`, `[Hotel Full Address]`, `[YOUR BANK NAME]`, `[YOUR ACCOUNT NAME]`, `[YOUR ACCOUNT NUMBER]`, and `[YOUR PHONE NUMBER]`.
 
-### 4. The Scanner Page (`scanner.html`)
-*   Paste your deployed Google Apps Script Web App URL (the one ending in `/exec`) into the `const SCRIPT_URL = '...'` variable at the bottom of the file.
+### 4. The Password Gate (`index.html`)
+Find `const CORRECT_HASH = '...';` in the `<script>` block at the bottom. Replace the hash with your new SHA-256 hashed password.
 
 ---
 
 ## 1. The Files
 - `index.html` — The main website.
 - `404.html` — The custom "page not found" page.
-- `scanner.html` — The private page for ushers to scan QR codes on the wedding day.
+- `scanner.html` — The private page for ushers (Currently dormant).
+- `RESTORE_QR_CHECKIN.md` — Instructions for turning the QR codes back on.
 - `README.md` — This file.
 
 ---
 
-## 2. How to Make Changes
-
-### A. Photos
-To use real photos:
-1. Create an `images` folder next to `index.html`.
-2. Put your photos in it.
-3. Replace the `src="https://picsum.photos/..."` with `src="images/your-photo.jpg"`.
-4. **Aspect Ratios:**
-   - **Hero Image:** Landscape on desktop (`3:2`), portrait on mobile (`4:5`). Size: `1600x1067`.
-   - **Story Image:** Portrait (`3:4`). Size: `900x1200`.
-   - **Gallery Images:** Uniform portrait (`4:5`). Size: `900x1125`.
-
-### B. The Countdown
-The countdown targets **16 December 2028 at 08:00 WAT**. 
-To change it, find this line in the `<script>` block at the bottom of `index.html`:
-`const TARGET = Date.UTC(2028, 11, 16, 7, 0, 0);`
-*(Note: Months are 0-indexed, so `11` is December. WAT is UTC+1).*
-
-### C. Timed Reveals (Hiding Sections)
-You can hide any section or element until a specific date by adding `data-reveal-date="YYYY-MM-DD"` to its container. 
-*   **Example:** The Shuttle Schedule currently has `data-reveal-date="2028-12-01"`. It will not show up on the site until December 1, 2028. 
-*   To make it show immediately for testing, simply delete that attribute from the HTML.
-
----
-
-## 3. The Forms (RSVP & Letters)
-
-Both forms submit silently to a Google Sheet using a Google Apps Script. 
+## 2. The Forms & Google Sheets
 
 ### A. Google Sheet Setup
-You need a Google Sheet with two tabs named exactly `RSVP` and `Letters`.
+Ensure your Google Sheet has two tabs named exactly `RSVP` and `Letters`.
 
-**Paste these TSV (Tab-Separated Values) strings into Cell A1 of each tab:**
-
+**Paste these TSV headers into Cell A1:**
 **RSVP Tab:**
 ```text
-Timestamp	Name	Email	Attending	Guests	GuestNames	Children	Accommodation	Transport	Requests	CheckedIn
+Timestamp	Name	Email	Attending	Guests	GuestNames	Children	Accommodation	Requests	CheckedIn
 ```
-
 **Letters Tab:**
 ```text
 Timestamp	Name	Message
 ```
 
-### B. ⚠️ The #1 Rule for Apps Script
+### B. The "New Version" Rule
 If you make *any* change to the Apps Script code, you **must** redeploy it as a **New version** (`Deploy > Manage deployments > Edit > Version: New version > Deploy`). If you don't, Google will keep running the old code.
 
-### C. Email Deliverability & Logos
-*   **Daily Limit:** Google Apps Script has a daily email limit (100/day for free Gmail, 1,500/day for Workspace). 
-*   **Email Logo Hosting:** Email clients require images to have public URLs. **Sirv** is recommended for hosting your email logo. Upload the logo to Sirv, copy the direct image link, and paste it into the `logoUrl` variable in the Apps Script. 
+### C. Dynamic Letters
+The website automatically fetches the **6 most recent** letters from your Google Sheet and displays them. If you want to hide a letter, simply delete the row from the Google Sheet. If the sheet is empty, it defaults to showing the hardcoded sample letters.
 
 ---
 
-## 4. The Wedding Day (QR Check-in)
-The RSVP confirmation email automatically generates a QR code for each guest. 
-
-1. On the wedding day, open `scanner.html` on a phone or tablet (e.g., `yourdomain.com/scanner.html`).
-2. Allow camera access.
-3. Point the camera at the guest's QR code.
-4. The scanner will communicate with the Google Sheet and update the `CheckedIn` column with the time they arrived.
+## 3. Hiding Sections until a Specific Date
+You can hide any element until a specific date by adding `data-reveal-date="YYYY-MM-DD"` to its container.
+*   **Programme Button:** Hidden until `2028-12-16` (Wedding Day).
+*   **Wedding Photos Button:** Hidden until `2028-12-17` (Day after).
 
 ---
 
-## 5. Design System
-
+## 4. Design System
 **Colors**
 - Background (Wine): `#2A0E14`
 - Text (Ivory): `#F5EFE6`
@@ -127,16 +83,6 @@ The RSVP confirmation email automatically generates a QR code for each guest.
 - Tuscan Gold: `linear-gradient(135deg, #E8D5B5 0%, #C9A46B 100%)`
 
 **Fonts (Google Fonts)**
-- Display: `Fraunces` (Variable font; uses `WONK` and `SOFT` axes)
+- Display: `Fraunces` (Variable font)
 - Body: `Newsreader`
 - Sans/UI: `Inter`
-
----
-
-## 6. Deploying
-Because this is pure static HTML/CSS/JS, you can host the site itself anywhere for free:
-- **Netlify Drop:** Drag the folder containing your files onto [app.netlify.com/drop](https://app.netlify.com/drop).
-- **Vercel:** Run `vercel` in the terminal.
-- **GitHub Pages:** Push to a repo and enable Pages in settings.
-
-*Note: Ensure `404.html` is at the root of your deployment folder. Most hosts will automatically serve it for missing routes.*
