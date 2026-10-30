@@ -1,15 +1,9 @@
-# The Wedding Website Template
+# Wedding Website Template
 
 A custom, static wedding website. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JavaScript.
 
 **Live Date:** 16 December 2028  
 **Location:** Eket, Akwa Ibom
-
-> **What's new in this version**
-> - **RSVP auto-sync to Guest List.** Every RSVP submitted on the site is automatically upserted into the planner's Guest List. New names land in an "RSVP (auto-added)" bucket for review.
-> - **Physical invitation cards are the check-in mechanism.** No QR codes. The scanner page (`scanner.html`) is kept but dormant; see Section 5.
-> - **Form simplified.** Removed Accommodation / GuestNames / Children / Transport from the public form. `Requests` stays.
-> - **Guest confirmation email** now reminds guests to bring their physical invitation card.
 
 ---
 
@@ -42,8 +36,7 @@ Before sharing the site, submit a test RSVP for a name already on the Guest List
 1. Use a real guest's name (e.g. one from the sheet).
 2. Open the sheet → `RSVP` tab → confirm the row wrote correctly.
 3. Open the sheet → `Guest List` tab → that guest's `Guest Response` should now read `Coming` (or `Not Coming`), and `Number to expect` should match what was submitted.
-4. Their `Category`, `How to invite`, and `Invited to` cells should be untouched.
-5. Delete the test row from the `RSVP` tab afterward (the Guest List row is fine to leave — revert the response manually if it was a real guest).
+4. Delete the test row from the `RSVP` tab afterward.
 
 ### 6. Review the Auto-Added Bucket Before Inviting
 Any name that doesn't match an existing Guest List row gets appended with **Category = `RSVP (auto-added)`**. Before running `Generate Invitations` in the planner, set three fields on every flagged row:
@@ -56,11 +49,7 @@ Any name that doesn't match an existing Guest List row gets appended with **Cate
 ## 1. The Files
 - `index.html` — The main website.
 - `404.html` — The custom "page not found" page.
-- `scanner.html` — The private page for ushers (Currently dormant).
-- `RESTORE_QR_CHECKIN.md` — Instructions for turning the QR codes back on.
 - `README.md` — This file.
-
-> **Note on `scanner.html` and `RESTORE_QR_CHECKIN.md`:** Both are kept but not wired up. Check-in is done with printed name sheets and physical invitation cards (Section 5). If you ever want QR check-in again, `RESTORE_QR_CHECKIN.md` describes the reactivation steps.
 
 ---
 
@@ -73,9 +62,9 @@ Ensure your Google Sheet has three tabs named exactly: `RSVP`, `Letters`, and `G
 
 **RSVP Tab:**
 ```text
-Timestamp	Name	Attending	Email	Guests	Requests	CheckedIn
+Timestamp	Name	Attending	Email	Guests	Requests
 ```
-*(Note: Older columns like `GuestNames`, `Children`, `Accommodation`, `Transport` can be deleted or left blank; the form no longer submits them).*
+*(Note: Since we removed the scanner, the `CheckedIn` column is no longer needed. You can delete it from your sheet if it exists).*
 
 **Letters Tab:**
 ```text
@@ -87,7 +76,6 @@ The sync script needs these exact headers (spelling matters):
 ```text
 Names	Category	Number to expect	Guest Response	How to invite	Invited to	Accomodation Option
 ```
-*(The planner may have other columns like `Tier` or `Arrival Date`; the sync script safely ignores them).*
 
 ### B. The "New Version" Rule
 If you make *any* change to the Apps Script code, you **must** redeploy it as a **New version** (`Deploy > Manage deployments > Edit > Version: New version > Deploy`). If you don't, Google will keep running the old code.
@@ -108,13 +96,10 @@ Every RSVP submission triggers an automatic sync in the backend. It runs synchro
 
 **Name matching is forgiving** — titles (`Mr`, `Mrs`, `Pastor`, `Chief`), the word "family", and punctuation are stripped before comparison. So `"Mr. Okpara & Family"` and `"okpara"` match.
 
-**Failure is isolated.** If the sync throws for any reason, the RSVP row still writes, and the guest still gets their email. Errors show up in **Executions** in the Apps Script editor.
-
 ### E. Re-Syncing Historical RSVPs
 If you have RSVPs from before the sync was deployed, or you've edited the `RSVP` sheet by hand:
 1. In the Apps Script editor, function dropdown → select **`syncAllRsvpsToGuestList`** → click **Run**.
 2. A toast confirms how many rows were reconciled.
-3. It's idempotent — safe to run as often as you like.
 
 ---
 
@@ -141,24 +126,3 @@ You can hide any element until a specific date by adding `data-reveal-date="YYYY
 - Display: `Fraunces` (Variable font)
 - Body: `Newsreader`
 - Sans/UI: `Inter`
-
----
-
-## 5. Day-Of Check-In (Physical Cards)
-
-No QR codes. Check-in is a printed name-tick sheet plus the physical invitation cards your guests received.
-
-**The night before:**
-1. In the planner, open **Guests**.
-2. Optionally filter to `Coming` only.
-3. Use the browser's print (or export the view to PDF) to get an alphabetical name list with `Number to expect` and `Accomodation Option` columns visible.
-4. Print **three copies**: one for the ceremony door, one for the reception, one spare.
-
-**On the day:**
-- Ushers ask each guest's name and tick the printed sheet.
-- If a guest isn't on the list, the usher writes their name on the blank rows at the bottom and waves them through. **Never block a guest at a wedding** — add names after.
-- Party size tells the usher how many heads to expect on a single tick.
-
-**If you want to revive QR check-in later:**
-- See `RESTORE_QR_CHECKIN.md`.
-- Note that the backend `CheckIn` handler currently searches the **`RSVP`** sheet, not `Guest List`. If a guest was added by hand in the planner, they won't be found.
