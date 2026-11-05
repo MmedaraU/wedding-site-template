@@ -145,8 +145,8 @@ You can hide any element until a specific date by adding data-reveal-date="YYYY-
 
 Because this is pure static HTML/CSS/JS, you can host it anywhere for free. The easiest methods are:
 
-· Netlify Drop: Go to app.netlify.com/drop and drag your project folder directly into the browser.
-· Vercel: Run vercel in your terminal.
-· GitHub Pages: Push the folder to a repository and enable Pages in the settings.
+*  Netlify Drop: Go to app.netlify.com/drop and drag your project folder directly into the browser.
+* Vercel: Run vercel in your terminal.
+* GitHub Pages: Push the folder to a repository and enable Pages in the settings.
 
 (Ensure 404.html is at the root of your deployment folder so the custom error page works).
