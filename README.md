@@ -113,31 +113,31 @@ If you have RSVPs from before the sync was deployed, or you've edited the RSVP s
 
 You can hide any element until a specific date by adding data-reveal-date="YYYY-MM-DD" to its container.
 
-· Programme Button: Hidden until 2028-12-16 (Wedding Day).
-· Wedding Photos Button: Hidden until 2028-12-17 (Day after).
+* Programme Button: Hidden until 2028-12-16 (Wedding Day).
+* Wedding Photos Button: Hidden until 2028-12-17 (Day after).
 
 ---
 
 ## 4. Design System
 
-Colors
+### Colors
 
-· Background (Wine): #2A0E14
-· Text (Ivory): #F5EFE6
-· Accent 1 (Coral): #E24E42
-· Accent 2 (Gold): #B8935A
+* Background (Wine): #2A0E14
+* Text (Ivory): #F5EFE6
+* Accent 1 (Coral): #E24E42
+* Accent 2 (Gold): #B8935A
 
-Dress Code Swatches (CSS Gradients)
+### Dress Code Swatches (CSS Gradients)
 
-· Emerald Green: linear-gradient(135deg, #1E3A2F 0%, #0F241D 100%)
-· Dark Espresso: linear-gradient(135deg, #3A2318 0%, #1E110B 100%)
-· Tuscan Gold: linear-gradient(135deg, #E8D5B5 0%, #C9A46B 100%)
+* Emerald Green: linear-gradient(135deg, #1E3A2F 0%, #0F241D 100%)
+* Dark Espresso: linear-gradient(135deg, #3A2318 0%, #1E110B 100%)
+* Tuscan Gold: linear-gradient(135deg, #E8D5B5 0%, #C9A46B 100%)
 
-Fonts (Google Fonts)
+### Fonts (Google Fonts)
 
-· Display: Fraunces (Variable font)
-· Body: Newsreader
-· Sans/UI: Inter
+* Display: Fraunces (Variable font)
+* Body: Newsreader
+* Sans/UI: Inter
 
 ---
 
