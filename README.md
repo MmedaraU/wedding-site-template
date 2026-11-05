@@ -2,9 +2,6 @@
 
 A custom, static wedding website. No build step, no frameworks, no dependencies. Just HTML, CSS, and vanilla JavaScript.
 
-**Live Date:** 16 December 2028  
-**Location:** Eket, Akwa Ibom
-
 ---
 
 ## 🚨 PRE-LAUNCH CHECKLIST (Placeholders to Replace)
