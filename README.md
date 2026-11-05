@@ -64,28 +64,28 @@ Ensure your Google Sheet has three tabs named exactly: `RSVP`, `Letters`, and `G
 Timestamp	Name	Attending	Email	Guests	Requests
 ```
 
-Letters Tab:
+**Letters Tab:**
 
 ```text
 Timestamp	Name	Message
 ```
 
-Guest List Tab:
+**Guest List Tab:**
 The sync script needs these exact headers (spelling matters):
 
 ```text
 Names	Category	Number to expect	Guest Response	How to invite	Invited to	Accomodation Option
 ```
 
-B. The "New Version" Rule
+### B. The "New Version" Rule
 
 If you make any change to the Apps Script code, you must redeploy it as a New version (Deploy > Manage deployments > Edit > Version: New version > Deploy). If you don't, Google will keep running the old code.
 
-C. Dynamic Letters
+### C. Dynamic Letters
 
 The website automatically fetches the 6 most recent letters from your Google Sheet and displays them. If you want to hide a letter, simply delete the row from the Google Sheet. If the sheet is empty, it defaults to showing the hardcoded sample letters.
 
-D. RSVP → Guest List Sync
+### D. RSVP → Guest List Sync
 
 Every RSVP submission triggers an automatic sync in the backend. It runs synchronously inside the same doPost request.
 
@@ -100,7 +100,7 @@ What it does:
 
 Name matching is forgiving — titles (Mr, Mrs, Pastor, Chief), the word "family", and punctuation are stripped before comparison. So "Mr. Okpara & Family" and "okpara" match.
 
-E. Re-Syncing Historical RSVPs
+### E. Re-Syncing Historical RSVPs
 
 If you have RSVPs from before the sync was deployed, or you've edited the RSVP sheet by hand:
 
@@ -109,7 +109,7 @@ If you have RSVPs from before the sync was deployed, or you've edited the RSVP s
 
 ---
 
-3. Hiding Sections until a Specific Date
+## 3. Hiding Sections until a Specific Date
 
 You can hide any element until a specific date by adding data-reveal-date="YYYY-MM-DD" to its container.
 
@@ -118,7 +118,7 @@ You can hide any element until a specific date by adding data-reveal-date="YYYY-
 
 ---
 
-4. Design System
+## 4. Design System
 
 Colors
 
@@ -141,7 +141,7 @@ Fonts (Google Fonts)
 
 ---
 
-5. Deploying the Site
+## 5. Deploying the Site
 
 Because this is pure static HTML/CSS/JS, you can host it anywhere for free. The easiest methods are:
 
